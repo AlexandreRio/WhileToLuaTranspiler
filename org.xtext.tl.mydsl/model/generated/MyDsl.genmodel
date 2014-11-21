@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xtext.tl.mydsl/src-gen" editDirectory="/org.xtext.tl.mydsl.edit/src"
+    editorDirectory="/org.xtext.tl.mydsl.editor/src" modelPluginID="org.xtext.tl.mydsl"
+    forceOverwrite="true" modelName="MyDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.xtext.tl.mydsl.edit"
+    editorPluginID="org.xtext.tl.mydsl.editor" runtimeVersion="2.9">
+  <genPackages prefix="MyDsl" basePackage="org.xtext.tl.mydsl" disposableProviderFactory="true"
+      fileExtensions="wh" ecorePackage="MyDsl.ecore#/">
+    <genClasses ecoreClass="MyDsl.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Model/model"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//function/funName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//function/def"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Definiton">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Definiton/inputVars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Definiton/commandList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Definiton/outputVars"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Commands"/>
+    <genClasses ecoreClass="MyDsl.ecore#//Command">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Command/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Command/c2"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

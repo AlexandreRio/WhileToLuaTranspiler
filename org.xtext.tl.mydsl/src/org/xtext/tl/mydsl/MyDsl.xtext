@@ -1,0 +1,82 @@
+grammar org.xtext.tl.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/tl/mydsl/MyDsl"
+
+Model:
+	(model += function LC?)*;
+
+function:
+	'function' LC funName=SYMBOLES ':' LC def=Definiton
+;
+
+Definiton:
+	'read' LC inputVars=Input LC
+	'%' commandList=Commands LC
+	'%' 'write' LC outputVars=Output
+;
+
+Input: VARIABLE (',' LC? VARIABLE)*;
+Output: VARIABLE (',' LC? VARIABLE)*;
+Commands: c+=Command (';' LC? c+=Command)* ;
+Vars: VARIABLE (',' Vars)? ;
+Exprs: Expr (',' Exprs)? ;
+
+Command:
+	'nop' |
+	Vars LC? ':=' LC? Exprs |
+	'while'   LC Expr LC 'do'   LC Commands LC 'od' |
+	'for'     LC Expr LC 'do'   LC Commands LC 'od' |
+	'foreach' LC Expr LC 'in'   LC Expr LC 'do' LC Commands LC 'od'|
+	'if'      LC Expr LC 'then' LC c=Commands LC ('else' LC c2=Commands LC)? 'fi'
+	//'if'      LC Expr LC 'then' LC Commands LC 'fi')
+;
+
+Expr:
+	ExprSimple |
+	And |
+	ExprTerm
+;
+
+And:
+	Or (LC 'and' LC Or)*
+;
+
+Or:
+	Not (LC 'or' LC Not)*
+;
+
+Not:
+	('not' LC)* Eq
+;
+
+Eq:
+	(ExprSimple|ExprTerm) LC? '=?' LC? (ExprSimple|ExprTerm) |
+	'('(ExprTerm|ExprSimple)')'
+;
+
+ExprTerm:
+	'nil' | VARIABLE | SYMBOLES
+;
+
+ExprSimple:
+	'('(
+	 	(('cons'|'list') Lexpr) |
+		(('hd' | 'tl') LC Expr)
+	)')'
+;
+
+Lexpr:
+	(LC Expr)+
+;
+
+terminal VARIABLE:
+	('A'..'Z')(('a'..'z')|('0'..'9')|('A'..'Z'))*
+;
+
+terminal SYMBOLES:
+	('a'..'z')(('a'..'z')|('0'..'9')|('A'..'Z'))*
+;
+
+terminal LC:
+	(' '|'\n'|'\t')+
+;

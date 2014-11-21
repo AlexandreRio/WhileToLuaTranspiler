@@ -1,0 +1,31 @@
+.TH whilePP "November 14, 2014" "version 1.0" "Manuel du Pretty Printer"
+.SH NAME
+whilePP \- Met en page votre programme de type While
+.SH SYNOPSIS
+.B whilePP \fIfile.wh\fP [\fB-o\fP \fIfichier\fP] [\fB-all\fP \fIint\fP]
+.SH DESCRIPTION
+\fBwhilePP\fP permet d'afficher le code d'un programme de type WHILE d'une façon plus lisible en le formattant et en ajoutant des retraits. 
+file.wh est le fichier à formater.
+.SH OPTIONS
+Les options suivantes sont disponibles :
+.TP
+\fB-o\fP, \fB--output\fP 
+Vous pouvez choisir la sortie
+.TP
+\fB-all\fP 
+Specifie le nombre de caractere à utiliser pour l'indentation
+.SH EXAMPLES
+.TP
+.B whilePP 
+.I fichier
+\-o fichierPretty
+Renvoie le programme While \fIfichier\fP avec la formatation pretty printer dans le fichier fichierPretty
+.PP
+.TP
+.B whilePP 
+.I fichier
+\-all 3
+Pretty print le programme While \fIfichier\fP avec 3 caractères d'indentation à chaque fois
+.PP
+.SH AUTHORS
+Alexandre Rio, Ellyn Bléas, Cédric Dubois, Sylvain Benhamich & Yannick Jezequel

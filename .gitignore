@@ -1,4 +1,7 @@
 *.class
+utils/*.jar
+org.xtext.tl.mydsl/bin/*
+org.xtext.tl.mydsl/src-gen/*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
