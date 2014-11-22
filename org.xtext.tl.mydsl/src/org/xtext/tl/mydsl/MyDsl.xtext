@@ -24,10 +24,10 @@ Exprs: Expr (',' Exprs)? ;
 Command:
 	'nop' |
 	Vars LC? ':=' LC? Exprs |
-	'while'   LC Expr LC 'do'   LC Commands LC 'od' |
-	'for'     LC exp=Expr LC 'do'   LC Commands LC 'od' |
-	'foreach' LC Expr LC 'in'   LC Expr LC 'do' LC Commands LC 'od'|
-	'if'      LC Expr LC 'then' LC c=Commands LC ('else' LC c2=Commands LC)? 'fi'
+	nom='while'   LC expression=Expr LC 'do'   LC c1=Commands LC 'od' |
+	nom='for'     LC exp=Expr LC 'do'   LC c1=Commands LC 'od' |
+	nom='foreach' LC exp=Expr LC 'in'   LC Expr LC 'do' LC c1=Commands LC 'od'|
+	nom='if'      LC exp=Expr LC 'then' LC c1=Commands LC ('else' LC c2=Commands LC)? 'fi'
 	//'if'      LC Expr LC 'then' LC Commands LC 'fi')
 ;
 
