@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.PrintStream;
 
 import org.eclipse.emf.ecore.EObject;
+import org.xtext.tl.mydsl.myDsl.impl.CommandImpl;
+import org.xtext.tl.mydsl.myDsl.impl.CommandsImpl;
 import org.xtext.tl.mydsl.myDsl.impl.DefinitonImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ModelImpl;
 import org.xtext.tl.mydsl.myDsl.impl.functionImpl;
@@ -85,10 +87,19 @@ public class Pp {
 					"%" + ((DefinitonImpl)obj).getCommandList() + "\n" +
 					"%write " + ((DefinitonImpl)obj).getOutputVars() + "\n\n";
 		}
-		/*else if (obj instanceof CommandsImpl) {
-			return ((CommandsImpl)obj).getCom().size() + " " + 
-					((CommandsImpl)obj).getAutrCom().size();
-		}*/
+		else if (obj instanceof CommandImpl) {
+			if (((CommandImpl)obj).getNom().equals("while"))
+			{
+				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExpression() + // pretty print à get exp?
+						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod\n" ;
+			}
+			if (((CommandImpl)obj).getNom().equals("for"))
+			{
+				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp()+ // pretty print à get exp?
+						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod\n" ;
+			}
+		}
+		// faire le prettyprint de commandS
 		return "";
 	}
 }
