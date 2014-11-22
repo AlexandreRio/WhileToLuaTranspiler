@@ -16,9 +16,19 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputVars" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Commands" eSuperTypes="#//Command"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Commands">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c" upperBound="-1" eType="#//Command"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//Command" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="varL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c1" eType="#//Commands"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exp1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exp2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="c2" eType="#//Commands"
         containment="true"/>
   </eClassifiers>

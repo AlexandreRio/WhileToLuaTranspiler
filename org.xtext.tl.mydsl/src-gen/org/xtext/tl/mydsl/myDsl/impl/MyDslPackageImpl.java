@@ -228,6 +228,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getCommands_C()
+  {
+    return (EReference)commandsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCommand()
   {
     return commandEClass;
@@ -238,9 +248,69 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCommand_C()
+  public EAttribute getCommand_VarL()
   {
-    return (EReference)commandEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommand_ExpL()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommand_Nom()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommand_Exp()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCommand_C1()
+  {
+    return (EReference)commandEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommand_Exp1()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCommand_Exp2()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -250,7 +320,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    */
   public EReference getCommand_C2()
   {
-    return (EReference)commandEClass.getEStructuralFeatures().get(1);
+    return (EReference)commandEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -296,9 +366,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEAttribute(definitonEClass, DEFINITON__OUTPUT_VARS);
 
     commandsEClass = createEClass(COMMANDS);
+    createEReference(commandsEClass, COMMANDS__C);
 
     commandEClass = createEClass(COMMAND);
-    createEReference(commandEClass, COMMAND__C);
+    createEAttribute(commandEClass, COMMAND__VAR_L);
+    createEAttribute(commandEClass, COMMAND__EXP_L);
+    createEAttribute(commandEClass, COMMAND__NOM);
+    createEAttribute(commandEClass, COMMAND__EXP);
+    createEReference(commandEClass, COMMAND__C1);
+    createEAttribute(commandEClass, COMMAND__EXP1);
+    createEAttribute(commandEClass, COMMAND__EXP2);
     createEReference(commandEClass, COMMAND__C2);
   }
 
@@ -331,7 +408,6 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    commandsEClass.getESuperTypes().add(this.getCommand());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -347,9 +423,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEAttribute(getDefiniton_OutputVars(), ecorePackage.getEString(), "outputVars", null, 0, 1, Definiton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandsEClass, Commands.class, "Commands", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCommands_C(), this.getCommand(), null, "c", null, 0, -1, Commands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCommand_C(), this.getCommand(), null, "c", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_VarL(), ecorePackage.getEString(), "varL", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_ExpL(), ecorePackage.getEString(), "expL", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_Nom(), ecorePackage.getEString(), "nom", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_Exp(), ecorePackage.getEString(), "exp", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_C1(), this.getCommands(), null, "c1", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_Exp1(), ecorePackage.getEString(), "exp1", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_Exp2(), ecorePackage.getEString(), "exp2", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCommand_C2(), this.getCommands(), null, "c2", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

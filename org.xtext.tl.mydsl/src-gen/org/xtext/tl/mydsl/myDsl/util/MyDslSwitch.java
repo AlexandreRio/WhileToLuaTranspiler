@@ -97,7 +97,6 @@ public class MyDslSwitch<T> extends Switch<T>
       {
         Commands commands = (Commands)theEObject;
         T result = caseCommands(commands);
-        if (result == null) result = caseCommand(commands);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

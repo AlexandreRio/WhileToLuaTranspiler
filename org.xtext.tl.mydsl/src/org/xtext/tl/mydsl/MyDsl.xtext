@@ -21,14 +21,13 @@ Commands: c+=Command (';' LC? c+=Command)* ;
 Vars: VARIABLE (',' Vars)? ;
 Exprs: Expr (',' Exprs)? ;
 
-Command:
+Command: {Command}
 	'nop' |
-	Vars LC? ':=' LC? Exprs |
-	nom='while'   LC expression=Expr LC 'do'   LC c1=Commands LC 'od' |
+	varL=Vars LC? ':=' LC? expL=Exprs |
+	nom='while'   LC exp=Expr LC 'do'   LC c1=Commands LC 'od' |
 	nom='for'     LC exp=Expr LC 'do'   LC c1=Commands LC 'od' |
-	nom='foreach' LC exp=Expr LC 'in'   LC Expr LC 'do' LC c1=Commands LC 'od'|
+	nom='foreach' LC exp1=Expr LC 'in'   LC exp2=Expr LC 'do' LC c1=Commands LC 'od'|
 	nom='if'      LC exp=Expr LC 'then' LC c1=Commands LC ('else' LC c2=Commands LC)? 'fi'
-	//'if'      LC Expr LC 'then' LC Commands LC 'fi')
 ;
 
 Expr:

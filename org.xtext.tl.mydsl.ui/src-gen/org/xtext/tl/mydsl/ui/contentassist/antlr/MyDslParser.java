@@ -60,6 +60,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVarsAccess().getGroup_1(), "rule__Vars__Group_1__0");
 					put(grammarAccess.getExprsAccess().getGroup(), "rule__Exprs__Group__0");
 					put(grammarAccess.getExprsAccess().getGroup_1(), "rule__Exprs__Group_1__0");
+					put(grammarAccess.getCommandAccess().getGroup_0(), "rule__Command__Group_0__0");
 					put(grammarAccess.getCommandAccess().getGroup_1(), "rule__Command__Group_1__0");
 					put(grammarAccess.getCommandAccess().getGroup_2(), "rule__Command__Group_2__0");
 					put(grammarAccess.getCommandAccess().getGroup_3(), "rule__Command__Group_3__0");
@@ -86,7 +87,21 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDefinitonAccess().getOutputVarsAssignment_10(), "rule__Definiton__OutputVarsAssignment_10");
 					put(grammarAccess.getCommandsAccess().getCAssignment_0(), "rule__Commands__CAssignment_0");
 					put(grammarAccess.getCommandsAccess().getCAssignment_1_2(), "rule__Commands__CAssignment_1_2");
-					put(grammarAccess.getCommandAccess().getCAssignment_5_6(), "rule__Command__CAssignment_5_6");
+					put(grammarAccess.getCommandAccess().getVarLAssignment_1_0(), "rule__Command__VarLAssignment_1_0");
+					put(grammarAccess.getCommandAccess().getExpLAssignment_1_4(), "rule__Command__ExpLAssignment_1_4");
+					put(grammarAccess.getCommandAccess().getNomAssignment_2_0(), "rule__Command__NomAssignment_2_0");
+					put(grammarAccess.getCommandAccess().getExpAssignment_2_2(), "rule__Command__ExpAssignment_2_2");
+					put(grammarAccess.getCommandAccess().getC1Assignment_2_6(), "rule__Command__C1Assignment_2_6");
+					put(grammarAccess.getCommandAccess().getNomAssignment_3_0(), "rule__Command__NomAssignment_3_0");
+					put(grammarAccess.getCommandAccess().getExpAssignment_3_2(), "rule__Command__ExpAssignment_3_2");
+					put(grammarAccess.getCommandAccess().getC1Assignment_3_6(), "rule__Command__C1Assignment_3_6");
+					put(grammarAccess.getCommandAccess().getNomAssignment_4_0(), "rule__Command__NomAssignment_4_0");
+					put(grammarAccess.getCommandAccess().getExp1Assignment_4_2(), "rule__Command__Exp1Assignment_4_2");
+					put(grammarAccess.getCommandAccess().getExp2Assignment_4_6(), "rule__Command__Exp2Assignment_4_6");
+					put(grammarAccess.getCommandAccess().getC1Assignment_4_10(), "rule__Command__C1Assignment_4_10");
+					put(grammarAccess.getCommandAccess().getNomAssignment_5_0(), "rule__Command__NomAssignment_5_0");
+					put(grammarAccess.getCommandAccess().getExpAssignment_5_2(), "rule__Command__ExpAssignment_5_2");
+					put(grammarAccess.getCommandAccess().getC1Assignment_5_6(), "rule__Command__C1Assignment_5_6");
 					put(grammarAccess.getCommandAccess().getC2Assignment_5_8_2(), "rule__Command__C2Assignment_5_8_2");
 				}
 			};

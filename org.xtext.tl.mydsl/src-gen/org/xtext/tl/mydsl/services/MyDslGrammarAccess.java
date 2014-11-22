@@ -317,56 +317,72 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class CommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Command");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cNopKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cCommandAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cNopKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final RuleCall cVarsParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Assignment cVarLAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cVarLVarsParserRuleCall_1_0_0 = (RuleCall)cVarLAssignment_1_0.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		private final Keyword cColonEqualsSignKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		private final RuleCall cLCTerminalRuleCall_1_3 = (RuleCall)cGroup_1.eContents().get(3);
-		private final RuleCall cExprsParserRuleCall_1_4 = (RuleCall)cGroup_1.eContents().get(4);
+		private final Assignment cExpLAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
+		private final RuleCall cExpLExprsParserRuleCall_1_4_0 = (RuleCall)cExpLAssignment_1_4.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cWhileKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cNomAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final Keyword cNomWhileKeyword_2_0_0 = (Keyword)cNomAssignment_2_0.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
-		private final RuleCall cExprParserRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
+		private final Assignment cExpAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cExpExprParserRuleCall_2_2_0 = (RuleCall)cExpAssignment_2_2.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_2_3 = (RuleCall)cGroup_2.eContents().get(3);
 		private final Keyword cDoKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		private final RuleCall cLCTerminalRuleCall_2_5 = (RuleCall)cGroup_2.eContents().get(5);
-		private final RuleCall cCommandsParserRuleCall_2_6 = (RuleCall)cGroup_2.eContents().get(6);
+		private final Assignment cC1Assignment_2_6 = (Assignment)cGroup_2.eContents().get(6);
+		private final RuleCall cC1CommandsParserRuleCall_2_6_0 = (RuleCall)cC1Assignment_2_6.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_2_7 = (RuleCall)cGroup_2.eContents().get(7);
 		private final Keyword cOdKeyword_2_8 = (Keyword)cGroup_2.eContents().get(8);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Keyword cForKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cNomAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final Keyword cNomForKeyword_3_0_0 = (Keyword)cNomAssignment_3_0.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
-		private final RuleCall cExprParserRuleCall_3_2 = (RuleCall)cGroup_3.eContents().get(2);
+		private final Assignment cExpAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cExpExprParserRuleCall_3_2_0 = (RuleCall)cExpAssignment_3_2.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_3_3 = (RuleCall)cGroup_3.eContents().get(3);
 		private final Keyword cDoKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
 		private final RuleCall cLCTerminalRuleCall_3_5 = (RuleCall)cGroup_3.eContents().get(5);
-		private final RuleCall cCommandsParserRuleCall_3_6 = (RuleCall)cGroup_3.eContents().get(6);
+		private final Assignment cC1Assignment_3_6 = (Assignment)cGroup_3.eContents().get(6);
+		private final RuleCall cC1CommandsParserRuleCall_3_6_0 = (RuleCall)cC1Assignment_3_6.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_3_7 = (RuleCall)cGroup_3.eContents().get(7);
 		private final Keyword cOdKeyword_3_8 = (Keyword)cGroup_3.eContents().get(8);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Keyword cForeachKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cNomAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final Keyword cNomForeachKeyword_4_0_0 = (Keyword)cNomAssignment_4_0.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
-		private final RuleCall cExprParserRuleCall_4_2 = (RuleCall)cGroup_4.eContents().get(2);
+		private final Assignment cExp1Assignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cExp1ExprParserRuleCall_4_2_0 = (RuleCall)cExp1Assignment_4_2.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_4_3 = (RuleCall)cGroup_4.eContents().get(3);
 		private final Keyword cInKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
 		private final RuleCall cLCTerminalRuleCall_4_5 = (RuleCall)cGroup_4.eContents().get(5);
-		private final RuleCall cExprParserRuleCall_4_6 = (RuleCall)cGroup_4.eContents().get(6);
+		private final Assignment cExp2Assignment_4_6 = (Assignment)cGroup_4.eContents().get(6);
+		private final RuleCall cExp2ExprParserRuleCall_4_6_0 = (RuleCall)cExp2Assignment_4_6.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_4_7 = (RuleCall)cGroup_4.eContents().get(7);
 		private final Keyword cDoKeyword_4_8 = (Keyword)cGroup_4.eContents().get(8);
 		private final RuleCall cLCTerminalRuleCall_4_9 = (RuleCall)cGroup_4.eContents().get(9);
-		private final RuleCall cCommandsParserRuleCall_4_10 = (RuleCall)cGroup_4.eContents().get(10);
+		private final Assignment cC1Assignment_4_10 = (Assignment)cGroup_4.eContents().get(10);
+		private final RuleCall cC1CommandsParserRuleCall_4_10_0 = (RuleCall)cC1Assignment_4_10.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_4_11 = (RuleCall)cGroup_4.eContents().get(11);
 		private final Keyword cOdKeyword_4_12 = (Keyword)cGroup_4.eContents().get(12);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Keyword cIfKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cNomAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
+		private final Keyword cNomIfKeyword_5_0_0 = (Keyword)cNomAssignment_5_0.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
-		private final RuleCall cExprParserRuleCall_5_2 = (RuleCall)cGroup_5.eContents().get(2);
+		private final Assignment cExpAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final RuleCall cExpExprParserRuleCall_5_2_0 = (RuleCall)cExpAssignment_5_2.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_5_3 = (RuleCall)cGroup_5.eContents().get(3);
 		private final Keyword cThenKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
 		private final RuleCall cLCTerminalRuleCall_5_5 = (RuleCall)cGroup_5.eContents().get(5);
-		private final Assignment cCAssignment_5_6 = (Assignment)cGroup_5.eContents().get(6);
-		private final RuleCall cCCommandsParserRuleCall_5_6_0 = (RuleCall)cCAssignment_5_6.eContents().get(0);
+		private final Assignment cC1Assignment_5_6 = (Assignment)cGroup_5.eContents().get(6);
+		private final RuleCall cC1CommandsParserRuleCall_5_6_0 = (RuleCall)cC1Assignment_5_6.eContents().get(0);
 		private final RuleCall cLCTerminalRuleCall_5_7 = (RuleCall)cGroup_5.eContents().get(7);
 		private final Group cGroup_5_8 = (Group)cGroup_5.eContents().get(8);
 		private final Keyword cElseKeyword_5_8_0 = (Keyword)cGroup_5_8.eContents().get(0);
@@ -376,26 +392,34 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLCTerminalRuleCall_5_8_3 = (RuleCall)cGroup_5_8.eContents().get(3);
 		private final Keyword cFiKeyword_5_9 = (Keyword)cGroup_5.eContents().get(9);
 		
-		////'if'      LC Expr LC 'then' LC Commands LC 'fi')
 		//Command:
-		//	"nop" | Vars LC? ":=" LC? Exprs | "while" LC Expr LC "do" LC Commands LC "od" | "for" LC Expr LC "do" LC Commands LC
-		//	"od" | "foreach" LC Expr LC "in" LC Expr LC "do" LC Commands LC "od" | "if" LC Expr LC "then" LC c=Commands LC ("else"
-		//	LC c2=Commands LC)? "fi";
+		//	{Command} "nop" | varL=Vars LC? ":=" LC? expL=Exprs | nom="while" LC exp=Expr LC "do" LC c1=Commands LC "od" |
+		//	nom="for" LC exp=Expr LC "do" LC c1=Commands LC "od" | nom="foreach" LC exp1=Expr LC "in" LC exp2=Expr LC "do" LC
+		//	c1=Commands LC "od" | nom="if" LC exp=Expr LC "then" LC c1=Commands LC ("else" LC c2=Commands LC)? "fi";
 		public ParserRule getRule() { return rule; }
 
-		//"nop" | Vars LC? ":=" LC? Exprs | "while" LC Expr LC "do" LC Commands LC "od" | "for" LC Expr LC "do" LC Commands LC
-		//"od" | "foreach" LC Expr LC "in" LC Expr LC "do" LC Commands LC "od" | "if" LC Expr LC "then" LC c=Commands LC ("else"
-		//LC c2=Commands LC)? "fi"
+		//{Command} "nop" | varL=Vars LC? ":=" LC? expL=Exprs | nom="while" LC exp=Expr LC "do" LC c1=Commands LC "od" | nom="for"
+		//LC exp=Expr LC "do" LC c1=Commands LC "od" | nom="foreach" LC exp1=Expr LC "in" LC exp2=Expr LC "do" LC c1=Commands LC
+		//"od" | nom="if" LC exp=Expr LC "then" LC c1=Commands LC ("else" LC c2=Commands LC)? "fi"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"nop"
-		public Keyword getNopKeyword_0() { return cNopKeyword_0; }
+		//{Command} "nop"
+		public Group getGroup_0() { return cGroup_0; }
 
-		//Vars LC? ":=" LC? Exprs
+		//{Command}
+		public Action getCommandAction_0_0() { return cCommandAction_0_0; }
+
+		//"nop"
+		public Keyword getNopKeyword_0_1() { return cNopKeyword_0_1; }
+
+		//varL=Vars LC? ":=" LC? expL=Exprs
 		public Group getGroup_1() { return cGroup_1; }
 
+		//varL=Vars
+		public Assignment getVarLAssignment_1_0() { return cVarLAssignment_1_0; }
+
 		//Vars
-		public RuleCall getVarsParserRuleCall_1_0() { return cVarsParserRuleCall_1_0; }
+		public RuleCall getVarLVarsParserRuleCall_1_0_0() { return cVarLVarsParserRuleCall_1_0_0; }
 
 		//LC?
 		public RuleCall getLCTerminalRuleCall_1_1() { return cLCTerminalRuleCall_1_1; }
@@ -406,20 +430,29 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//LC?
 		public RuleCall getLCTerminalRuleCall_1_3() { return cLCTerminalRuleCall_1_3; }
 
-		//Exprs
-		public RuleCall getExprsParserRuleCall_1_4() { return cExprsParserRuleCall_1_4; }
+		//expL=Exprs
+		public Assignment getExpLAssignment_1_4() { return cExpLAssignment_1_4; }
 
-		//"while" LC Expr LC "do" LC Commands LC "od"
+		//Exprs
+		public RuleCall getExpLExprsParserRuleCall_1_4_0() { return cExpLExprsParserRuleCall_1_4_0; }
+
+		//nom="while" LC exp=Expr LC "do" LC c1=Commands LC "od"
 		public Group getGroup_2() { return cGroup_2; }
 
+		//nom="while"
+		public Assignment getNomAssignment_2_0() { return cNomAssignment_2_0; }
+
 		//"while"
-		public Keyword getWhileKeyword_2_0() { return cWhileKeyword_2_0; }
+		public Keyword getNomWhileKeyword_2_0_0() { return cNomWhileKeyword_2_0_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_2_1() { return cLCTerminalRuleCall_2_1; }
 
+		//exp=Expr
+		public Assignment getExpAssignment_2_2() { return cExpAssignment_2_2; }
+
 		//Expr
-		public RuleCall getExprParserRuleCall_2_2() { return cExprParserRuleCall_2_2; }
+		public RuleCall getExpExprParserRuleCall_2_2_0() { return cExpExprParserRuleCall_2_2_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_2_3() { return cLCTerminalRuleCall_2_3; }
@@ -430,8 +463,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//LC
 		public RuleCall getLCTerminalRuleCall_2_5() { return cLCTerminalRuleCall_2_5; }
 
+		//c1=Commands
+		public Assignment getC1Assignment_2_6() { return cC1Assignment_2_6; }
+
 		//Commands
-		public RuleCall getCommandsParserRuleCall_2_6() { return cCommandsParserRuleCall_2_6; }
+		public RuleCall getC1CommandsParserRuleCall_2_6_0() { return cC1CommandsParserRuleCall_2_6_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_2_7() { return cLCTerminalRuleCall_2_7; }
@@ -439,17 +475,23 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"od"
 		public Keyword getOdKeyword_2_8() { return cOdKeyword_2_8; }
 
-		//"for" LC Expr LC "do" LC Commands LC "od"
+		//nom="for" LC exp=Expr LC "do" LC c1=Commands LC "od"
 		public Group getGroup_3() { return cGroup_3; }
 
+		//nom="for"
+		public Assignment getNomAssignment_3_0() { return cNomAssignment_3_0; }
+
 		//"for"
-		public Keyword getForKeyword_3_0() { return cForKeyword_3_0; }
+		public Keyword getNomForKeyword_3_0_0() { return cNomForKeyword_3_0_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_3_1() { return cLCTerminalRuleCall_3_1; }
 
+		//exp=Expr
+		public Assignment getExpAssignment_3_2() { return cExpAssignment_3_2; }
+
 		//Expr
-		public RuleCall getExprParserRuleCall_3_2() { return cExprParserRuleCall_3_2; }
+		public RuleCall getExpExprParserRuleCall_3_2_0() { return cExpExprParserRuleCall_3_2_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_3_3() { return cLCTerminalRuleCall_3_3; }
@@ -460,8 +502,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//LC
 		public RuleCall getLCTerminalRuleCall_3_5() { return cLCTerminalRuleCall_3_5; }
 
+		//c1=Commands
+		public Assignment getC1Assignment_3_6() { return cC1Assignment_3_6; }
+
 		//Commands
-		public RuleCall getCommandsParserRuleCall_3_6() { return cCommandsParserRuleCall_3_6; }
+		public RuleCall getC1CommandsParserRuleCall_3_6_0() { return cC1CommandsParserRuleCall_3_6_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_3_7() { return cLCTerminalRuleCall_3_7; }
@@ -469,17 +514,23 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"od"
 		public Keyword getOdKeyword_3_8() { return cOdKeyword_3_8; }
 
-		//"foreach" LC Expr LC "in" LC Expr LC "do" LC Commands LC "od"
+		//nom="foreach" LC exp1=Expr LC "in" LC exp2=Expr LC "do" LC c1=Commands LC "od"
 		public Group getGroup_4() { return cGroup_4; }
 
+		//nom="foreach"
+		public Assignment getNomAssignment_4_0() { return cNomAssignment_4_0; }
+
 		//"foreach"
-		public Keyword getForeachKeyword_4_0() { return cForeachKeyword_4_0; }
+		public Keyword getNomForeachKeyword_4_0_0() { return cNomForeachKeyword_4_0_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_4_1() { return cLCTerminalRuleCall_4_1; }
 
+		//exp1=Expr
+		public Assignment getExp1Assignment_4_2() { return cExp1Assignment_4_2; }
+
 		//Expr
-		public RuleCall getExprParserRuleCall_4_2() { return cExprParserRuleCall_4_2; }
+		public RuleCall getExp1ExprParserRuleCall_4_2_0() { return cExp1ExprParserRuleCall_4_2_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_4_3() { return cLCTerminalRuleCall_4_3; }
@@ -490,8 +541,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//LC
 		public RuleCall getLCTerminalRuleCall_4_5() { return cLCTerminalRuleCall_4_5; }
 
+		//exp2=Expr
+		public Assignment getExp2Assignment_4_6() { return cExp2Assignment_4_6; }
+
 		//Expr
-		public RuleCall getExprParserRuleCall_4_6() { return cExprParserRuleCall_4_6; }
+		public RuleCall getExp2ExprParserRuleCall_4_6_0() { return cExp2ExprParserRuleCall_4_6_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_4_7() { return cLCTerminalRuleCall_4_7; }
@@ -502,8 +556,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//LC
 		public RuleCall getLCTerminalRuleCall_4_9() { return cLCTerminalRuleCall_4_9; }
 
+		//c1=Commands
+		public Assignment getC1Assignment_4_10() { return cC1Assignment_4_10; }
+
 		//Commands
-		public RuleCall getCommandsParserRuleCall_4_10() { return cCommandsParserRuleCall_4_10; }
+		public RuleCall getC1CommandsParserRuleCall_4_10_0() { return cC1CommandsParserRuleCall_4_10_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_4_11() { return cLCTerminalRuleCall_4_11; }
@@ -511,17 +568,23 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"od"
 		public Keyword getOdKeyword_4_12() { return cOdKeyword_4_12; }
 
-		//"if" LC Expr LC "then" LC c=Commands LC ("else" LC c2=Commands LC)? "fi"
+		//nom="if" LC exp=Expr LC "then" LC c1=Commands LC ("else" LC c2=Commands LC)? "fi"
 		public Group getGroup_5() { return cGroup_5; }
 
+		//nom="if"
+		public Assignment getNomAssignment_5_0() { return cNomAssignment_5_0; }
+
 		//"if"
-		public Keyword getIfKeyword_5_0() { return cIfKeyword_5_0; }
+		public Keyword getNomIfKeyword_5_0_0() { return cNomIfKeyword_5_0_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_5_1() { return cLCTerminalRuleCall_5_1; }
 
+		//exp=Expr
+		public Assignment getExpAssignment_5_2() { return cExpAssignment_5_2; }
+
 		//Expr
-		public RuleCall getExprParserRuleCall_5_2() { return cExprParserRuleCall_5_2; }
+		public RuleCall getExpExprParserRuleCall_5_2_0() { return cExpExprParserRuleCall_5_2_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_5_3() { return cLCTerminalRuleCall_5_3; }
@@ -532,11 +595,11 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//LC
 		public RuleCall getLCTerminalRuleCall_5_5() { return cLCTerminalRuleCall_5_5; }
 
-		//c=Commands
-		public Assignment getCAssignment_5_6() { return cCAssignment_5_6; }
+		//c1=Commands
+		public Assignment getC1Assignment_5_6() { return cC1Assignment_5_6; }
 
 		//Commands
-		public RuleCall getCCommandsParserRuleCall_5_6_0() { return cCCommandsParserRuleCall_5_6_0; }
+		public RuleCall getC1CommandsParserRuleCall_5_6_0() { return cC1CommandsParserRuleCall_5_6_0; }
 
 		//LC
 		public RuleCall getLCTerminalRuleCall_5_7() { return cLCTerminalRuleCall_5_7; }
@@ -1015,11 +1078,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getExprsAccess().getRule();
 	}
 
-	////'if'      LC Expr LC 'then' LC Commands LC 'fi')
 	//Command:
-	//	"nop" | Vars LC? ":=" LC? Exprs | "while" LC Expr LC "do" LC Commands LC "od" | "for" LC Expr LC "do" LC Commands LC
-	//	"od" | "foreach" LC Expr LC "in" LC Expr LC "do" LC Commands LC "od" | "if" LC Expr LC "then" LC c=Commands LC ("else"
-	//	LC c2=Commands LC)? "fi";
+	//	{Command} "nop" | varL=Vars LC? ":=" LC? expL=Exprs | nom="while" LC exp=Expr LC "do" LC c1=Commands LC "od" |
+	//	nom="for" LC exp=Expr LC "do" LC c1=Commands LC "od" | nom="foreach" LC exp1=Expr LC "in" LC exp2=Expr LC "do" LC
+	//	c1=Commands LC "od" | nom="if" LC exp=Expr LC "then" LC c1=Commands LC ("else" LC c2=Commands LC)? "fi";
 	public CommandElements getCommandAccess() {
 		return (pCommand != null) ? pCommand : (pCommand = new CommandElements());
 	}

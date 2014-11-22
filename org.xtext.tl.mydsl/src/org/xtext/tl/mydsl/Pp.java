@@ -84,22 +84,51 @@ public class Pp {
 		}
 		else if (obj instanceof DefinitonImpl) {
 			return "read " + ((DefinitonImpl)obj).getInputVars() + "\n" +
-					"%" + ((DefinitonImpl)obj).getCommandList() + "\n" +
+					"%" + prettyPrint(((DefinitonImpl)obj).getCommandList()) + "\n" +
 					"%write " + ((DefinitonImpl)obj).getOutputVars() + "\n\n";
 		}
+		else if (obj instanceof CommandsImpl) {
+			String ret = "";
+			for (EObject com : ((CommandsImpl)obj).getC())
+				ret += prettyPrint(com);
+			return ret;
+		}
 		else if (obj instanceof CommandImpl) {
-			if (((CommandImpl)obj).getNom().equals("while"))
+			if (((CommandImpl)obj).getVarL() != null && ((CommandImpl)obj).getExpL() != null)
 			{
-				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExpression() + // pretty print à get exp?
-						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod\n" ;
+				return ((CommandImpl)obj).getVarL() + ":=" + ((CommandImpl)obj).getExpL();
 			}
-			if (((CommandImpl)obj).getNom().equals("for"))
+			else if (((CommandImpl)obj).getNom() == null) {
+				return "nop";
+			}
+			else if (((CommandImpl)obj).getNom().equals("while"))
+			{
+				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp() + // pretty print à get exp? => oui, mais pour le moment il vaut mieux finir Command
+						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod" ;
+			}
+			else if (((CommandImpl)obj).getNom().equals("for"))
 			{
 				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp()+ // pretty print à get exp?
-						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod\n" ;
+						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod" ;
+			}
+			else if (((CommandImpl)obj).getNom().equals("foreach"))
+			{
+				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp1() +
+						" in " + ((CommandImpl)obj).getExp2() + " do\n" +
+						prettyPrint( ((CommandImpl)obj).getC1()) + "\nod";
+			}
+			else if (((CommandImpl)obj).getNom().equals("if"))
+			{
+				if  (((CommandImpl)obj).getC2() != null)
+					return "if " + ((CommandImpl)obj).getExp()  + " then\n" +
+						prettyPrint(((CommandImpl)obj).getC1()) + "\nelse\n" +
+						prettyPrint(((CommandImpl)obj).getC2()) + "\nfi";
+				else
+					return "if " + ((CommandImpl)obj).getExp()  + " then\n" +
+					prettyPrint(((CommandImpl)obj).getC1()) + "\nfi";
 			}
 		}
-		// faire le prettyprint de commands
+		
 		return "";
 	}
 }

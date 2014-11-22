@@ -168,43 +168,6 @@ public interface MyDslPackage extends EPackage
   int DEFINITON_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.tl.mydsl.myDsl.impl.CommandImpl
-   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getCommand()
-   * @generated
-   */
-  int COMMAND = 4;
-
-  /**
-   * The feature id for the '<em><b>C</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMAND__C = 0;
-
-  /**
-   * The feature id for the '<em><b>C2</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMAND__C2 = 1;
-
-  /**
-   * The number of structural features of the '<em>Command</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMAND_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandsImpl <em>Commands</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -215,22 +178,13 @@ public interface MyDslPackage extends EPackage
   int COMMANDS = 3;
 
   /**
-   * The feature id for the '<em><b>C</b></em>' containment reference.
+   * The feature id for the '<em><b>C</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMANDS__C = COMMAND__C;
-
-  /**
-   * The feature id for the '<em><b>C2</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMANDS__C2 = COMMAND__C2;
+  int COMMANDS__C = 0;
 
   /**
    * The number of structural features of the '<em>Commands</em>' class.
@@ -239,7 +193,98 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMANDS_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 0;
+  int COMMANDS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.CommandImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getCommand()
+   * @generated
+   */
+  int COMMAND = 4;
+
+  /**
+   * The feature id for the '<em><b>Var L</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__VAR_L = 0;
+
+  /**
+   * The feature id for the '<em><b>Exp L</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__EXP_L = 1;
+
+  /**
+   * The feature id for the '<em><b>Nom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__NOM = 2;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__EXP = 3;
+
+  /**
+   * The feature id for the '<em><b>C1</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__C1 = 4;
+
+  /**
+   * The feature id for the '<em><b>Exp1</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__EXP1 = 5;
+
+  /**
+   * The feature id for the '<em><b>Exp2</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__EXP2 = 6;
+
+  /**
+   * The feature id for the '<em><b>C2</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__C2 = 7;
+
+  /**
+   * The number of structural features of the '<em>Command</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND_FEATURE_COUNT = 8;
 
 
   /**
@@ -349,6 +394,17 @@ public interface MyDslPackage extends EPackage
   EClass getCommands();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.tl.mydsl.myDsl.Commands#getC <em>C</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>C</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Commands#getC()
+   * @see #getCommands()
+   * @generated
+   */
+  EReference getCommands_C();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Command <em>Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -359,15 +415,81 @@ public interface MyDslPackage extends EPackage
   EClass getCommand();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getC <em>C</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getVarL <em>Var L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>C</em>'.
-   * @see org.xtext.tl.mydsl.myDsl.Command#getC()
+   * @return the meta object for the attribute '<em>Var L</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getVarL()
    * @see #getCommand()
    * @generated
    */
-  EReference getCommand_C();
+  EAttribute getCommand_VarL();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExpL <em>Exp L</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Exp L</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getExpL()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_ExpL();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getNom <em>Nom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Nom</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getNom()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Nom();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Exp</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getExp()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Exp();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getC1 <em>C1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>C1</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getC1()
+   * @see #getCommand()
+   * @generated
+   */
+  EReference getCommand_C1();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExp1 <em>Exp1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Exp1</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getExp1()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Exp1();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExp2 <em>Exp2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Exp2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Command#getExp2()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Exp2();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getC2 <em>C2</em>}'.
@@ -492,6 +614,14 @@ public interface MyDslPackage extends EPackage
     EClass COMMANDS = eINSTANCE.getCommands();
 
     /**
+     * The meta object literal for the '<em><b>C</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMMANDS__C = eINSTANCE.getCommands_C();
+
+    /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -502,12 +632,60 @@ public interface MyDslPackage extends EPackage
     EClass COMMAND = eINSTANCE.getCommand();
 
     /**
-     * The meta object literal for the '<em><b>C</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Var L</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMMAND__C = eINSTANCE.getCommand_C();
+    EAttribute COMMAND__VAR_L = eINSTANCE.getCommand_VarL();
+
+    /**
+     * The meta object literal for the '<em><b>Exp L</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__EXP_L = eINSTANCE.getCommand_ExpL();
+
+    /**
+     * The meta object literal for the '<em><b>Nom</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__NOM = eINSTANCE.getCommand_Nom();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__EXP = eINSTANCE.getCommand_Exp();
+
+    /**
+     * The meta object literal for the '<em><b>C1</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMMAND__C1 = eINSTANCE.getCommand_C1();
+
+    /**
+     * The meta object literal for the '<em><b>Exp1</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__EXP1 = eINSTANCE.getCommand_Exp1();
+
+    /**
+     * The meta object literal for the '<em><b>Exp2</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__EXP2 = eINSTANCE.getCommand_Exp2();
 
     /**
      * The meta object literal for the '<em><b>C2</b></em>' containment reference feature.

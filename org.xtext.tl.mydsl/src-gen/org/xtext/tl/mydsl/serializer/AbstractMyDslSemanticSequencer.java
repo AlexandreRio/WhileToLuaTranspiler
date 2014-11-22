@@ -36,8 +36,7 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 				}
 				else break;
 			case MyDslPackage.COMMANDS:
-				if(context == grammarAccess.getCommandRule() ||
-				   context == grammarAccess.getCommandsRule()) {
+				if(context == grammarAccess.getCommandsRule()) {
 					sequence_Commands(context, (Commands) semanticObject); 
 					return; 
 				}
@@ -66,7 +65,7 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (c=Commands c2=Commands?)?
+	 *     {Command}
 	 */
 	protected void sequence_Command(EObject context, Command semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
