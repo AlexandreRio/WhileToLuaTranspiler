@@ -99,7 +99,7 @@ public class Pp {
 						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "\nod\n" ;
 			}
 		}
-		// faire le prettyprint de commandS
+		// faire le prettyprint de commands
 		return "";
 	}
 }
