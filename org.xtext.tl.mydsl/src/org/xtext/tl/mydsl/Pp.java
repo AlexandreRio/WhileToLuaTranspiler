@@ -5,10 +5,19 @@ import java.io.FileReader;
 import java.io.PrintStream;
 
 import org.eclipse.emf.ecore.EObject;
+import org.xtext.tl.mydsl.myDsl.ExprSimple;
+import org.xtext.tl.mydsl.myDsl.impl.AndImpl;
 import org.xtext.tl.mydsl.myDsl.impl.CommandImpl;
 import org.xtext.tl.mydsl.myDsl.impl.CommandsImpl;
 import org.xtext.tl.mydsl.myDsl.impl.DefinitonImpl;
+import org.xtext.tl.mydsl.myDsl.impl.EqImpl;
+import org.xtext.tl.mydsl.myDsl.impl.ExprImpl;
+import org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl;
+import org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl;
+import org.xtext.tl.mydsl.myDsl.impl.LexprImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ModelImpl;
+import org.xtext.tl.mydsl.myDsl.impl.NotImpl;
+import org.xtext.tl.mydsl.myDsl.impl.OrImpl;
 import org.xtext.tl.mydsl.myDsl.impl.functionImpl;
 
 
@@ -85,6 +94,106 @@ public class Pp {
 		else if (obj instanceof functionImpl) {
 			return "function " + ((functionImpl)obj).getFunName() + " :\n" +
 					prettyPrint(((functionImpl)obj).getDef());
+		}
+		else if (obj instanceof ExprImpl) {
+			if (((ExprImpl)obj).getExpEt()!=null)
+			{
+				return prettyPrint((((ExprImpl)obj).getExpEt()));
+			}
+			else if (((ExprImpl)obj).getExprSimple()!=null)
+			{
+				return prettyPrint((((ExprImpl)obj).getExprSimple()));
+			}
+			else if (((ExprImpl)obj).getExpTerminale()!=null)
+			{
+				return prettyPrint((((ExprImpl)obj).getExpTerminale()));
+			}
+		}
+		else if (obj instanceof AndImpl) {
+			String ret = "";
+			ret = prettyPrint(((AndImpl)obj).getExpOu());
+			if (((AndImpl)obj).getExpOu2()!=null)
+			{
+				ret = ret+ " and "+ prettyPrint(((AndImpl)obj).getExpOu2());
+			}
+			return ret;
+		}
+		else if (obj instanceof OrImpl) {
+			String ret = "";
+			ret = prettyPrint(((OrImpl)obj).getExpNon());
+			if (((OrImpl)obj).getExpNon2()!=null)
+			{
+				ret = ret+ " and "+ prettyPrint(((OrImpl)obj).getExpNon2());
+			}
+			return ret;
+		}
+		else if  (obj instanceof NotImpl){	
+			String ret = "";
+			if (((NotImpl)obj).getNon()!=null)
+			{
+				ret = ret+((NotImpl)obj).getNon();
+			}
+			return ret + prettyPrint(((NotImpl)obj).getExpEq()) ;
+		}
+		else if ( (obj instanceof EqImpl))
+		{
+			String ret = "";
+			if (((EqImpl)obj).getExprSimple1()!=null)
+			{
+				ret = ret + ((EqImpl)obj).getExprSimple1();
+			}
+			else 
+			{
+				ret = ret + ((EqImpl)obj).getExpTerminale1();
+			}
+			
+			if ((((EqImpl)obj).getExprSimple1()  !=null)
+			  ||(((EqImpl)obj).getExpTerminale1()!=null))
+			{
+				ret = ret+" =? ";
+				if (((EqImpl)obj).getExprSimple2()!=null)
+				{
+					ret = ret + ((EqImpl)obj).getExprSimple2();
+				}
+				else 
+				{
+					ret = ret + ((EqImpl)obj).getExpTerminale2();
+				}
+			}
+			return ret;
+		}
+		else if ( (obj instanceof ExprTermImpl))
+		{
+			if (((ExprTermImpl)obj).getSymboles()!=null)
+			{
+				return ((ExprTermImpl)obj).getSymboles();
+			}
+			else if (((ExprTermImpl)obj).getVariables()!=null)
+			{
+				return ((ExprTermImpl)obj).getVariables();
+			}
+			else 
+			{
+				return "nil";
+			}
+		}
+		else if (obj instanceof ExprSimpleImpl){
+			String ret = "(" + ((ExprSimple)obj).getMot();
+			if ((((ExprSimple)obj).getMot().equals("cons"))||(((ExprSimple)obj).getMot().equals("list")))
+			{
+				ret = ret+ prettyPrint(((ExprSimple)obj).getLexpr());
+			}
+			else
+			{
+				ret = ret+" " + prettyPrint(((ExprSimple)obj).getExpr());
+			}
+			return (ret + ")");
+		}
+		else if (obj instanceof LexprImpl){
+			if (((LexprImpl)obj).getExp()!=null)
+			{
+				return ( " " + prettyPrint(((LexprImpl)obj).getExp()));
+			}
 		}
 		else if (obj instanceof DefinitonImpl) {
 			return "read " + ((DefinitonImpl)obj).getInputVars() + "\n" +
