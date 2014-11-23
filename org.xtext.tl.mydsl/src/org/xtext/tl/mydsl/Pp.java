@@ -73,9 +73,13 @@ public class Pp {
 	private static String prettyPrint(EObject obj) {
 		if (obj instanceof ModelImpl) {
 			String ret = "";
-			for (EObject fun : ((ModelImpl)obj).eContents()) {
-				ret += prettyPrint(fun);
-			}
+			int functionNumber = ((ModelImpl)obj).eContents().size();
+			if (functionNumber > 1)
+				for (int i=0; i<functionNumber-2; i++)
+					ret += prettyPrint(((ModelImpl)obj).getModel().get(i)) + "\n\n";
+
+			ret += prettyPrint(((ModelImpl)obj).getModel().get(functionNumber-1));
+
 			return ret;
 		}
 		else if (obj instanceof functionImpl) {
@@ -85,7 +89,7 @@ public class Pp {
 		else if (obj instanceof DefinitonImpl) {
 			return "read " + ((DefinitonImpl)obj).getInputVars() + "\n" +
 					"%" + prettyPrint(((DefinitonImpl)obj).getCommandList()) +
-					"%write " + ((DefinitonImpl)obj).getOutputVars() + "\n\n";
+					"%write " + ((DefinitonImpl)obj).getOutputVars();
 		}
 		else if (obj instanceof CommandsImpl) {
 			String ret = "";
