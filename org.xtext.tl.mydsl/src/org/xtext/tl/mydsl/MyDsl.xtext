@@ -19,7 +19,7 @@ Input: VARIABLE (',' LC? VARIABLE)*;
 Output: VARIABLE (',' LC? VARIABLE)*;
 Commands: c+=Command (';' LC? c+=Command)* ;
 Vars: VARIABLE (',' Vars)? ;
-Exprs: Expr (',' Exprs)? ;
+Exprs: Expr (',' exp=Exprs)? ;
 
 Command: {Command}
 	'nop' |
@@ -31,41 +31,42 @@ Command: {Command}
 ;
 
 Expr:
-	ExprSimple |
-	And |
-	ExprTerm
+	exprSimple=ExprSimple |
+	expEt=And |
+	expTerminale=ExprTerm
 ;
 
 And:
-	Or (LC 'and' LC Or)*
+	expOu=Or (LC 'and' LC expOu2=Or)*
+	//Ou += Or (LC 'and' LC Or) *
 ;
 
 Or:
-	Not (LC 'or' LC Not)*
+	expNon=Not (LC 'or' LC expNon2=Not)*
 ;
 
 Not:
-	('not' LC)* Eq
+	(non='not' LC)* expEq=Eq
 ;
 
 Eq:
-	(ExprSimple|ExprTerm) LC? '=?' LC? (ExprSimple|ExprTerm) |
-	'('(ExprTerm|ExprSimple)')'
+	(exprSimple1=ExprSimple|expTerminale1=ExprTerm) LC? '=?' LC? (exprSimple2=ExprSimple|expTerminale2=ExprTerm) |
+	'('(expTerminale1=ExprTerm|exprSimple1=ExprSimple)')'
 ;
 
 ExprTerm:
-	'nil' | VARIABLE | SYMBOLES
+	'nil' | variables=VARIABLE | symboles=SYMBOLES
 ;
 
 ExprSimple:
 	'('(
-	 	(('cons'|'list') Lexpr) |
-		(('hd' | 'tl') LC Expr)
+	 	((mot='cons'|mot='list') lexpr=Lexpr) |
+		((mot='hd' | mot='tl') LC expr=Expr)
 	)')'
 ;
 
 Lexpr:
-	(LC Expr)+
+	(LC exp=Expr)+
 ;
 
 terminal VARIABLE:
