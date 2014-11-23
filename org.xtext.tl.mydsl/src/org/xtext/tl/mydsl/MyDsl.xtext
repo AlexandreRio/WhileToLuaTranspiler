@@ -37,36 +37,36 @@ Expr:
 ;
 
 And:
-	expOu=Or (LC 'and' LC expOu2=Or)*
+	expOu=Or (LC 'and' LC expOu2+=Or)*
 	//Ou += Or (LC 'and' LC Or) *
 ;
 
 Or:
-	expNon=Not (LC 'or' LC expNon2=Not)*
+	expNon=Not (LC 'or' LC expNon2+=Not)*
 ;
 
 Not:
-	(non='not' LC)* expEq=Eq
+	(non+='not' LC)* expEq=Eq
 ;
 
 Eq:
-	(exprSimple1=ExprSimple|expTerminale1=ExprTerm) LC? '=?' LC? (exprSimple2=ExprSimple|expTerminale2=ExprTerm) |
-	'('(expTerminale1=ExprTerm|exprSimple1=ExprSimple)')'
+	(exprEq1= (ExprSimple|ExprTerm)) LC? '=?' LC? (exprEq2= (ExprSimple|ExprTerm)) |
+	'('(exp= (ExprTerm|ExprSimple))')'
 ;
 
 ExprTerm:
-	'nil' | variables=VARIABLE | symboles=SYMBOLES
+	ExprTerm=('nil' | VARIABLE | SYMBOLES)
 ;
 
 ExprSimple:
 	'('(
-	 	((mot='cons'|mot='list') lexpr=Lexpr) |
-		((mot='hd' | mot='tl') LC expr=Expr)
+	 	((mot=('cons'|'list')) lexpr=Lexpr) |
+		((mot=('hd' | 'tl')) LC expr=Expr)
 	)')'
 ;
 
 Lexpr:
-	(LC exp=Expr)+
+	(LC exp+=Expr)+
 ;
 
 terminal VARIABLE:

@@ -56,30 +56,30 @@ public interface Command extends EObject
   void setVarL(String value);
 
   /**
-   * Returns the value of the '<em><b>Exp L</b></em>' attribute.
+   * Returns the value of the '<em><b>Exp L</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exp L</em>' attribute isn't clear,
+   * If the meaning of the '<em>Exp L</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exp L</em>' attribute.
-   * @see #setExpL(String)
+   * @return the value of the '<em>Exp L</em>' containment reference.
+   * @see #setExpL(Exprs)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getCommand_ExpL()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getExpL();
+  Exprs getExpL();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExpL <em>Exp L</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExpL <em>Exp L</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exp L</em>' attribute.
+   * @param value the new value of the '<em>Exp L</em>' containment reference.
    * @see #getExpL()
    * @generated
    */
-  void setExpL(String value);
+  void setExpL(Exprs value);
 
   /**
    * Returns the value of the '<em><b>Nom</b></em>' attribute.
@@ -108,30 +108,30 @@ public interface Command extends EObject
   void setNom(String value);
 
   /**
-   * Returns the value of the '<em><b>Exp</b></em>' attribute.
+   * Returns the value of the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exp</em>' attribute isn't clear,
+   * If the meaning of the '<em>Exp</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exp</em>' attribute.
-   * @see #setExp(String)
+   * @return the value of the '<em>Exp</em>' containment reference.
+   * @see #setExp(Expr)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getCommand_Exp()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getExp();
+  Expr getExp();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExp <em>Exp</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExp <em>Exp</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exp</em>' attribute.
+   * @param value the new value of the '<em>Exp</em>' containment reference.
    * @see #getExp()
    * @generated
    */
-  void setExp(String value);
+  void setExp(Expr value);
 
   /**
    * Returns the value of the '<em><b>C1</b></em>' containment reference.
@@ -160,56 +160,56 @@ public interface Command extends EObject
   void setC1(Commands value);
 
   /**
-   * Returns the value of the '<em><b>Exp1</b></em>' attribute.
+   * Returns the value of the '<em><b>Exp1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exp1</em>' attribute isn't clear,
+   * If the meaning of the '<em>Exp1</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exp1</em>' attribute.
-   * @see #setExp1(String)
+   * @return the value of the '<em>Exp1</em>' containment reference.
+   * @see #setExp1(Expr)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getCommand_Exp1()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getExp1();
+  Expr getExp1();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExp1 <em>Exp1</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExp1 <em>Exp1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exp1</em>' attribute.
+   * @param value the new value of the '<em>Exp1</em>' containment reference.
    * @see #getExp1()
    * @generated
    */
-  void setExp1(String value);
+  void setExp1(Expr value);
 
   /**
-   * Returns the value of the '<em><b>Exp2</b></em>' attribute.
+   * Returns the value of the '<em><b>Exp2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exp2</em>' attribute isn't clear,
+   * If the meaning of the '<em>Exp2</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exp2</em>' attribute.
-   * @see #setExp2(String)
+   * @return the value of the '<em>Exp2</em>' containment reference.
+   * @see #setExp2(Expr)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getCommand_Exp2()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getExp2();
+  Expr getExp2();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExp2 <em>Exp2</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getExp2 <em>Exp2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exp2</em>' attribute.
+   * @param value the new value of the '<em>Exp2</em>' containment reference.
    * @see #getExp2()
    * @generated
    */
-  void setExp2(String value);
+  void setExp2(Expr value);
 
   /**
    * Returns the value of the '<em><b>C2</b></em>' containment reference.

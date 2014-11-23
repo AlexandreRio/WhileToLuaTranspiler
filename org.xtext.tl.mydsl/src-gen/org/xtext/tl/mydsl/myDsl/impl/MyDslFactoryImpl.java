@@ -68,7 +68,16 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.FUNCTION: return createfunction();
       case MyDslPackage.DEFINITON: return createDefiniton();
       case MyDslPackage.COMMANDS: return createCommands();
+      case MyDslPackage.EXPRS: return createExprs();
       case MyDslPackage.COMMAND: return createCommand();
+      case MyDslPackage.EXPR: return createExpr();
+      case MyDslPackage.AND: return createAnd();
+      case MyDslPackage.OR: return createOr();
+      case MyDslPackage.NOT: return createNot();
+      case MyDslPackage.EQ: return createEq();
+      case MyDslPackage.EXPR_TERM: return createExprTerm();
+      case MyDslPackage.EXPR_SIMPLE: return createExprSimple();
+      case MyDslPackage.LEXPR: return createLexpr();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -123,10 +132,109 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Exprs createExprs()
+  {
+    ExprsImpl exprs = new ExprsImpl();
+    return exprs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Command createCommand()
   {
     CommandImpl command = new CommandImpl();
     return command;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expr createExpr()
+  {
+    ExprImpl expr = new ExprImpl();
+    return expr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public And createAnd()
+  {
+    AndImpl and = new AndImpl();
+    return and;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Or createOr()
+  {
+    OrImpl or = new OrImpl();
+    return or;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Not createNot()
+  {
+    NotImpl not = new NotImpl();
+    return not;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Eq createEq()
+  {
+    EqImpl eq = new EqImpl();
+    return eq;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprTerm createExprTerm()
+  {
+    ExprTermImpl exprTerm = new ExprTermImpl();
+    return exprTerm;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExprSimple createExprSimple()
+  {
+    ExprSimpleImpl exprSimple = new ExprSimpleImpl();
+    return exprSimple;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Lexpr createLexpr()
+  {
+    LexprImpl lexpr = new LexprImpl();
+    return lexpr;
   }
 
   /**

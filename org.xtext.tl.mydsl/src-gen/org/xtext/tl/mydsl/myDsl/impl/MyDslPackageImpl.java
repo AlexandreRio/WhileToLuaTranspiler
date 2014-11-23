@@ -9,12 +9,21 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.xtext.tl.mydsl.myDsl.And;
 import org.xtext.tl.mydsl.myDsl.Command;
 import org.xtext.tl.mydsl.myDsl.Commands;
 import org.xtext.tl.mydsl.myDsl.Definiton;
+import org.xtext.tl.mydsl.myDsl.Eq;
+import org.xtext.tl.mydsl.myDsl.Expr;
+import org.xtext.tl.mydsl.myDsl.ExprSimple;
+import org.xtext.tl.mydsl.myDsl.ExprTerm;
+import org.xtext.tl.mydsl.myDsl.Exprs;
+import org.xtext.tl.mydsl.myDsl.Lexpr;
 import org.xtext.tl.mydsl.myDsl.Model;
 import org.xtext.tl.mydsl.myDsl.MyDslFactory;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
+import org.xtext.tl.mydsl.myDsl.Not;
+import org.xtext.tl.mydsl.myDsl.Or;
 import org.xtext.tl.mydsl.myDsl.function;
 
 /**
@@ -58,7 +67,70 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass exprsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass commandEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eqEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exprTermEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass exprSimpleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lexprEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -238,6 +310,16 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getExprs()
+  {
+    return exprsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCommand()
   {
     return commandEClass;
@@ -258,9 +340,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_ExpL()
+  public EReference getCommand_ExpL()
   {
-    return (EAttribute)commandEClass.getEStructuralFeatures().get(1);
+    return (EReference)commandEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -278,9 +360,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_Exp()
+  public EReference getCommand_Exp()
   {
-    return (EAttribute)commandEClass.getEStructuralFeatures().get(3);
+    return (EReference)commandEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -298,9 +380,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_Exp1()
+  public EReference getCommand_Exp1()
   {
-    return (EAttribute)commandEClass.getEStructuralFeatures().get(5);
+    return (EReference)commandEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -308,9 +390,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommand_Exp2()
+  public EReference getCommand_Exp2()
   {
-    return (EAttribute)commandEClass.getEStructuralFeatures().get(6);
+    return (EReference)commandEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -321,6 +403,266 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
   public EReference getCommand_C2()
   {
     return (EReference)commandEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExpr()
+  {
+    return exprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpr_Exp()
+  {
+    return (EReference)exprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpr_ExprSimple()
+  {
+    return (EReference)exprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpr_ExpEt()
+  {
+    return (EReference)exprEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpr_ExpTerminale()
+  {
+    return (EReference)exprEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAnd()
+  {
+    return andEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAnd_ExpOu()
+  {
+    return (EReference)andEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAnd_ExpOu2()
+  {
+    return (EReference)andEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOr()
+  {
+    return orEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOr_ExpNon()
+  {
+    return (EReference)orEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOr_ExpNon2()
+  {
+    return (EReference)orEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNot()
+  {
+    return notEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNot_Non()
+  {
+    return (EAttribute)notEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNot_ExpEq()
+  {
+    return (EReference)notEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEq()
+  {
+    return eqEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEq_ExprEq1()
+  {
+    return (EReference)eqEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEq_ExprEq2()
+  {
+    return (EReference)eqEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEq_Exp()
+  {
+    return (EReference)eqEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExprTerm()
+  {
+    return exprTermEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getExprTerm_ExprTerm()
+  {
+    return (EAttribute)exprTermEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExprSimple()
+  {
+    return exprSimpleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getExprSimple_Mot()
+  {
+    return (EAttribute)exprSimpleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExprSimple_Lexpr()
+  {
+    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExprSimple_Expr()
+  {
+    return (EReference)exprSimpleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getLexpr()
+  {
+    return lexprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLexpr_Exp()
+  {
+    return (EReference)lexprEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -368,15 +710,51 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     commandsEClass = createEClass(COMMANDS);
     createEReference(commandsEClass, COMMANDS__C);
 
+    exprsEClass = createEClass(EXPRS);
+
     commandEClass = createEClass(COMMAND);
     createEAttribute(commandEClass, COMMAND__VAR_L);
-    createEAttribute(commandEClass, COMMAND__EXP_L);
+    createEReference(commandEClass, COMMAND__EXP_L);
     createEAttribute(commandEClass, COMMAND__NOM);
-    createEAttribute(commandEClass, COMMAND__EXP);
+    createEReference(commandEClass, COMMAND__EXP);
     createEReference(commandEClass, COMMAND__C1);
-    createEAttribute(commandEClass, COMMAND__EXP1);
-    createEAttribute(commandEClass, COMMAND__EXP2);
+    createEReference(commandEClass, COMMAND__EXP1);
+    createEReference(commandEClass, COMMAND__EXP2);
     createEReference(commandEClass, COMMAND__C2);
+
+    exprEClass = createEClass(EXPR);
+    createEReference(exprEClass, EXPR__EXP);
+    createEReference(exprEClass, EXPR__EXPR_SIMPLE);
+    createEReference(exprEClass, EXPR__EXP_ET);
+    createEReference(exprEClass, EXPR__EXP_TERMINALE);
+
+    andEClass = createEClass(AND);
+    createEReference(andEClass, AND__EXP_OU);
+    createEReference(andEClass, AND__EXP_OU2);
+
+    orEClass = createEClass(OR);
+    createEReference(orEClass, OR__EXP_NON);
+    createEReference(orEClass, OR__EXP_NON2);
+
+    notEClass = createEClass(NOT);
+    createEAttribute(notEClass, NOT__NON);
+    createEReference(notEClass, NOT__EXP_EQ);
+
+    eqEClass = createEClass(EQ);
+    createEReference(eqEClass, EQ__EXPR_EQ1);
+    createEReference(eqEClass, EQ__EXPR_EQ2);
+    createEReference(eqEClass, EQ__EXP);
+
+    exprTermEClass = createEClass(EXPR_TERM);
+    createEAttribute(exprTermEClass, EXPR_TERM__EXPR_TERM);
+
+    exprSimpleEClass = createEClass(EXPR_SIMPLE);
+    createEAttribute(exprSimpleEClass, EXPR_SIMPLE__MOT);
+    createEReference(exprSimpleEClass, EXPR_SIMPLE__LEXPR);
+    createEReference(exprSimpleEClass, EXPR_SIMPLE__EXPR);
+
+    lexprEClass = createEClass(LEXPR);
+    createEReference(lexprEClass, LEXPR__EXP);
   }
 
   /**
@@ -408,6 +786,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    exprEClass.getESuperTypes().add(this.getExprs());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -425,15 +804,51 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEClass(commandsEClass, Commands.class, "Commands", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCommands_C(), this.getCommand(), null, "c", null, 0, -1, Commands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(exprsEClass, Exprs.class, "Exprs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCommand_VarL(), ecorePackage.getEString(), "varL", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCommand_ExpL(), ecorePackage.getEString(), "expL", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_ExpL(), this.getExprs(), null, "expL", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_Nom(), ecorePackage.getEString(), "nom", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCommand_Exp(), ecorePackage.getEString(), "exp", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_Exp(), this.getExpr(), null, "exp", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCommand_C1(), this.getCommands(), null, "c1", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCommand_Exp1(), ecorePackage.getEString(), "exp1", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCommand_Exp2(), ecorePackage.getEString(), "exp2", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_Exp1(), this.getExpr(), null, "exp1", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCommand_Exp2(), this.getExpr(), null, "exp2", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCommand_C2(), this.getCommands(), null, "c2", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exprEClass, Expr.class, "Expr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpr_Exp(), this.getExprs(), null, "exp", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_ExprSimple(), this.getExprSimple(), null, "exprSimple", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_ExpEt(), this.getAnd(), null, "expEt", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpr_ExpTerminale(), this.getExprTerm(), null, "expTerminale", null, 0, 1, Expr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAnd_ExpOu(), this.getOr(), null, "expOu", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnd_ExpOu2(), this.getOr(), null, "expOu2", null, 0, -1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOr_ExpNon(), this.getNot(), null, "expNon", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOr_ExpNon2(), this.getNot(), null, "expNon2", null, 0, -1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNot_Non(), ecorePackage.getEString(), "non", null, 0, -1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNot_ExpEq(), this.getEq(), null, "expEq", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eqEClass, Eq.class, "Eq", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEq_ExprEq1(), ecorePackage.getEObject(), null, "exprEq1", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEq_ExprEq2(), ecorePackage.getEObject(), null, "exprEq2", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEq_Exp(), ecorePackage.getEObject(), null, "exp", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exprTermEClass, ExprTerm.class, "ExprTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExprTerm_ExprTerm(), ecorePackage.getEString(), "ExprTerm", null, 0, 1, ExprTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(exprSimpleEClass, ExprSimple.class, "ExprSimple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExprSimple_Mot(), ecorePackage.getEString(), "mot", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprSimple_Lexpr(), this.getLexpr(), null, "lexpr", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprSimple_Expr(), this.getExpr(), null, "expr", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(lexprEClass, Lexpr.class, "Lexpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLexpr_Exp(), this.getExpr(), null, "exp", null, 0, -1, Lexpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

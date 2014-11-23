@@ -95,9 +95,54 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createCommandsAdapter();
       }
       @Override
+      public Adapter caseExprs(Exprs object)
+      {
+        return createExprsAdapter();
+      }
+      @Override
       public Adapter caseCommand(Command object)
       {
         return createCommandAdapter();
+      }
+      @Override
+      public Adapter caseExpr(Expr object)
+      {
+        return createExprAdapter();
+      }
+      @Override
+      public Adapter caseAnd(And object)
+      {
+        return createAndAdapter();
+      }
+      @Override
+      public Adapter caseOr(Or object)
+      {
+        return createOrAdapter();
+      }
+      @Override
+      public Adapter caseNot(Not object)
+      {
+        return createNotAdapter();
+      }
+      @Override
+      public Adapter caseEq(Eq object)
+      {
+        return createEqAdapter();
+      }
+      @Override
+      public Adapter caseExprTerm(ExprTerm object)
+      {
+        return createExprTermAdapter();
+      }
+      @Override
+      public Adapter caseExprSimple(ExprSimple object)
+      {
+        return createExprSimpleAdapter();
+      }
+      @Override
+      public Adapter caseLexpr(Lexpr object)
+      {
+        return createLexprAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -182,6 +227,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Exprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Exprs
+   * @generated
+   */
+  public Adapter createExprsAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Command <em>Command</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -192,6 +252,126 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCommandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Expr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Expr
+   * @generated
+   */
+  public Adapter createExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.And <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.And
+   * @generated
+   */
+  public Adapter createAndAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Or <em>Or</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Or
+   * @generated
+   */
+  public Adapter createOrAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Not <em>Not</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Not
+   * @generated
+   */
+  public Adapter createNotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Eq <em>Eq</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Eq
+   * @generated
+   */
+  public Adapter createEqAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.ExprTerm <em>Expr Term</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.ExprTerm
+   * @generated
+   */
+  public Adapter createExprTermAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.ExprSimple <em>Expr Simple</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.ExprSimple
+   * @generated
+   */
+  public Adapter createExprSimpleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Lexpr <em>Lexpr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Lexpr
+   * @generated
+   */
+  public Adapter createLexprAdapter()
   {
     return null;
   }

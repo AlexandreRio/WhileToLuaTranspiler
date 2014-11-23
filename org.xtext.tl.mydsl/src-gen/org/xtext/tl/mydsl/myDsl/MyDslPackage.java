@@ -196,6 +196,25 @@ public interface MyDslPackage extends EPackage
   int COMMANDS_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprsImpl <em>Exprs</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.ExprsImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprs()
+   * @generated
+   */
+  int EXPRS = 4;
+
+  /**
+   * The number of structural features of the '<em>Exprs</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRS_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -203,7 +222,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 4;
+  int COMMAND = 5;
 
   /**
    * The feature id for the '<em><b>Var L</b></em>' attribute.
@@ -215,7 +234,7 @@ public interface MyDslPackage extends EPackage
   int COMMAND__VAR_L = 0;
 
   /**
-   * The feature id for the '<em><b>Exp L</b></em>' attribute.
+   * The feature id for the '<em><b>Exp L</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -233,7 +252,7 @@ public interface MyDslPackage extends EPackage
   int COMMAND__NOM = 2;
 
   /**
-   * The feature id for the '<em><b>Exp</b></em>' attribute.
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -251,7 +270,7 @@ public interface MyDslPackage extends EPackage
   int COMMAND__C1 = 4;
 
   /**
-   * The feature id for the '<em><b>Exp1</b></em>' attribute.
+   * The feature id for the '<em><b>Exp1</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -260,7 +279,7 @@ public interface MyDslPackage extends EPackage
   int COMMAND__EXP1 = 5;
 
   /**
-   * The feature id for the '<em><b>Exp2</b></em>' attribute.
+   * The feature id for the '<em><b>Exp2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -285,6 +304,320 @@ public interface MyDslPackage extends EPackage
    * @ordered
    */
   int COMMAND_FEATURE_COUNT = 8;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprImpl <em>Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.ExprImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExpr()
+   * @generated
+   */
+  int EXPR = 6;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__EXP = EXPRS_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expr Simple</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__EXPR_SIMPLE = EXPRS_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Exp Et</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__EXP_ET = EXPRS_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Exp Terminale</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR__EXP_TERMINALE = EXPRS_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_FEATURE_COUNT = EXPRS_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.AndImpl <em>And</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.AndImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getAnd()
+   * @generated
+   */
+  int AND = 7;
+
+  /**
+   * The feature id for the '<em><b>Exp Ou</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__EXP_OU = 0;
+
+  /**
+   * The feature id for the '<em><b>Exp Ou2</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__EXP_OU2 = 1;
+
+  /**
+   * The number of structural features of the '<em>And</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.OrImpl <em>Or</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.OrImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getOr()
+   * @generated
+   */
+  int OR = 8;
+
+  /**
+   * The feature id for the '<em><b>Exp Non</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR__EXP_NON = 0;
+
+  /**
+   * The feature id for the '<em><b>Exp Non2</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR__EXP_NON2 = 1;
+
+  /**
+   * The number of structural features of the '<em>Or</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.NotImpl <em>Not</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.NotImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getNot()
+   * @generated
+   */
+  int NOT = 9;
+
+  /**
+   * The feature id for the '<em><b>Non</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT__NON = 0;
+
+  /**
+   * The feature id for the '<em><b>Exp Eq</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT__EXP_EQ = 1;
+
+  /**
+   * The number of structural features of the '<em>Not</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.EqImpl <em>Eq</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.EqImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getEq()
+   * @generated
+   */
+  int EQ = 10;
+
+  /**
+   * The feature id for the '<em><b>Expr Eq1</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQ__EXPR_EQ1 = 0;
+
+  /**
+   * The feature id for the '<em><b>Expr Eq2</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQ__EXPR_EQ2 = 1;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQ__EXP = 2;
+
+  /**
+   * The number of structural features of the '<em>Eq</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQ_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl <em>Expr Term</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprTerm()
+   * @generated
+   */
+  int EXPR_TERM = 11;
+
+  /**
+   * The feature id for the '<em><b>Expr Term</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_TERM__EXPR_TERM = 0;
+
+  /**
+   * The number of structural features of the '<em>Expr Term</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_TERM_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprSimple()
+   * @generated
+   */
+  int EXPR_SIMPLE = 12;
+
+  /**
+   * The feature id for the '<em><b>Mot</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_SIMPLE__MOT = 0;
+
+  /**
+   * The feature id for the '<em><b>Lexpr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_SIMPLE__LEXPR = 1;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_SIMPLE__EXPR = 2;
+
+  /**
+   * The number of structural features of the '<em>Expr Simple</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_SIMPLE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.LexprImpl <em>Lexpr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.LexprImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getLexpr()
+   * @generated
+   */
+  int LEXPR = 13;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEXPR__EXP = 0;
+
+  /**
+   * The number of structural features of the '<em>Lexpr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LEXPR_FEATURE_COUNT = 1;
 
 
   /**
@@ -405,6 +738,16 @@ public interface MyDslPackage extends EPackage
   EReference getCommands_C();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Exprs <em>Exprs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Exprs</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Exprs
+   * @generated
+   */
+  EClass getExprs();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Command <em>Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -426,15 +769,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getCommand_VarL();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExpL <em>Exp L</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getExpL <em>Exp L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Exp L</em>'.
+   * @return the meta object for the containment reference '<em>Exp L</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Command#getExpL()
    * @see #getCommand()
    * @generated
    */
-  EAttribute getCommand_ExpL();
+  EReference getCommand_ExpL();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getNom <em>Nom</em>}'.
@@ -448,15 +791,15 @@ public interface MyDslPackage extends EPackage
   EAttribute getCommand_Nom();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExp <em>Exp</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getExp <em>Exp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Exp</em>'.
+   * @return the meta object for the containment reference '<em>Exp</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Command#getExp()
    * @see #getCommand()
    * @generated
    */
-  EAttribute getCommand_Exp();
+  EReference getCommand_Exp();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getC1 <em>C1</em>}'.
@@ -470,26 +813,26 @@ public interface MyDslPackage extends EPackage
   EReference getCommand_C1();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExp1 <em>Exp1</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getExp1 <em>Exp1</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Exp1</em>'.
+   * @return the meta object for the containment reference '<em>Exp1</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Command#getExp1()
    * @see #getCommand()
    * @generated
    */
-  EAttribute getCommand_Exp1();
+  EReference getCommand_Exp1();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getExp2 <em>Exp2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getExp2 <em>Exp2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Exp2</em>'.
+   * @return the meta object for the containment reference '<em>Exp2</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Command#getExp2()
    * @see #getCommand()
    * @generated
    */
-  EAttribute getCommand_Exp2();
+  EReference getCommand_Exp2();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getC2 <em>C2</em>}'.
@@ -501,6 +844,284 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EReference getCommand_C2();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Expr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Expr
+   * @generated
+   */
+  EClass getExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Expr#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Expr#getExp()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_Exp();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Expr#getExprSimple <em>Expr Simple</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr Simple</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Expr#getExprSimple()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_ExprSimple();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Expr#getExpEt <em>Exp Et</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp Et</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Expr#getExpEt()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_ExpEt();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Expr#getExpTerminale <em>Exp Terminale</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp Terminale</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Expr#getExpTerminale()
+   * @see #getExpr()
+   * @generated
+   */
+  EReference getExpr_ExpTerminale();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.And <em>And</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>And</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.And
+   * @generated
+   */
+  EClass getAnd();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.And#getExpOu <em>Exp Ou</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp Ou</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.And#getExpOu()
+   * @see #getAnd()
+   * @generated
+   */
+  EReference getAnd_ExpOu();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.tl.mydsl.myDsl.And#getExpOu2 <em>Exp Ou2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Exp Ou2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.And#getExpOu2()
+   * @see #getAnd()
+   * @generated
+   */
+  EReference getAnd_ExpOu2();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Or <em>Or</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Or</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Or
+   * @generated
+   */
+  EClass getOr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Or#getExpNon <em>Exp Non</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp Non</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Or#getExpNon()
+   * @see #getOr()
+   * @generated
+   */
+  EReference getOr_ExpNon();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.tl.mydsl.myDsl.Or#getExpNon2 <em>Exp Non2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Exp Non2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Or#getExpNon2()
+   * @see #getOr()
+   * @generated
+   */
+  EReference getOr_ExpNon2();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Not <em>Not</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Not</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Not
+   * @generated
+   */
+  EClass getNot();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.xtext.tl.mydsl.myDsl.Not#getNon <em>Non</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Non</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Not#getNon()
+   * @see #getNot()
+   * @generated
+   */
+  EAttribute getNot_Non();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Not#getExpEq <em>Exp Eq</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp Eq</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Not#getExpEq()
+   * @see #getNot()
+   * @generated
+   */
+  EReference getNot_ExpEq();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Eq <em>Eq</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Eq</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Eq
+   * @generated
+   */
+  EClass getEq();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Eq#getExprEq1 <em>Expr Eq1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr Eq1</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Eq#getExprEq1()
+   * @see #getEq()
+   * @generated
+   */
+  EReference getEq_ExprEq1();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Eq#getExprEq2 <em>Expr Eq2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr Eq2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Eq#getExprEq2()
+   * @see #getEq()
+   * @generated
+   */
+  EReference getEq_ExprEq2();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Eq#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Eq#getExp()
+   * @see #getEq()
+   * @generated
+   */
+  EReference getEq_Exp();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.ExprTerm <em>Expr Term</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr Term</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprTerm
+   * @generated
+   */
+  EClass getExprTerm();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getExprTerm <em>Expr Term</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Expr Term</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprTerm#getExprTerm()
+   * @see #getExprTerm()
+   * @generated
+   */
+  EAttribute getExprTerm_ExprTerm();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.ExprSimple <em>Expr Simple</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expr Simple</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprSimple
+   * @generated
+   */
+  EClass getExprSimple();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.ExprSimple#getMot <em>Mot</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mot</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprSimple#getMot()
+   * @see #getExprSimple()
+   * @generated
+   */
+  EAttribute getExprSimple_Mot();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.ExprSimple#getLexpr <em>Lexpr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Lexpr</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprSimple#getLexpr()
+   * @see #getExprSimple()
+   * @generated
+   */
+  EReference getExprSimple_Lexpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.ExprSimple#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprSimple#getExpr()
+   * @see #getExprSimple()
+   * @generated
+   */
+  EReference getExprSimple_Expr();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Lexpr <em>Lexpr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Lexpr</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Lexpr
+   * @generated
+   */
+  EClass getLexpr();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.tl.mydsl.myDsl.Lexpr#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Exp</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Lexpr#getExp()
+   * @see #getLexpr()
+   * @generated
+   */
+  EReference getLexpr_Exp();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -622,6 +1243,16 @@ public interface MyDslPackage extends EPackage
     EReference COMMANDS__C = eINSTANCE.getCommands_C();
 
     /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprsImpl <em>Exprs</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.ExprsImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprs()
+     * @generated
+     */
+    EClass EXPRS = eINSTANCE.getExprs();
+
+    /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -640,12 +1271,12 @@ public interface MyDslPackage extends EPackage
     EAttribute COMMAND__VAR_L = eINSTANCE.getCommand_VarL();
 
     /**
-     * The meta object literal for the '<em><b>Exp L</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Exp L</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMAND__EXP_L = eINSTANCE.getCommand_ExpL();
+    EReference COMMAND__EXP_L = eINSTANCE.getCommand_ExpL();
 
     /**
      * The meta object literal for the '<em><b>Nom</b></em>' attribute feature.
@@ -656,12 +1287,12 @@ public interface MyDslPackage extends EPackage
     EAttribute COMMAND__NOM = eINSTANCE.getCommand_Nom();
 
     /**
-     * The meta object literal for the '<em><b>Exp</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMAND__EXP = eINSTANCE.getCommand_Exp();
+    EReference COMMAND__EXP = eINSTANCE.getCommand_Exp();
 
     /**
      * The meta object literal for the '<em><b>C1</b></em>' containment reference feature.
@@ -672,20 +1303,20 @@ public interface MyDslPackage extends EPackage
     EReference COMMAND__C1 = eINSTANCE.getCommand_C1();
 
     /**
-     * The meta object literal for the '<em><b>Exp1</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Exp1</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMAND__EXP1 = eINSTANCE.getCommand_Exp1();
+    EReference COMMAND__EXP1 = eINSTANCE.getCommand_Exp1();
 
     /**
-     * The meta object literal for the '<em><b>Exp2</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Exp2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMAND__EXP2 = eINSTANCE.getCommand_Exp2();
+    EReference COMMAND__EXP2 = eINSTANCE.getCommand_Exp2();
 
     /**
      * The meta object literal for the '<em><b>C2</b></em>' containment reference feature.
@@ -694,6 +1325,230 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EReference COMMAND__C2 = eINSTANCE.getCommand_C2();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprImpl <em>Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.ExprImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExpr()
+     * @generated
+     */
+    EClass EXPR = eINSTANCE.getExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__EXP = eINSTANCE.getExpr_Exp();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Simple</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__EXPR_SIMPLE = eINSTANCE.getExpr_ExprSimple();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Et</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__EXP_ET = eINSTANCE.getExpr_ExpEt();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Terminale</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR__EXP_TERMINALE = eINSTANCE.getExpr_ExpTerminale();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.AndImpl <em>And</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.AndImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getAnd()
+     * @generated
+     */
+    EClass AND = eINSTANCE.getAnd();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Ou</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND__EXP_OU = eINSTANCE.getAnd_ExpOu();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Ou2</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND__EXP_OU2 = eINSTANCE.getAnd_ExpOu2();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.OrImpl <em>Or</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.OrImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getOr()
+     * @generated
+     */
+    EClass OR = eINSTANCE.getOr();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Non</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OR__EXP_NON = eINSTANCE.getOr_ExpNon();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Non2</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OR__EXP_NON2 = eINSTANCE.getOr_ExpNon2();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.NotImpl <em>Not</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.NotImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getNot()
+     * @generated
+     */
+    EClass NOT = eINSTANCE.getNot();
+
+    /**
+     * The meta object literal for the '<em><b>Non</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NOT__NON = eINSTANCE.getNot_Non();
+
+    /**
+     * The meta object literal for the '<em><b>Exp Eq</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NOT__EXP_EQ = eINSTANCE.getNot_ExpEq();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.EqImpl <em>Eq</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.EqImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getEq()
+     * @generated
+     */
+    EClass EQ = eINSTANCE.getEq();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Eq1</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQ__EXPR_EQ1 = eINSTANCE.getEq_ExprEq1();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Eq2</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQ__EXPR_EQ2 = eINSTANCE.getEq_ExprEq2();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQ__EXP = eINSTANCE.getEq_Exp();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl <em>Expr Term</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprTerm()
+     * @generated
+     */
+    EClass EXPR_TERM = eINSTANCE.getExprTerm();
+
+    /**
+     * The meta object literal for the '<em><b>Expr Term</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_TERM__EXPR_TERM = eINSTANCE.getExprTerm_ExprTerm();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprSimple()
+     * @generated
+     */
+    EClass EXPR_SIMPLE = eINSTANCE.getExprSimple();
+
+    /**
+     * The meta object literal for the '<em><b>Mot</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_SIMPLE__MOT = eINSTANCE.getExprSimple_Mot();
+
+    /**
+     * The meta object literal for the '<em><b>Lexpr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_SIMPLE__LEXPR = eINSTANCE.getExprSimple_Lexpr();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPR_SIMPLE__EXPR = eINSTANCE.getExprSimple_Expr();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.LexprImpl <em>Lexpr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.LexprImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getLexpr()
+     * @generated
+     */
+    EClass LEXPR = eINSTANCE.getLexpr();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LEXPR__EXP = eINSTANCE.getLexpr_Exp();
 
   }
 

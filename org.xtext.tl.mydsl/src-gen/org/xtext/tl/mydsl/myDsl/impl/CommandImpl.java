@@ -13,6 +13,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.tl.mydsl.myDsl.Command;
 import org.xtext.tl.mydsl.myDsl.Commands;
+import org.xtext.tl.mydsl.myDsl.Expr;
+import org.xtext.tl.mydsl.myDsl.Exprs;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -58,24 +60,14 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   protected String varL = VAR_L_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getExpL() <em>Exp L</em>}' attribute.
+   * The cached value of the '{@link #getExpL() <em>Exp L</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExpL()
    * @generated
    * @ordered
    */
-  protected static final String EXP_L_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getExpL() <em>Exp L</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExpL()
-   * @generated
-   * @ordered
-   */
-  protected String expL = EXP_L_EDEFAULT;
+  protected Exprs expL;
 
   /**
    * The default value of the '{@link #getNom() <em>Nom</em>}' attribute.
@@ -98,24 +90,14 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   protected String nom = NOM_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getExp() <em>Exp</em>}' attribute.
+   * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExp()
    * @generated
    * @ordered
    */
-  protected static final String EXP_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getExp() <em>Exp</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExp()
-   * @generated
-   * @ordered
-   */
-  protected String exp = EXP_EDEFAULT;
+  protected Expr exp;
 
   /**
    * The cached value of the '{@link #getC1() <em>C1</em>}' containment reference.
@@ -128,44 +110,24 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   protected Commands c1;
 
   /**
-   * The default value of the '{@link #getExp1() <em>Exp1</em>}' attribute.
+   * The cached value of the '{@link #getExp1() <em>Exp1</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExp1()
    * @generated
    * @ordered
    */
-  protected static final String EXP1_EDEFAULT = null;
+  protected Expr exp1;
 
   /**
-   * The cached value of the '{@link #getExp1() <em>Exp1</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExp1()
-   * @generated
-   * @ordered
-   */
-  protected String exp1 = EXP1_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getExp2() <em>Exp2</em>}' attribute.
+   * The cached value of the '{@link #getExp2() <em>Exp2</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getExp2()
    * @generated
    * @ordered
    */
-  protected static final String EXP2_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getExp2() <em>Exp2</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExp2()
-   * @generated
-   * @ordered
-   */
-  protected String exp2 = EXP2_EDEFAULT;
+  protected Expr exp2;
 
   /**
    * The cached value of the '{@link #getC2() <em>C2</em>}' containment reference.
@@ -226,7 +188,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getExpL()
+  public Exprs getExpL()
   {
     return expL;
   }
@@ -236,12 +198,37 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExpL(String newExpL)
+  public NotificationChain basicSetExpL(Exprs newExpL, NotificationChain msgs)
   {
-    String oldExpL = expL;
+    Exprs oldExpL = expL;
     expL = newExpL;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP_L, oldExpL, expL));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP_L, oldExpL, newExpL);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExpL(Exprs newExpL)
+  {
+    if (newExpL != expL)
+    {
+      NotificationChain msgs = null;
+      if (expL != null)
+        msgs = ((InternalEObject)expL).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP_L, null, msgs);
+      if (newExpL != null)
+        msgs = ((InternalEObject)newExpL).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP_L, null, msgs);
+      msgs = basicSetExpL(newExpL, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP_L, newExpL, newExpL));
   }
 
   /**
@@ -272,7 +259,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getExp()
+  public Expr getExp()
   {
     return exp;
   }
@@ -282,12 +269,37 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExp(String newExp)
+  public NotificationChain basicSetExp(Expr newExp, NotificationChain msgs)
   {
-    String oldExp = exp;
+    Expr oldExp = exp;
     exp = newExp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP, oldExp, exp));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP, oldExp, newExp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExp(Expr newExp)
+  {
+    if (newExp != exp)
+    {
+      NotificationChain msgs = null;
+      if (exp != null)
+        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP, null, msgs);
+      if (newExp != null)
+        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP, null, msgs);
+      msgs = basicSetExp(newExp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP, newExp, newExp));
   }
 
   /**
@@ -343,7 +355,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getExp1()
+  public Expr getExp1()
   {
     return exp1;
   }
@@ -353,12 +365,16 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExp1(String newExp1)
+  public NotificationChain basicSetExp1(Expr newExp1, NotificationChain msgs)
   {
-    String oldExp1 = exp1;
+    Expr oldExp1 = exp1;
     exp1 = newExp1;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP1, oldExp1, exp1));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP1, oldExp1, newExp1);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -366,7 +382,28 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getExp2()
+  public void setExp1(Expr newExp1)
+  {
+    if (newExp1 != exp1)
+    {
+      NotificationChain msgs = null;
+      if (exp1 != null)
+        msgs = ((InternalEObject)exp1).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP1, null, msgs);
+      if (newExp1 != null)
+        msgs = ((InternalEObject)newExp1).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP1, null, msgs);
+      msgs = basicSetExp1(newExp1, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP1, newExp1, newExp1));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expr getExp2()
   {
     return exp2;
   }
@@ -376,12 +413,37 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setExp2(String newExp2)
+  public NotificationChain basicSetExp2(Expr newExp2, NotificationChain msgs)
   {
-    String oldExp2 = exp2;
+    Expr oldExp2 = exp2;
     exp2 = newExp2;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP2, oldExp2, exp2));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP2, oldExp2, newExp2);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setExp2(Expr newExp2)
+  {
+    if (newExp2 != exp2)
+    {
+      NotificationChain msgs = null;
+      if (exp2 != null)
+        msgs = ((InternalEObject)exp2).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP2, null, msgs);
+      if (newExp2 != null)
+        msgs = ((InternalEObject)newExp2).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__EXP2, null, msgs);
+      msgs = basicSetExp2(newExp2, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__EXP2, newExp2, newExp2));
   }
 
   /**
@@ -442,8 +504,16 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
+      case MyDslPackage.COMMAND__EXP_L:
+        return basicSetExpL(null, msgs);
+      case MyDslPackage.COMMAND__EXP:
+        return basicSetExp(null, msgs);
       case MyDslPackage.COMMAND__C1:
         return basicSetC1(null, msgs);
+      case MyDslPackage.COMMAND__EXP1:
+        return basicSetExp1(null, msgs);
+      case MyDslPackage.COMMAND__EXP2:
+        return basicSetExp2(null, msgs);
       case MyDslPackage.COMMAND__C2:
         return basicSetC2(null, msgs);
     }
@@ -494,22 +564,22 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         setVarL((String)newValue);
         return;
       case MyDslPackage.COMMAND__EXP_L:
-        setExpL((String)newValue);
+        setExpL((Exprs)newValue);
         return;
       case MyDslPackage.COMMAND__NOM:
         setNom((String)newValue);
         return;
       case MyDslPackage.COMMAND__EXP:
-        setExp((String)newValue);
+        setExp((Expr)newValue);
         return;
       case MyDslPackage.COMMAND__C1:
         setC1((Commands)newValue);
         return;
       case MyDslPackage.COMMAND__EXP1:
-        setExp1((String)newValue);
+        setExp1((Expr)newValue);
         return;
       case MyDslPackage.COMMAND__EXP2:
-        setExp2((String)newValue);
+        setExp2((Expr)newValue);
         return;
       case MyDslPackage.COMMAND__C2:
         setC2((Commands)newValue);
@@ -532,22 +602,22 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
         setVarL(VAR_L_EDEFAULT);
         return;
       case MyDslPackage.COMMAND__EXP_L:
-        setExpL(EXP_L_EDEFAULT);
+        setExpL((Exprs)null);
         return;
       case MyDslPackage.COMMAND__NOM:
         setNom(NOM_EDEFAULT);
         return;
       case MyDslPackage.COMMAND__EXP:
-        setExp(EXP_EDEFAULT);
+        setExp((Expr)null);
         return;
       case MyDslPackage.COMMAND__C1:
         setC1((Commands)null);
         return;
       case MyDslPackage.COMMAND__EXP1:
-        setExp1(EXP1_EDEFAULT);
+        setExp1((Expr)null);
         return;
       case MyDslPackage.COMMAND__EXP2:
-        setExp2(EXP2_EDEFAULT);
+        setExp2((Expr)null);
         return;
       case MyDslPackage.COMMAND__C2:
         setC2((Commands)null);
@@ -569,17 +639,17 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
       case MyDslPackage.COMMAND__VAR_L:
         return VAR_L_EDEFAULT == null ? varL != null : !VAR_L_EDEFAULT.equals(varL);
       case MyDslPackage.COMMAND__EXP_L:
-        return EXP_L_EDEFAULT == null ? expL != null : !EXP_L_EDEFAULT.equals(expL);
+        return expL != null;
       case MyDslPackage.COMMAND__NOM:
         return NOM_EDEFAULT == null ? nom != null : !NOM_EDEFAULT.equals(nom);
       case MyDslPackage.COMMAND__EXP:
-        return EXP_EDEFAULT == null ? exp != null : !EXP_EDEFAULT.equals(exp);
+        return exp != null;
       case MyDslPackage.COMMAND__C1:
         return c1 != null;
       case MyDslPackage.COMMAND__EXP1:
-        return EXP1_EDEFAULT == null ? exp1 != null : !EXP1_EDEFAULT.equals(exp1);
+        return exp1 != null;
       case MyDslPackage.COMMAND__EXP2:
-        return EXP2_EDEFAULT == null ? exp2 != null : !EXP2_EDEFAULT.equals(exp2);
+        return exp2 != null;
       case MyDslPackage.COMMAND__C2:
         return c2 != null;
     }
@@ -599,16 +669,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (varL: ");
     result.append(varL);
-    result.append(", expL: ");
-    result.append(expL);
     result.append(", nom: ");
     result.append(nom);
-    result.append(", exp: ");
-    result.append(exp);
-    result.append(", exp1: ");
-    result.append(exp1);
-    result.append(", exp2: ");
-    result.append(exp2);
     result.append(')');
     return result.toString();
   }

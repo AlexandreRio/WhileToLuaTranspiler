@@ -59,6 +59,15 @@ public interface MyDslFactory extends EFactory
   Commands createCommands();
 
   /**
+   * Returns a new object of class '<em>Exprs</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Exprs</em>'.
+   * @generated
+   */
+  Exprs createExprs();
+
+  /**
    * Returns a new object of class '<em>Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -66,6 +75,78 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   Command createCommand();
+
+  /**
+   * Returns a new object of class '<em>Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr</em>'.
+   * @generated
+   */
+  Expr createExpr();
+
+  /**
+   * Returns a new object of class '<em>And</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>And</em>'.
+   * @generated
+   */
+  And createAnd();
+
+  /**
+   * Returns a new object of class '<em>Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Or</em>'.
+   * @generated
+   */
+  Or createOr();
+
+  /**
+   * Returns a new object of class '<em>Not</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Not</em>'.
+   * @generated
+   */
+  Not createNot();
+
+  /**
+   * Returns a new object of class '<em>Eq</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Eq</em>'.
+   * @generated
+   */
+  Eq createEq();
+
+  /**
+   * Returns a new object of class '<em>Expr Term</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Term</em>'.
+   * @generated
+   */
+  ExprTerm createExprTerm();
+
+  /**
+   * Returns a new object of class '<em>Expr Simple</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expr Simple</em>'.
+   * @generated
+   */
+  ExprSimple createExprSimple();
+
+  /**
+   * Returns a new object of class '<em>Lexpr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lexpr</em>'.
+   * @generated
+   */
+  Lexpr createLexpr();
 
   /**
    * Returns the package supported by this factory.

@@ -114,7 +114,8 @@ public class Pp {
 			ret = prettyPrint(((AndImpl)obj).getExpOu());
 			if (((AndImpl)obj).getExpOu2()!=null)
 			{
-				ret = ret+ " and "+ prettyPrint(((AndImpl)obj).getExpOu2());
+				for (EObject ou : ((AndImpl)obj).getExpOu2())
+					ret += " and " + prettyPrint(ou);
 			}
 			return ret;
 		}
@@ -123,7 +124,8 @@ public class Pp {
 			ret = prettyPrint(((OrImpl)obj).getExpNon());
 			if (((OrImpl)obj).getExpNon2()!=null)
 			{
-				ret = ret+ " and "+ prettyPrint(((OrImpl)obj).getExpNon2());
+				for (EObject non : ((OrImpl)obj).getExpNon2())
+					ret += " or "+ prettyPrint(non);
 			}
 			return ret;
 		}
@@ -131,68 +133,44 @@ public class Pp {
 			String ret = "";
 			if (((NotImpl)obj).getNon()!=null)
 			{
-				ret = ret+((NotImpl)obj).getNon();
+				for (String no : ((NotImpl)obj).getNon())
+				ret +=  no + " ";
 			}
 			return ret + prettyPrint(((NotImpl)obj).getExpEq()) ;
 		}
 		else if ( (obj instanceof EqImpl))
 		{
-			String ret = "";
-			if (((EqImpl)obj).getExprSimple1()!=null)
+			if (((EqImpl)obj).getExp() != null)
 			{
-				ret = ret + ((EqImpl)obj).getExprSimple1();
-			}
-			else 
+				return "(" + prettyPrint(((EqImpl)obj).getExp()) + ")";
+			} else
 			{
-				ret = ret + ((EqImpl)obj).getExpTerminale1();
+				return prettyPrint(((EqImpl)obj).getExprEq1()) + "=?" + prettyPrint(((EqImpl)obj).getExprEq2());
 			}
-			
-			if ((((EqImpl)obj).getExprSimple1()  !=null)
-			  ||(((EqImpl)obj).getExpTerminale1()!=null))
-			{
-				ret = ret+" =? ";
-				if (((EqImpl)obj).getExprSimple2()!=null)
-				{
-					ret = ret + ((EqImpl)obj).getExprSimple2();
-				}
-				else 
-				{
-					ret = ret + ((EqImpl)obj).getExpTerminale2();
-				}
-			}
-			return ret;
 		}
 		else if ( (obj instanceof ExprTermImpl))
 		{
-			if (((ExprTermImpl)obj).getSymboles()!=null)
-			{
-				return ((ExprTermImpl)obj).getSymboles();
-			}
-			else if (((ExprTermImpl)obj).getVariables()!=null)
-			{
-				return ((ExprTermImpl)obj).getVariables();
-			}
-			else 
-			{
-				return "nil";
-			}
+			return ((ExprTermImpl)obj).getExprTerm();
 		}
 		else if (obj instanceof ExprSimpleImpl){
 			String ret = "(" + ((ExprSimple)obj).getMot();
-			if ((((ExprSimple)obj).getMot().equals("cons"))||(((ExprSimple)obj).getMot().equals("list")))
+			if (((ExprSimple)obj).getLexpr() != null)
 			{
-				ret = ret+ prettyPrint(((ExprSimple)obj).getLexpr());
+				ret += prettyPrint(((ExprSimple)obj).getLexpr());
 			}
 			else
 			{
-				ret = ret+" " + prettyPrint(((ExprSimple)obj).getExpr());
+				ret += " " + prettyPrint(((ExprSimple)obj).getExpr());
 			}
 			return (ret + ")");
 		}
 		else if (obj instanceof LexprImpl){
 			if (((LexprImpl)obj).getExp()!=null)
 			{
-				return ( " " + prettyPrint(((LexprImpl)obj).getExp()));
+				String ret = "";
+				for (EObject exp : ((LexprImpl)obj).getExp())
+					ret += " " + prettyPrint(exp);
+				return ret;
 			}
 		}
 		else if (obj instanceof DefinitonImpl) {
@@ -213,35 +191,35 @@ public class Pp {
 		else if (obj instanceof CommandImpl) {
 			if (((CommandImpl)obj).getVarL() != null && ((CommandImpl)obj).getExpL() != null)
 			{
-				return ((CommandImpl)obj).getVarL() + ":=" + ((CommandImpl)obj).getExpL();
+				return ((CommandImpl)obj).getVarL() + ":=" + prettyPrint(((CommandImpl)obj).getExpL());
 			}
 			else if (((CommandImpl)obj).getNom() == null) {
 				return "nop";
 			}
 			else if (((CommandImpl)obj).getNom().equals("while"))
 			{
-				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp() + // pretty print à get exp? => oui, mais pour le moment il vaut mieux finir Command
+				return ((CommandImpl)obj).getNom() + ' ' + prettyPrint(((CommandImpl)obj).getExp()) +
 						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "od" ;
 			}
 			else if (((CommandImpl)obj).getNom().equals("for"))
 			{
-				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp()+ // pretty print à get exp?
+				return ((CommandImpl)obj).getNom() + ' ' + prettyPrint(((CommandImpl)obj).getExp())+
 						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "od" ;
 			}
 			else if (((CommandImpl)obj).getNom().equals("foreach"))
 			{
-				return ((CommandImpl)obj).getNom() + ' ' + ((CommandImpl)obj).getExp1() +
-						" in " + ((CommandImpl)obj).getExp2() + " do\n" +
-						prettyPrint( ((CommandImpl)obj).getC1()) + "od";
+				return ((CommandImpl)obj).getNom() + ' ' + prettyPrint(((CommandImpl)obj).getExp1()) +
+						" in " + prettyPrint(((CommandImpl)obj).getExp2()) + " do\n" +
+						prettyPrint(((CommandImpl)obj).getC1()) + "od";
 			}
 			else if (((CommandImpl)obj).getNom().equals("if"))
 			{
 				if  (((CommandImpl)obj).getC2() != null)
-					return "if " + ((CommandImpl)obj).getExp()  + " then\n" +
+					return "if " + prettyPrint(((CommandImpl)obj).getExp())  + " then\n" +
 						prettyPrint(((CommandImpl)obj).getC1()) + "\nelse\n" +
 						prettyPrint(((CommandImpl)obj).getC2()) + "fi";
 				else
-					return "if " + ((CommandImpl)obj).getExp()  + " then\n" +
+					return "if " + prettyPrint(((CommandImpl)obj).getExp())  + " then\n" +
 					prettyPrint(((CommandImpl)obj).getC1()) + "fi";
 			}
 		}
