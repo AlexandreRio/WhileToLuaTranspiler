@@ -1,0 +1,15 @@
+Prochaine étape, table des symboles, nom de fonctions, puis variables…
+une fonction peut être appelée avant d'être déclarée.
+
+La table de symboles survit dans le langage destination
+Code 3 adresses
+haut niveau
+<whileB, _, Y, _>
+B pour body, adresse du code à exécuter, Y condition à évaluer, pas de retour
+bas niveau
+<goto L, _, _, _>
+<ifz L, _, Y, _>
+
+Attention aux symboles, enlever les « ! »
+
+les types des fonctions est juste le nombre d'entrées et sorties
