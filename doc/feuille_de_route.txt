@@ -13,3 +13,7 @@ bas niveau
 Attention aux symboles, enlever les « ! »
 
 les types des fonctions est juste le nombre d'entrées et sorties
+
+code 3 adresses,
+<op, destination, origine1, origine2>
+concaténé en liste, possiblement vide.
