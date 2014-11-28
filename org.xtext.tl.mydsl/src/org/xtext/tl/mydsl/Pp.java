@@ -199,28 +199,28 @@ public class Pp {
 			else if (((CommandImpl)obj).getNom().equals("while"))
 			{
 				return ((CommandImpl)obj).getNom() + ' ' + prettyPrint(((CommandImpl)obj).getExp()) +
-						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "od" ;
+						" do\n" + INDENT + prettyPrint( ((CommandImpl)obj).getC1()) + "od" ;
 			}
 			else if (((CommandImpl)obj).getNom().equals("for"))
 			{
 				return ((CommandImpl)obj).getNom() + ' ' + prettyPrint(((CommandImpl)obj).getExp())+
-						" do\n" + prettyPrint( ((CommandImpl)obj).getC1()) + "od" ;
+						" do\n" + INDENT+ prettyPrint( ((CommandImpl)obj).getC1()) + "od" ;
 			}
 			else if (((CommandImpl)obj).getNom().equals("foreach"))
 			{
 				return ((CommandImpl)obj).getNom() + ' ' + prettyPrint(((CommandImpl)obj).getExp1()) +
 						" in " + prettyPrint(((CommandImpl)obj).getExp2()) + " do\n" +
-						prettyPrint(((CommandImpl)obj).getC1()) + "od";
+						INDENT + prettyPrint(((CommandImpl)obj).getC1()) + "od";
 			}
 			else if (((CommandImpl)obj).getNom().equals("if"))
 			{
 				if  (((CommandImpl)obj).getC2() != null)
 					return "if " + prettyPrint(((CommandImpl)obj).getExp())  + " then\n" +
-						prettyPrint(((CommandImpl)obj).getC1()) + "\nelse\n" +
-						prettyPrint(((CommandImpl)obj).getC2()) + "fi";
+						INDENT + prettyPrint(((CommandImpl)obj).getC1()) + "\nelse\n" +
+						INDENT + prettyPrint(((CommandImpl)obj).getC2()) + "fi";
 				else
 					return "if " + prettyPrint(((CommandImpl)obj).getExp())  + " then\n" +
-					prettyPrint(((CommandImpl)obj).getC1()) + "fi";
+					INDENT + prettyPrint(((CommandImpl)obj).getC1()) + "fi";
 			}
 		}
 		
