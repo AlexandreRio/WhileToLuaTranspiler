@@ -90,6 +90,16 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createDefinitonAdapter();
       }
       @Override
+      public Adapter caseInput(Input object)
+      {
+        return createInputAdapter();
+      }
+      @Override
+      public Adapter caseOutput(Output object)
+      {
+        return createOutputAdapter();
+      }
+      @Override
       public Adapter caseCommands(Commands object)
       {
         return createCommandsAdapter();
@@ -207,6 +217,36 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDefinitonAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Input <em>Input</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Input
+   * @generated
+   */
+  public Adapter createInputAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Output <em>Output</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Output
+   * @generated
+   */
+  public Adapter createOutputAdapter()
   {
     return null;
   }

@@ -15,9 +15,17 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//function/def"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Definiton">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Definiton/inputVars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Definiton/inputVars"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Definiton/commandList"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Definiton/outputVars"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Definiton/outputVars"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Input">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Input/v"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Input/v2"/>
+    </genClasses>
+    <genClasses ecoreClass="MyDsl.ecore#//Output">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Output/v"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Output/v2"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Commands">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Commands/c"/>

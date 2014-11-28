@@ -67,6 +67,8 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
       case MyDslPackage.MODEL: return createModel();
       case MyDslPackage.FUNCTION: return createfunction();
       case MyDslPackage.DEFINITON: return createDefiniton();
+      case MyDslPackage.INPUT: return createInput();
+      case MyDslPackage.OUTPUT: return createOutput();
       case MyDslPackage.COMMANDS: return createCommands();
       case MyDslPackage.EXPRS: return createExprs();
       case MyDslPackage.COMMAND: return createCommand();
@@ -114,6 +116,28 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     DefinitonImpl definiton = new DefinitonImpl();
     return definiton;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Input createInput()
+  {
+    InputImpl input = new InputImpl();
+    return input;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Output createOutput()
+  {
+    OutputImpl output = new OutputImpl();
+    return output;
   }
 
   /**

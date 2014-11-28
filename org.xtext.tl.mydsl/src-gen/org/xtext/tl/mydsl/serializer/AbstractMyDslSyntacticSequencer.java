@@ -22,7 +22,9 @@ public abstract class AbstractMyDslSyntacticSequencer extends AbstractSyntacticS
 	protected AbstractElementAlias match_Commands_LCTerminalRuleCall_1_1_q;
 	protected AbstractElementAlias match_Eq_LCTerminalRuleCall_0_1_q;
 	protected AbstractElementAlias match_Eq_LCTerminalRuleCall_0_3_q;
+	protected AbstractElementAlias match_Input_LCTerminalRuleCall_1_1_q;
 	protected AbstractElementAlias match_Model_LCTerminalRuleCall_1_q;
+	protected AbstractElementAlias match_Output_LCTerminalRuleCall_1_1_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -32,7 +34,9 @@ public abstract class AbstractMyDslSyntacticSequencer extends AbstractSyntacticS
 		match_Commands_LCTerminalRuleCall_1_1_q = new TokenAlias(false, true, grammarAccess.getCommandsAccess().getLCTerminalRuleCall_1_1());
 		match_Eq_LCTerminalRuleCall_0_1_q = new TokenAlias(false, true, grammarAccess.getEqAccess().getLCTerminalRuleCall_0_1());
 		match_Eq_LCTerminalRuleCall_0_3_q = new TokenAlias(false, true, grammarAccess.getEqAccess().getLCTerminalRuleCall_0_3());
+		match_Input_LCTerminalRuleCall_1_1_q = new TokenAlias(false, true, grammarAccess.getInputAccess().getLCTerminalRuleCall_1_1());
 		match_Model_LCTerminalRuleCall_1_q = new TokenAlias(false, true, grammarAccess.getModelAccess().getLCTerminalRuleCall_1());
+		match_Output_LCTerminalRuleCall_1_1_q = new TokenAlias(false, true, grammarAccess.getOutputAccess().getLCTerminalRuleCall_1_1());
 	}
 	
 	@Override
@@ -69,8 +73,12 @@ public abstract class AbstractMyDslSyntacticSequencer extends AbstractSyntacticS
 				emit_Eq_LCTerminalRuleCall_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Eq_LCTerminalRuleCall_0_3_q.equals(syntax))
 				emit_Eq_LCTerminalRuleCall_0_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Input_LCTerminalRuleCall_1_1_q.equals(syntax))
+				emit_Input_LCTerminalRuleCall_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Model_LCTerminalRuleCall_1_q.equals(syntax))
 				emit_Model_LCTerminalRuleCall_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Output_LCTerminalRuleCall_1_1_q.equals(syntax))
+				emit_Output_LCTerminalRuleCall_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -119,7 +127,23 @@ public abstract class AbstractMyDslSyntacticSequencer extends AbstractSyntacticS
 	 * Syntax:
 	 *     LC?
 	 */
+	protected void emit_Input_LCTerminalRuleCall_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     LC?
+	 */
 	protected void emit_Model_LCTerminalRuleCall_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     LC?
+	 */
+	protected void emit_Output_LCTerminalRuleCall_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

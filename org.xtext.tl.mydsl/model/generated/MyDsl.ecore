@@ -11,10 +11,22 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Definiton">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputVars" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputVars" eType="#//Input"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commandList" eType="#//Commands"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outputVars" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputVars" eType="#//Output"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="v" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="v2" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Output">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="v" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="v2" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Commands">
     <eStructuralFeatures xsi:type="ecore:EReference" name="c" upperBound="-1" eType="#//Command"

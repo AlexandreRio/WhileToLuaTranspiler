@@ -295,96 +295,130 @@ this_LC_9=RULE_LC
 
 
 // Entry rule entryRuleInput
-entryRuleInput returns [String current=null] 
+entryRuleInput returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getInputRule()); } 
+	{ newCompositeNode(grammarAccess.getInputRule()); }
 	 iv_ruleInput=ruleInput 
-	 { $current=$iv_ruleInput.current.getText(); }  
+	 { $current=$iv_ruleInput.current; } 
 	 EOF 
 ;
 
 // Rule Input
-ruleInput returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleInput returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(    this_VARIABLE_0=RULE_VARIABLE    {
-		$current.merge(this_VARIABLE_0);
-    }
-
-    { 
-    newLeafNode(this_VARIABLE_0, grammarAccess.getInputAccess().getVARIABLETerminalRuleCall_0()); 
-    }
+((
 (
-	kw=',' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getInputAccess().getCommaKeyword_1_0()); 
-    }
-(    this_LC_2=RULE_LC    {
-		$current.merge(this_LC_2);
-    }
+		lv_v_0_0=RULE_VARIABLE
+		{
+			newLeafNode(lv_v_0_0, grammarAccess.getInputAccess().getVVARIABLETerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getInputRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"v",
+        		lv_v_0_0, 
+        		"VARIABLE");
+	    }
 
+)
+)(	otherlv_1=',' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getInputAccess().getCommaKeyword_1_0());
+    }
+(this_LC_2=RULE_LC
     { 
     newLeafNode(this_LC_2, grammarAccess.getInputAccess().getLCTerminalRuleCall_1_1()); 
     }
-)?    this_VARIABLE_3=RULE_VARIABLE    {
-		$current.merge(this_VARIABLE_3);
-    }
+)?(
+(
+		lv_v2_3_0=RULE_VARIABLE
+		{
+			newLeafNode(lv_v2_3_0, grammarAccess.getInputAccess().getV2VARIABLETerminalRuleCall_1_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getInputRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"v2",
+        		lv_v2_3_0, 
+        		"VARIABLE");
+	    }
 
-    { 
-    newLeafNode(this_VARIABLE_3, grammarAccess.getInputAccess().getVARIABLETerminalRuleCall_1_2()); 
-    }
-)*)
-    ;
+)
+))*)
+;
 
 
 
 
 
 // Entry rule entryRuleOutput
-entryRuleOutput returns [String current=null] 
+entryRuleOutput returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getOutputRule()); } 
+	{ newCompositeNode(grammarAccess.getOutputRule()); }
 	 iv_ruleOutput=ruleOutput 
-	 { $current=$iv_ruleOutput.current.getText(); }  
+	 { $current=$iv_ruleOutput.current; } 
 	 EOF 
 ;
 
 // Rule Output
-ruleOutput returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleOutput returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(    this_VARIABLE_0=RULE_VARIABLE    {
-		$current.merge(this_VARIABLE_0);
-    }
-
-    { 
-    newLeafNode(this_VARIABLE_0, grammarAccess.getOutputAccess().getVARIABLETerminalRuleCall_0()); 
-    }
+((
 (
-	kw=',' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getOutputAccess().getCommaKeyword_1_0()); 
-    }
-(    this_LC_2=RULE_LC    {
-		$current.merge(this_LC_2);
-    }
+		lv_v_0_0=RULE_VARIABLE
+		{
+			newLeafNode(lv_v_0_0, grammarAccess.getOutputAccess().getVVARIABLETerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getOutputRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"v",
+        		lv_v_0_0, 
+        		"VARIABLE");
+	    }
 
+)
+)(	otherlv_1=',' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getOutputAccess().getCommaKeyword_1_0());
+    }
+(this_LC_2=RULE_LC
     { 
     newLeafNode(this_LC_2, grammarAccess.getOutputAccess().getLCTerminalRuleCall_1_1()); 
     }
-)?    this_VARIABLE_3=RULE_VARIABLE    {
-		$current.merge(this_VARIABLE_3);
-    }
+)?(
+(
+		lv_v2_3_0=RULE_VARIABLE
+		{
+			newLeafNode(lv_v2_3_0, grammarAccess.getOutputAccess().getV2VARIABLETerminalRuleCall_1_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getOutputRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"v2",
+        		lv_v2_3_0, 
+        		"VARIABLE");
+	    }
 
-    { 
-    newLeafNode(this_VARIABLE_3, grammarAccess.getOutputAccess().getVARIABLETerminalRuleCall_1_2()); 
-    }
-)*)
-    ;
+)
+))*)
+;
 
 
 

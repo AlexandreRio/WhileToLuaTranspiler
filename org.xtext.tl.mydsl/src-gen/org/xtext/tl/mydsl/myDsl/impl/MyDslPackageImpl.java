@@ -18,12 +18,14 @@ import org.xtext.tl.mydsl.myDsl.Expr;
 import org.xtext.tl.mydsl.myDsl.ExprSimple;
 import org.xtext.tl.mydsl.myDsl.ExprTerm;
 import org.xtext.tl.mydsl.myDsl.Exprs;
+import org.xtext.tl.mydsl.myDsl.Input;
 import org.xtext.tl.mydsl.myDsl.Lexpr;
 import org.xtext.tl.mydsl.myDsl.Model;
 import org.xtext.tl.mydsl.myDsl.MyDslFactory;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 import org.xtext.tl.mydsl.myDsl.Not;
 import org.xtext.tl.mydsl.myDsl.Or;
+import org.xtext.tl.mydsl.myDsl.Output;
 import org.xtext.tl.mydsl.myDsl.function;
 
 /**
@@ -54,6 +56,20 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * @generated
    */
   private EClass definitonEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass inputEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass outputEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -260,9 +276,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDefiniton_InputVars()
+  public EReference getDefiniton_InputVars()
   {
-    return (EAttribute)definitonEClass.getEStructuralFeatures().get(0);
+    return (EReference)definitonEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -280,9 +296,69 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDefiniton_OutputVars()
+  public EReference getDefiniton_OutputVars()
   {
-    return (EAttribute)definitonEClass.getEStructuralFeatures().get(2);
+    return (EReference)definitonEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getInput()
+  {
+    return inputEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInput_V()
+  {
+    return (EAttribute)inputEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInput_V2()
+  {
+    return (EAttribute)inputEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getOutput()
+  {
+    return outputEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOutput_V()
+  {
+    return (EAttribute)outputEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOutput_V2()
+  {
+    return (EAttribute)outputEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -703,9 +779,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(functionEClass, FUNCTION__DEF);
 
     definitonEClass = createEClass(DEFINITON);
-    createEAttribute(definitonEClass, DEFINITON__INPUT_VARS);
+    createEReference(definitonEClass, DEFINITON__INPUT_VARS);
     createEReference(definitonEClass, DEFINITON__COMMAND_LIST);
-    createEAttribute(definitonEClass, DEFINITON__OUTPUT_VARS);
+    createEReference(definitonEClass, DEFINITON__OUTPUT_VARS);
+
+    inputEClass = createEClass(INPUT);
+    createEAttribute(inputEClass, INPUT__V);
+    createEAttribute(inputEClass, INPUT__V2);
+
+    outputEClass = createEClass(OUTPUT);
+    createEAttribute(outputEClass, OUTPUT__V);
+    createEAttribute(outputEClass, OUTPUT__V2);
 
     commandsEClass = createEClass(COMMANDS);
     createEReference(commandsEClass, COMMANDS__C);
@@ -797,9 +881,17 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getfunction_Def(), this.getDefiniton(), null, "def", null, 0, 1, function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(definitonEClass, Definiton.class, "Definiton", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDefiniton_InputVars(), ecorePackage.getEString(), "inputVars", null, 0, 1, Definiton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefiniton_InputVars(), this.getInput(), null, "inputVars", null, 0, 1, Definiton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDefiniton_CommandList(), this.getCommands(), null, "commandList", null, 0, 1, Definiton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getDefiniton_OutputVars(), ecorePackage.getEString(), "outputVars", null, 0, 1, Definiton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefiniton_OutputVars(), this.getOutput(), null, "outputVars", null, 0, 1, Definiton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(inputEClass, Input.class, "Input", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInput_V(), ecorePackage.getEString(), "v", null, 0, 1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInput_V2(), ecorePackage.getEString(), "v2", null, 0, -1, Input.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(outputEClass, Output.class, "Output", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getOutput_V(), ecorePackage.getEString(), "v", null, 0, 1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOutput_V2(), ecorePackage.getEString(), "v2", null, 0, -1, Output.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandsEClass, Commands.class, "Commands", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCommands_C(), this.getCommand(), null, "c", null, 0, -1, Commands.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

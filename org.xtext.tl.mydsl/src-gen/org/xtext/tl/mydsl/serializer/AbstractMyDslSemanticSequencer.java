@@ -21,11 +21,13 @@ import org.xtext.tl.mydsl.myDsl.Eq;
 import org.xtext.tl.mydsl.myDsl.Expr;
 import org.xtext.tl.mydsl.myDsl.ExprSimple;
 import org.xtext.tl.mydsl.myDsl.ExprTerm;
+import org.xtext.tl.mydsl.myDsl.Input;
 import org.xtext.tl.mydsl.myDsl.Lexpr;
 import org.xtext.tl.mydsl.myDsl.Model;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 import org.xtext.tl.mydsl.myDsl.Not;
 import org.xtext.tl.mydsl.myDsl.Or;
+import org.xtext.tl.mydsl.myDsl.Output;
 import org.xtext.tl.mydsl.myDsl.function;
 import org.xtext.tl.mydsl.services.MyDslGrammarAccess;
 
@@ -89,6 +91,12 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 					return; 
 				}
 				else break;
+			case MyDslPackage.INPUT:
+				if(context == grammarAccess.getInputRule()) {
+					sequence_Input(context, (Input) semanticObject); 
+					return; 
+				}
+				else break;
 			case MyDslPackage.LEXPR:
 				if(context == grammarAccess.getLexprRule()) {
 					sequence_Lexpr(context, (Lexpr) semanticObject); 
@@ -110,6 +118,12 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 			case MyDslPackage.OR:
 				if(context == grammarAccess.getOrRule()) {
 					sequence_Or(context, (Or) semanticObject); 
+					return; 
+				}
+				else break;
+			case MyDslPackage.OUTPUT:
+				if(context == grammarAccess.getOutputRule()) {
+					sequence_Output(context, (Output) semanticObject); 
 					return; 
 				}
 				else break;
@@ -219,6 +233,15 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
+	 *     (v=VARIABLE v2+=VARIABLE*)
+	 */
+	protected void sequence_Input(EObject context, Input semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     exp+=Expr+
 	 */
 	protected void sequence_Lexpr(EObject context, Lexpr semanticObject) {
@@ -249,6 +272,15 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	 *     (expNon=Not expNon2+=Not*)
 	 */
 	protected void sequence_Or(EObject context, Or semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (v=VARIABLE v2+=VARIABLE*)
+	 */
+	protected void sequence_Output(EObject context, Output semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -132,7 +132,7 @@ public interface MyDslPackage extends EPackage
   int DEFINITON = 2;
 
   /**
-   * The feature id for the '<em><b>Input Vars</b></em>' attribute.
+   * The feature id for the '<em><b>Input Vars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -150,7 +150,7 @@ public interface MyDslPackage extends EPackage
   int DEFINITON__COMMAND_LIST = 1;
 
   /**
-   * The feature id for the '<em><b>Output Vars</b></em>' attribute.
+   * The feature id for the '<em><b>Output Vars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -168,6 +168,80 @@ public interface MyDslPackage extends EPackage
   int DEFINITON_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.InputImpl <em>Input</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.InputImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getInput()
+   * @generated
+   */
+  int INPUT = 3;
+
+  /**
+   * The feature id for the '<em><b>V</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT__V = 0;
+
+  /**
+   * The feature id for the '<em><b>V2</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT__V2 = 1;
+
+  /**
+   * The number of structural features of the '<em>Input</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INPUT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.OutputImpl <em>Output</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.OutputImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getOutput()
+   * @generated
+   */
+  int OUTPUT = 4;
+
+  /**
+   * The feature id for the '<em><b>V</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT__V = 0;
+
+  /**
+   * The feature id for the '<em><b>V2</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT__V2 = 1;
+
+  /**
+   * The number of structural features of the '<em>Output</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUTPUT_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandsImpl <em>Commands</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -175,7 +249,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getCommands()
    * @generated
    */
-  int COMMANDS = 3;
+  int COMMANDS = 5;
 
   /**
    * The feature id for the '<em><b>C</b></em>' containment reference list.
@@ -203,7 +277,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprs()
    * @generated
    */
-  int EXPRS = 4;
+  int EXPRS = 6;
 
   /**
    * The number of structural features of the '<em>Exprs</em>' class.
@@ -222,7 +296,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 5;
+  int COMMAND = 7;
 
   /**
    * The feature id for the '<em><b>Var L</b></em>' attribute.
@@ -313,7 +387,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExpr()
    * @generated
    */
-  int EXPR = 6;
+  int EXPR = 8;
 
   /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference.
@@ -368,7 +442,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getAnd()
    * @generated
    */
-  int AND = 7;
+  int AND = 9;
 
   /**
    * The feature id for the '<em><b>Exp Ou</b></em>' containment reference.
@@ -405,7 +479,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getOr()
    * @generated
    */
-  int OR = 8;
+  int OR = 10;
 
   /**
    * The feature id for the '<em><b>Exp Non</b></em>' containment reference.
@@ -442,7 +516,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getNot()
    * @generated
    */
-  int NOT = 9;
+  int NOT = 11;
 
   /**
    * The feature id for the '<em><b>Non</b></em>' attribute list.
@@ -479,7 +553,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getEq()
    * @generated
    */
-  int EQ = 10;
+  int EQ = 12;
 
   /**
    * The feature id for the '<em><b>Expr Eq1</b></em>' containment reference.
@@ -525,7 +599,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprTerm()
    * @generated
    */
-  int EXPR_TERM = 11;
+  int EXPR_TERM = 13;
 
   /**
    * The feature id for the '<em><b>Expr Term</b></em>' attribute.
@@ -553,7 +627,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprSimple()
    * @generated
    */
-  int EXPR_SIMPLE = 12;
+  int EXPR_SIMPLE = 14;
 
   /**
    * The feature id for the '<em><b>Mot</b></em>' attribute.
@@ -599,7 +673,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getLexpr()
    * @generated
    */
-  int LEXPR = 13;
+  int LEXPR = 15;
 
   /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference list.
@@ -684,15 +758,15 @@ public interface MyDslPackage extends EPackage
   EClass getDefiniton();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Definiton#getInputVars <em>Input Vars</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Definiton#getInputVars <em>Input Vars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Input Vars</em>'.
+   * @return the meta object for the containment reference '<em>Input Vars</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Definiton#getInputVars()
    * @see #getDefiniton()
    * @generated
    */
-  EAttribute getDefiniton_InputVars();
+  EReference getDefiniton_InputVars();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Definiton#getCommandList <em>Command List</em>}'.
@@ -706,15 +780,79 @@ public interface MyDslPackage extends EPackage
   EReference getDefiniton_CommandList();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Definiton#getOutputVars <em>Output Vars</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Definiton#getOutputVars <em>Output Vars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Output Vars</em>'.
+   * @return the meta object for the containment reference '<em>Output Vars</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Definiton#getOutputVars()
    * @see #getDefiniton()
    * @generated
    */
-  EAttribute getDefiniton_OutputVars();
+  EReference getDefiniton_OutputVars();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Input <em>Input</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Input</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Input
+   * @generated
+   */
+  EClass getInput();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Input#getV <em>V</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>V</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Input#getV()
+   * @see #getInput()
+   * @generated
+   */
+  EAttribute getInput_V();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.xtext.tl.mydsl.myDsl.Input#getV2 <em>V2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>V2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Input#getV2()
+   * @see #getInput()
+   * @generated
+   */
+  EAttribute getInput_V2();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Output <em>Output</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Output</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Output
+   * @generated
+   */
+  EClass getOutput();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Output#getV <em>V</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>V</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Output#getV()
+   * @see #getOutput()
+   * @generated
+   */
+  EAttribute getOutput_V();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.xtext.tl.mydsl.myDsl.Output#getV2 <em>V2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>V2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Output#getV2()
+   * @see #getOutput()
+   * @generated
+   */
+  EAttribute getOutput_V2();
 
   /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Commands <em>Commands</em>}'.
@@ -1201,12 +1339,12 @@ public interface MyDslPackage extends EPackage
     EClass DEFINITON = eINSTANCE.getDefiniton();
 
     /**
-     * The meta object literal for the '<em><b>Input Vars</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Input Vars</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DEFINITON__INPUT_VARS = eINSTANCE.getDefiniton_InputVars();
+    EReference DEFINITON__INPUT_VARS = eINSTANCE.getDefiniton_InputVars();
 
     /**
      * The meta object literal for the '<em><b>Command List</b></em>' containment reference feature.
@@ -1217,12 +1355,64 @@ public interface MyDslPackage extends EPackage
     EReference DEFINITON__COMMAND_LIST = eINSTANCE.getDefiniton_CommandList();
 
     /**
-     * The meta object literal for the '<em><b>Output Vars</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Output Vars</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DEFINITON__OUTPUT_VARS = eINSTANCE.getDefiniton_OutputVars();
+    EReference DEFINITON__OUTPUT_VARS = eINSTANCE.getDefiniton_OutputVars();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.InputImpl <em>Input</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.InputImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getInput()
+     * @generated
+     */
+    EClass INPUT = eINSTANCE.getInput();
+
+    /**
+     * The meta object literal for the '<em><b>V</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INPUT__V = eINSTANCE.getInput_V();
+
+    /**
+     * The meta object literal for the '<em><b>V2</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INPUT__V2 = eINSTANCE.getInput_V2();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.OutputImpl <em>Output</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.OutputImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getOutput()
+     * @generated
+     */
+    EClass OUTPUT = eINSTANCE.getOutput();
+
+    /**
+     * The meta object literal for the '<em><b>V</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OUTPUT__V = eINSTANCE.getOutput_V();
+
+    /**
+     * The meta object literal for the '<em><b>V2</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OUTPUT__V2 = eINSTANCE.getOutput_V2();
 
     /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandsImpl <em>Commands</em>}' class.

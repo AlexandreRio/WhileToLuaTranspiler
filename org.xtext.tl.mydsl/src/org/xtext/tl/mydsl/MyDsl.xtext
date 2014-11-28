@@ -15,8 +15,8 @@ Definiton:
 	'%' 'write' LC outputVars=Output
 ;
 
-Input: VARIABLE (',' LC? VARIABLE)*;
-Output: VARIABLE (',' LC? VARIABLE)*;
+Input: v=VARIABLE (',' LC? v2+=VARIABLE)*;
+Output: v=VARIABLE (',' LC? v2+=VARIABLE)*;
 Commands: c+=Command (';' LC? c+=Command)* ;
 Vars: VARIABLE (',' Vars)? ;
 Exprs: Expr (',' exp=Exprs)? ;

@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Definiton extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Input Vars</b></em>' attribute.
+   * Returns the value of the '<em><b>Input Vars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Input Vars</em>' attribute isn't clear,
+   * If the meaning of the '<em>Input Vars</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Input Vars</em>' attribute.
-   * @see #setInputVars(String)
+   * @return the value of the '<em>Input Vars</em>' containment reference.
+   * @see #setInputVars(Input)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getDefiniton_InputVars()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getInputVars();
+  Input getInputVars();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Definiton#getInputVars <em>Input Vars</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Definiton#getInputVars <em>Input Vars</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Input Vars</em>' attribute.
+   * @param value the new value of the '<em>Input Vars</em>' containment reference.
    * @see #getInputVars()
    * @generated
    */
-  void setInputVars(String value);
+  void setInputVars(Input value);
 
   /**
    * Returns the value of the '<em><b>Command List</b></em>' containment reference.
@@ -77,29 +77,29 @@ public interface Definiton extends EObject
   void setCommandList(Commands value);
 
   /**
-   * Returns the value of the '<em><b>Output Vars</b></em>' attribute.
+   * Returns the value of the '<em><b>Output Vars</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Output Vars</em>' attribute isn't clear,
+   * If the meaning of the '<em>Output Vars</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Output Vars</em>' attribute.
-   * @see #setOutputVars(String)
+   * @return the value of the '<em>Output Vars</em>' containment reference.
+   * @see #setOutputVars(Output)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getDefiniton_OutputVars()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getOutputVars();
+  Output getOutputVars();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Definiton#getOutputVars <em>Output Vars</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Definiton#getOutputVars <em>Output Vars</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Output Vars</em>' attribute.
+   * @param value the new value of the '<em>Output Vars</em>' containment reference.
    * @see #getOutputVars()
    * @generated
    */
-  void setOutputVars(String value);
+  void setOutputVars(Output value);
 
 } // Definiton

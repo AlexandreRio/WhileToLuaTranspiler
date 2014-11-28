@@ -13,7 +13,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.tl.mydsl.myDsl.Commands;
 import org.xtext.tl.mydsl.myDsl.Definiton;
+import org.xtext.tl.mydsl.myDsl.Input;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
+import org.xtext.tl.mydsl.myDsl.Output;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,24 +35,14 @@ import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 public class DefinitonImpl extends MinimalEObjectImpl.Container implements Definiton
 {
   /**
-   * The default value of the '{@link #getInputVars() <em>Input Vars</em>}' attribute.
+   * The cached value of the '{@link #getInputVars() <em>Input Vars</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getInputVars()
    * @generated
    * @ordered
    */
-  protected static final String INPUT_VARS_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getInputVars() <em>Input Vars</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInputVars()
-   * @generated
-   * @ordered
-   */
-  protected String inputVars = INPUT_VARS_EDEFAULT;
+  protected Input inputVars;
 
   /**
    * The cached value of the '{@link #getCommandList() <em>Command List</em>}' containment reference.
@@ -63,24 +55,14 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
   protected Commands commandList;
 
   /**
-   * The default value of the '{@link #getOutputVars() <em>Output Vars</em>}' attribute.
+   * The cached value of the '{@link #getOutputVars() <em>Output Vars</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOutputVars()
    * @generated
    * @ordered
    */
-  protected static final String OUTPUT_VARS_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOutputVars() <em>Output Vars</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOutputVars()
-   * @generated
-   * @ordered
-   */
-  protected String outputVars = OUTPUT_VARS_EDEFAULT;
+  protected Output outputVars;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,7 +90,7 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getInputVars()
+  public Input getInputVars()
   {
     return inputVars;
   }
@@ -118,12 +100,37 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInputVars(String newInputVars)
+  public NotificationChain basicSetInputVars(Input newInputVars, NotificationChain msgs)
   {
-    String oldInputVars = inputVars;
+    Input oldInputVars = inputVars;
     inputVars = newInputVars;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.DEFINITON__INPUT_VARS, oldInputVars, inputVars));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.DEFINITON__INPUT_VARS, oldInputVars, newInputVars);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInputVars(Input newInputVars)
+  {
+    if (newInputVars != inputVars)
+    {
+      NotificationChain msgs = null;
+      if (inputVars != null)
+        msgs = ((InternalEObject)inputVars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DEFINITON__INPUT_VARS, null, msgs);
+      if (newInputVars != null)
+        msgs = ((InternalEObject)newInputVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DEFINITON__INPUT_VARS, null, msgs);
+      msgs = basicSetInputVars(newInputVars, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.DEFINITON__INPUT_VARS, newInputVars, newInputVars));
   }
 
   /**
@@ -179,7 +186,7 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOutputVars()
+  public Output getOutputVars()
   {
     return outputVars;
   }
@@ -189,12 +196,37 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOutputVars(String newOutputVars)
+  public NotificationChain basicSetOutputVars(Output newOutputVars, NotificationChain msgs)
   {
-    String oldOutputVars = outputVars;
+    Output oldOutputVars = outputVars;
     outputVars = newOutputVars;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.DEFINITON__OUTPUT_VARS, oldOutputVars, outputVars));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.DEFINITON__OUTPUT_VARS, oldOutputVars, newOutputVars);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOutputVars(Output newOutputVars)
+  {
+    if (newOutputVars != outputVars)
+    {
+      NotificationChain msgs = null;
+      if (outputVars != null)
+        msgs = ((InternalEObject)outputVars).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DEFINITON__OUTPUT_VARS, null, msgs);
+      if (newOutputVars != null)
+        msgs = ((InternalEObject)newOutputVars).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.DEFINITON__OUTPUT_VARS, null, msgs);
+      msgs = basicSetOutputVars(newOutputVars, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.DEFINITON__OUTPUT_VARS, newOutputVars, newOutputVars));
   }
 
   /**
@@ -207,8 +239,12 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
   {
     switch (featureID)
     {
+      case MyDslPackage.DEFINITON__INPUT_VARS:
+        return basicSetInputVars(null, msgs);
       case MyDslPackage.DEFINITON__COMMAND_LIST:
         return basicSetCommandList(null, msgs);
+      case MyDslPackage.DEFINITON__OUTPUT_VARS:
+        return basicSetOutputVars(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -244,13 +280,13 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
     switch (featureID)
     {
       case MyDslPackage.DEFINITON__INPUT_VARS:
-        setInputVars((String)newValue);
+        setInputVars((Input)newValue);
         return;
       case MyDslPackage.DEFINITON__COMMAND_LIST:
         setCommandList((Commands)newValue);
         return;
       case MyDslPackage.DEFINITON__OUTPUT_VARS:
-        setOutputVars((String)newValue);
+        setOutputVars((Output)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -267,13 +303,13 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
     switch (featureID)
     {
       case MyDslPackage.DEFINITON__INPUT_VARS:
-        setInputVars(INPUT_VARS_EDEFAULT);
+        setInputVars((Input)null);
         return;
       case MyDslPackage.DEFINITON__COMMAND_LIST:
         setCommandList((Commands)null);
         return;
       case MyDslPackage.DEFINITON__OUTPUT_VARS:
-        setOutputVars(OUTPUT_VARS_EDEFAULT);
+        setOutputVars((Output)null);
         return;
     }
     super.eUnset(featureID);
@@ -290,32 +326,13 @@ public class DefinitonImpl extends MinimalEObjectImpl.Container implements Defin
     switch (featureID)
     {
       case MyDslPackage.DEFINITON__INPUT_VARS:
-        return INPUT_VARS_EDEFAULT == null ? inputVars != null : !INPUT_VARS_EDEFAULT.equals(inputVars);
+        return inputVars != null;
       case MyDslPackage.DEFINITON__COMMAND_LIST:
         return commandList != null;
       case MyDslPackage.DEFINITON__OUTPUT_VARS:
-        return OUTPUT_VARS_EDEFAULT == null ? outputVars != null : !OUTPUT_VARS_EDEFAULT.equals(outputVars);
+        return outputVars != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (inputVars: ");
-    result.append(inputVars);
-    result.append(", outputVars: ");
-    result.append(outputVars);
-    result.append(')');
-    return result.toString();
   }
 
 } //DefinitonImpl
