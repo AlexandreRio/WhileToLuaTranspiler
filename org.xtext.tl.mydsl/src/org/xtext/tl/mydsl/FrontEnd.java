@@ -21,8 +21,14 @@ public class FrontEnd {
     EObject root = p.parse(reader);
     parcours(root);
 
-    for (String key : map.keySet())
-      System.out.println(key + " " + map.get(key).getNbIn() + " " + map.get(key).getNbOut());
+    for (String key : map.keySet()) {
+      System.out.println(key + " paramètres: " + map.get(key).getNbIn() +
+          " sorties: " + map.get(key).getNbOut());
+      System.out.print("\tVariables locales :");
+      for (String v : map.get(key).keySet())
+        System.out.print(v + " ");
+      System.out.println("");
+    }
     System.out.println("Nombre de fonction: " + map.size());
   }
 
@@ -50,12 +56,13 @@ public class FrontEnd {
       if (outImpl.getV2() != null)
         out += outImpl.getV2().size();
 
+      VariableDescriptor localMap = new VariableDescriptor();
       for (EObject com : ((functionImpl)obj).getDef().getCommandList().getC()) {
         if (((CommandImpl)com).getVarL() != null)
-          System.out.println("var: " + ((CommandImpl)com).getVarL());
+          localMap.addVariable(((CommandImpl)com).getVarL());
       }
 
-        map.put(((functionImpl)obj).getFunName(), new FunctionDescriptor(in, out));
+      map.put(((functionImpl)obj).getFunName(), new FunctionDescriptor(in, out, localMap));
     }
 
     return;

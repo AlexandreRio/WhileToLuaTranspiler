@@ -1,6 +1,7 @@
 package org.xtext.tl.mydsl;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class VariableDescriptor {
 
@@ -16,6 +17,14 @@ public class VariableDescriptor {
 
   public void addVariable(String name, int value) {
     this.variables.put(name, value);
+  }
+
+  public Set<String> keySet() {
+    return this.variables.keySet();
+  }
+
+  public int size() {
+    return this.variables.size();
   }
 }
 
