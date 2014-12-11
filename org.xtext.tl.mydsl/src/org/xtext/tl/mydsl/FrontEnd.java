@@ -11,9 +11,22 @@ import org.xtext.tl.mydsl.myDsl.impl.CommandImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ModelImpl;
 import org.xtext.tl.mydsl.myDsl.impl.functionImpl;
 
+/**
+ * Main class of the front end part of the compiler
+ */
 public class FrontEnd {
 
-  private static HashMap<String, FunctionDescriptor> map = new HashMap<String, FunctionDescriptor>();
+  /**
+   * Link a function name to its descriptor
+   * @see org.xtext.tl.mydsl.FunctionDescriptor 
+   */
+  private static HashMap<String, FunctionDescriptor> funDescMap = new HashMap<String, FunctionDescriptor>();
+
+  /**
+   * Map the name of a function in the source code (key) the its name in the target code (value).
+   * It avoid illegal character usage.
+   * */
+  private static HashMap<String, String> funNameTranslation = new HashMap<String, String>();
 
   public static void main (String[] args) throws Exception {
     PTree p = new PTree();
@@ -21,18 +34,20 @@ public class FrontEnd {
     EObject root = p.parse(reader);
     parcours(root);
 
-    for (String key : map.keySet()) {
-      System.out.println(key + " paramètres: " + map.get(key).getNbIn() +
-          " sorties: " + map.get(key).getNbOut());
+    // print the content
+    for (String key : funDescMap.keySet()) {
+      System.out.println(key + " paramètres: " + funDescMap.get(key).getNbIn() +
+          " sorties: " + funDescMap.get(key).getNbOut());
       System.out.print("\tVariables locales :");
-      for (String v : map.get(key).keySet())
+      for (String v : funDescMap.get(key).keySet())
         System.out.print(v + " ");
       System.out.println("");
     }
-    System.out.println("Nombre de fonction: " + map.size());
+    System.out.println("Nombre de fonction: " + funDescMap.size());
   }
 
   /**
+   * Navigate through the AST from the root element.
    *
    * @param obj: Root element
    */
@@ -56,13 +71,17 @@ public class FrontEnd {
       if (outImpl.getV2() != null)
         out += outImpl.getV2().size();
 
-      VariableDescriptor localMap = new VariableDescriptor();
+      VariableDescriptor localfunDescMap = new VariableDescriptor();
       for (EObject com : ((functionImpl)obj).getDef().getCommandList().getC()) {
         if (((CommandImpl)com).getVarL() != null)
-          localMap.addVariable(((CommandImpl)com).getVarL());
+          localfunDescMap.addVariable(((CommandImpl)com).getVarL());
       }
 
-      map.put(((functionImpl)obj).getFunName(), new FunctionDescriptor(in, out, localMap));
+      String funInSourceName =((functionImpl)obj).getFunName();
+      String funInTargetName = "f" + funNameTranslation.size();
+      funNameTranslation.put(funInSourceName, funInTargetName);
+
+      funDescMap.put(funInTargetName, new FunctionDescriptor(in, out, localfunDescMap));
     }
 
     return;
