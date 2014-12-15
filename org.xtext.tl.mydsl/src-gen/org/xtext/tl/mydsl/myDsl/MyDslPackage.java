@@ -85,11 +85,11 @@ public interface MyDslPackage extends EPackage
   int MODEL_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.functionImpl <em>function</em>}' class.
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.FunctionImpl <em>Function</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.tl.mydsl.myDsl.impl.functionImpl
-   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getfunction()
+   * @see org.xtext.tl.mydsl.myDsl.impl.FunctionImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getFunction()
    * @generated
    */
   int FUNCTION = 1;
@@ -113,7 +113,7 @@ public interface MyDslPackage extends EPackage
   int FUNCTION__DEF = 1;
 
   /**
-   * The number of structural features of the '<em>function</em>' class.
+   * The number of structural features of the '<em>Function</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -270,6 +270,43 @@ public interface MyDslPackage extends EPackage
   int COMMANDS_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.VarsImpl <em>Vars</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.tl.mydsl.myDsl.impl.VarsImpl
+   * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getVars()
+   * @generated
+   */
+  int VARS = 6;
+
+  /**
+   * The feature id for the '<em><b>V1</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARS__V1 = 0;
+
+  /**
+   * The feature id for the '<em><b>V2</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARS__V2 = 1;
+
+  /**
+   * The number of structural features of the '<em>Vars</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARS_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprsImpl <em>Exprs</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -277,7 +314,25 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprs()
    * @generated
    */
-  int EXPRS = 6;
+  int EXPRS = 7;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRS__EXP = 0;
+
+  /**
+   * The feature id for the '<em><b>Exp L</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRS__EXP_L = 1;
 
   /**
    * The number of structural features of the '<em>Exprs</em>' class.
@@ -286,7 +341,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRS_FEATURE_COUNT = 0;
+  int EXPRS_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
@@ -296,10 +351,10 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getCommand()
    * @generated
    */
-  int COMMAND = 7;
+  int COMMAND = 8;
 
   /**
-   * The feature id for the '<em><b>Var L</b></em>' attribute.
+   * The feature id for the '<em><b>Var L</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -387,16 +442,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExpr()
    * @generated
    */
-  int EXPR = 8;
-
-  /**
-   * The feature id for the '<em><b>Exp</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPR__EXP = EXPRS_FEATURE_COUNT + 0;
+  int EXPR = 9;
 
   /**
    * The feature id for the '<em><b>Expr Simple</b></em>' containment reference.
@@ -405,7 +451,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPR__EXPR_SIMPLE = EXPRS_FEATURE_COUNT + 1;
+  int EXPR__EXPR_SIMPLE = 0;
 
   /**
    * The feature id for the '<em><b>Exp Et</b></em>' containment reference.
@@ -414,7 +460,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPR__EXP_ET = EXPRS_FEATURE_COUNT + 2;
+  int EXPR__EXP_ET = 1;
 
   /**
    * The feature id for the '<em><b>Exp Terminale</b></em>' containment reference.
@@ -423,7 +469,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPR__EXP_TERMINALE = EXPRS_FEATURE_COUNT + 3;
+  int EXPR__EXP_TERMINALE = 2;
 
   /**
    * The number of structural features of the '<em>Expr</em>' class.
@@ -432,7 +478,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPR_FEATURE_COUNT = EXPRS_FEATURE_COUNT + 4;
+  int EXPR_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.AndImpl <em>And</em>}' class.
@@ -442,7 +488,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getAnd()
    * @generated
    */
-  int AND = 9;
+  int AND = 10;
 
   /**
    * The feature id for the '<em><b>Exp Ou</b></em>' containment reference.
@@ -479,7 +525,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getOr()
    * @generated
    */
-  int OR = 10;
+  int OR = 11;
 
   /**
    * The feature id for the '<em><b>Exp Non</b></em>' containment reference.
@@ -516,7 +562,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getNot()
    * @generated
    */
-  int NOT = 11;
+  int NOT = 12;
 
   /**
    * The feature id for the '<em><b>Non</b></em>' attribute list.
@@ -553,7 +599,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getEq()
    * @generated
    */
-  int EQ = 12;
+  int EQ = 13;
 
   /**
    * The feature id for the '<em><b>Expr Eq1</b></em>' containment reference.
@@ -599,7 +645,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprTerm()
    * @generated
    */
-  int EXPR_TERM = 13;
+  int EXPR_TERM = 14;
 
   /**
    * The feature id for the '<em><b>Expr Term</b></em>' attribute.
@@ -627,7 +673,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getExprSimple()
    * @generated
    */
-  int EXPR_SIMPLE = 14;
+  int EXPR_SIMPLE = 15;
 
   /**
    * The feature id for the '<em><b>Mot</b></em>' attribute.
@@ -673,7 +719,7 @@ public interface MyDslPackage extends EPackage
    * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getLexpr()
    * @generated
    */
-  int LEXPR = 15;
+  int LEXPR = 16;
 
   /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference list.
@@ -716,36 +762,36 @@ public interface MyDslPackage extends EPackage
   EReference getModel_Model();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.function <em>function</em>}'.
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Function <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>function</em>'.
-   * @see org.xtext.tl.mydsl.myDsl.function
+   * @return the meta object for class '<em>Function</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Function
    * @generated
    */
-  EClass getfunction();
+  EClass getFunction();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.function#getFunName <em>Fun Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Function#getFunName <em>Fun Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Fun Name</em>'.
-   * @see org.xtext.tl.mydsl.myDsl.function#getFunName()
-   * @see #getfunction()
+   * @see org.xtext.tl.mydsl.myDsl.Function#getFunName()
+   * @see #getFunction()
    * @generated
    */
-  EAttribute getfunction_FunName();
+  EAttribute getFunction_FunName();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.function#getDef <em>Def</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Function#getDef <em>Def</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Def</em>'.
-   * @see org.xtext.tl.mydsl.myDsl.function#getDef()
-   * @see #getfunction()
+   * @see org.xtext.tl.mydsl.myDsl.Function#getDef()
+   * @see #getFunction()
    * @generated
    */
-  EReference getfunction_Def();
+  EReference getFunction_Def();
 
   /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Definiton <em>Definiton</em>}'.
@@ -876,6 +922,38 @@ public interface MyDslPackage extends EPackage
   EReference getCommands_C();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Vars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Vars</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Vars
+   * @generated
+   */
+  EClass getVars();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Vars#getV1 <em>V1</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>V1</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Vars#getV1()
+   * @see #getVars()
+   * @generated
+   */
+  EAttribute getVars_V1();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.tl.mydsl.myDsl.Vars#getV2 <em>V2</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>V2</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Vars#getV2()
+   * @see #getVars()
+   * @generated
+   */
+  EReference getVars_V2();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Exprs <em>Exprs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -884,6 +962,28 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getExprs();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Exprs#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Exprs#getExp()
+   * @see #getExprs()
+   * @generated
+   */
+  EReference getExprs_Exp();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Exprs#getExpL <em>Exp L</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp L</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.Exprs#getExpL()
+   * @see #getExprs()
+   * @generated
+   */
+  EReference getExprs_ExpL();
 
   /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.Command <em>Command</em>}'.
@@ -896,15 +996,15 @@ public interface MyDslPackage extends EPackage
   EClass getCommand();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.Command#getVarL <em>Var L</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getVarL <em>Var L</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Var L</em>'.
+   * @return the meta object for the containment reference '<em>Var L</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Command#getVarL()
    * @see #getCommand()
    * @generated
    */
-  EAttribute getCommand_VarL();
+  EReference getCommand_VarL();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Command#getExpL <em>Exp L</em>}'.
@@ -992,17 +1092,6 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getExpr();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Expr#getExp <em>Exp</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Exp</em>'.
-   * @see org.xtext.tl.mydsl.myDsl.Expr#getExp()
-   * @see #getExpr()
-   * @generated
-   */
-  EReference getExpr_Exp();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Expr#getExprSimple <em>Expr Simple</em>}'.
@@ -1303,14 +1392,14 @@ public interface MyDslPackage extends EPackage
     EReference MODEL__MODEL = eINSTANCE.getModel_Model();
 
     /**
-     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.functionImpl <em>function</em>}' class.
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.FunctionImpl <em>Function</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.tl.mydsl.myDsl.impl.functionImpl
-     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getfunction()
+     * @see org.xtext.tl.mydsl.myDsl.impl.FunctionImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getFunction()
      * @generated
      */
-    EClass FUNCTION = eINSTANCE.getfunction();
+    EClass FUNCTION = eINSTANCE.getFunction();
 
     /**
      * The meta object literal for the '<em><b>Fun Name</b></em>' attribute feature.
@@ -1318,7 +1407,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION__FUN_NAME = eINSTANCE.getfunction_FunName();
+    EAttribute FUNCTION__FUN_NAME = eINSTANCE.getFunction_FunName();
 
     /**
      * The meta object literal for the '<em><b>Def</b></em>' containment reference feature.
@@ -1326,7 +1415,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION__DEF = eINSTANCE.getfunction_Def();
+    EReference FUNCTION__DEF = eINSTANCE.getFunction_Def();
 
     /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.DefinitonImpl <em>Definiton</em>}' class.
@@ -1433,6 +1522,32 @@ public interface MyDslPackage extends EPackage
     EReference COMMANDS__C = eINSTANCE.getCommands_C();
 
     /**
+     * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.VarsImpl <em>Vars</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.tl.mydsl.myDsl.impl.VarsImpl
+     * @see org.xtext.tl.mydsl.myDsl.impl.MyDslPackageImpl#getVars()
+     * @generated
+     */
+    EClass VARS = eINSTANCE.getVars();
+
+    /**
+     * The meta object literal for the '<em><b>V1</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARS__V1 = eINSTANCE.getVars_V1();
+
+    /**
+     * The meta object literal for the '<em><b>V2</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARS__V2 = eINSTANCE.getVars_V2();
+
+    /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprsImpl <em>Exprs</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1441,6 +1556,22 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass EXPRS = eINSTANCE.getExprs();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRS__EXP = eINSTANCE.getExprs_Exp();
+
+    /**
+     * The meta object literal for the '<em><b>Exp L</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRS__EXP_L = eINSTANCE.getExprs_ExpL();
 
     /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.CommandImpl <em>Command</em>}' class.
@@ -1453,12 +1584,12 @@ public interface MyDslPackage extends EPackage
     EClass COMMAND = eINSTANCE.getCommand();
 
     /**
-     * The meta object literal for the '<em><b>Var L</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Var L</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMAND__VAR_L = eINSTANCE.getCommand_VarL();
+    EReference COMMAND__VAR_L = eINSTANCE.getCommand_VarL();
 
     /**
      * The meta object literal for the '<em><b>Exp L</b></em>' containment reference feature.
@@ -1525,14 +1656,6 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass EXPR = eINSTANCE.getExpr();
-
-    /**
-     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPR__EXP = eINSTANCE.getExpr_Exp();
 
     /**
      * The meta object literal for the '<em><b>Expr Simple</b></em>' containment reference feature.

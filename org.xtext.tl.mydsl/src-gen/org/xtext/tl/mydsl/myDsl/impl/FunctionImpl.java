@@ -12,24 +12,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.tl.mydsl.myDsl.Definiton;
+import org.xtext.tl.mydsl.myDsl.Function;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
-import org.xtext.tl.mydsl.myDsl.function;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>function</b></em>'.
+ * An implementation of the model object '<em><b>Function</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.functionImpl#getFunName <em>Fun Name</em>}</li>
- *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.functionImpl#getDef <em>Def</em>}</li>
+ *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.FunctionImpl#getFunName <em>Fun Name</em>}</li>
+ *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.FunctionImpl#getDef <em>Def</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class functionImpl extends MinimalEObjectImpl.Container implements function
+public class FunctionImpl extends MinimalEObjectImpl.Container implements Function
 {
   /**
    * The default value of the '{@link #getFunName() <em>Fun Name</em>}' attribute.
@@ -66,7 +66,7 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
    * <!-- end-user-doc -->
    * @generated
    */
-  protected functionImpl()
+  protected FunctionImpl()
   {
     super();
   }
@@ -262,4 +262,4 @@ public class functionImpl extends MinimalEObjectImpl.Container implements functi
     return result.toString();
   }
 
-} //functionImpl
+} //FunctionImpl

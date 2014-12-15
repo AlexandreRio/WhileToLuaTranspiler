@@ -80,9 +80,9 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter casefunction(function object)
+      public Adapter caseFunction(Function object)
       {
-        return createfunctionAdapter();
+        return createFunctionAdapter();
       }
       @Override
       public Adapter caseDefiniton(Definiton object)
@@ -103,6 +103,11 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCommands(Commands object)
       {
         return createCommandsAdapter();
+      }
+      @Override
+      public Adapter caseVars(Vars object)
+      {
+        return createVarsAdapter();
       }
       @Override
       public Adapter caseExprs(Exprs object)
@@ -192,16 +197,16 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.function <em>function</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Function <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.tl.mydsl.myDsl.function
+   * @see org.xtext.tl.mydsl.myDsl.Function
    * @generated
    */
-  public Adapter createfunctionAdapter()
+  public Adapter createFunctionAdapter()
   {
     return null;
   }
@@ -262,6 +267,21 @@ public class MyDslAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCommandsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.tl.mydsl.myDsl.Vars <em>Vars</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.tl.mydsl.myDsl.Vars
+   * @generated
+   */
+  public Adapter createVarsAdapter()
   {
     return null;
   }

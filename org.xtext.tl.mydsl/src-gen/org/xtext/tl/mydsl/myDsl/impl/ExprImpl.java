@@ -9,12 +9,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.tl.mydsl.myDsl.And;
 import org.xtext.tl.mydsl.myDsl.Expr;
 import org.xtext.tl.mydsl.myDsl.ExprSimple;
 import org.xtext.tl.mydsl.myDsl.ExprTerm;
-import org.xtext.tl.mydsl.myDsl.Exprs;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 
 /**
@@ -24,7 +24,6 @@ import org.xtext.tl.mydsl.myDsl.MyDslPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.ExprImpl#getExp <em>Exp</em>}</li>
  *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.ExprImpl#getExprSimple <em>Expr Simple</em>}</li>
  *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.ExprImpl#getExpEt <em>Exp Et</em>}</li>
  *   <li>{@link org.xtext.tl.mydsl.myDsl.impl.ExprImpl#getExpTerminale <em>Exp Terminale</em>}</li>
@@ -33,18 +32,8 @@ import org.xtext.tl.mydsl.myDsl.MyDslPackage;
  *
  * @generated
  */
-public class ExprImpl extends ExprsImpl implements Expr
+public class ExprImpl extends MinimalEObjectImpl.Container implements Expr
 {
-  /**
-   * The cached value of the '{@link #getExp() <em>Exp</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExp()
-   * @generated
-   * @ordered
-   */
-  protected Exprs exp;
-
   /**
    * The cached value of the '{@link #getExprSimple() <em>Expr Simple</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -94,54 +83,6 @@ public class ExprImpl extends ExprsImpl implements Expr
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.EXPR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Exprs getExp()
-  {
-    return exp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetExp(Exprs newExp, NotificationChain msgs)
-  {
-    Exprs oldExp = exp;
-    exp = newExp;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPR__EXP, oldExp, newExp);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExp(Exprs newExp)
-  {
-    if (newExp != exp)
-    {
-      NotificationChain msgs = null;
-      if (exp != null)
-        msgs = ((InternalEObject)exp).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPR__EXP, null, msgs);
-      if (newExp != null)
-        msgs = ((InternalEObject)newExp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.EXPR__EXP, null, msgs);
-      msgs = basicSetExp(newExp, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.EXPR__EXP, newExp, newExp));
   }
 
   /**
@@ -298,8 +239,6 @@ public class ExprImpl extends ExprsImpl implements Expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPR__EXP:
-        return basicSetExp(null, msgs);
       case MyDslPackage.EXPR__EXPR_SIMPLE:
         return basicSetExprSimple(null, msgs);
       case MyDslPackage.EXPR__EXP_ET:
@@ -320,8 +259,6 @@ public class ExprImpl extends ExprsImpl implements Expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPR__EXP:
-        return getExp();
       case MyDslPackage.EXPR__EXPR_SIMPLE:
         return getExprSimple();
       case MyDslPackage.EXPR__EXP_ET:
@@ -342,9 +279,6 @@ public class ExprImpl extends ExprsImpl implements Expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPR__EXP:
-        setExp((Exprs)newValue);
-        return;
       case MyDslPackage.EXPR__EXPR_SIMPLE:
         setExprSimple((ExprSimple)newValue);
         return;
@@ -368,9 +302,6 @@ public class ExprImpl extends ExprsImpl implements Expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPR__EXP:
-        setExp((Exprs)null);
-        return;
       case MyDslPackage.EXPR__EXPR_SIMPLE:
         setExprSimple((ExprSimple)null);
         return;
@@ -394,8 +325,6 @@ public class ExprImpl extends ExprsImpl implements Expr
   {
     switch (featureID)
     {
-      case MyDslPackage.EXPR__EXP:
-        return exp != null;
       case MyDslPackage.EXPR__EXPR_SIMPLE:
         return exprSimple != null;
       case MyDslPackage.EXPR__EXP_ET:

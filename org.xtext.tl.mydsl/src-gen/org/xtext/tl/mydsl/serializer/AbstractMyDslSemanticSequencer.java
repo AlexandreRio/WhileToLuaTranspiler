@@ -21,6 +21,8 @@ import org.xtext.tl.mydsl.myDsl.Eq;
 import org.xtext.tl.mydsl.myDsl.Expr;
 import org.xtext.tl.mydsl.myDsl.ExprSimple;
 import org.xtext.tl.mydsl.myDsl.ExprTerm;
+import org.xtext.tl.mydsl.myDsl.Exprs;
+import org.xtext.tl.mydsl.myDsl.Function;
 import org.xtext.tl.mydsl.myDsl.Input;
 import org.xtext.tl.mydsl.myDsl.Lexpr;
 import org.xtext.tl.mydsl.myDsl.Model;
@@ -28,7 +30,7 @@ import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 import org.xtext.tl.mydsl.myDsl.Not;
 import org.xtext.tl.mydsl.myDsl.Or;
 import org.xtext.tl.mydsl.myDsl.Output;
-import org.xtext.tl.mydsl.myDsl.function;
+import org.xtext.tl.mydsl.myDsl.Vars;
 import org.xtext.tl.mydsl.services.MyDslGrammarAccess;
 
 @SuppressWarnings("all")
@@ -74,10 +76,6 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 					sequence_Expr(context, (Expr) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getExprsRule()) {
-					sequence_Expr_Exprs(context, (Expr) semanticObject); 
-					return; 
-				}
 				else break;
 			case MyDslPackage.EXPR_SIMPLE:
 				if(context == grammarAccess.getExprSimpleRule()) {
@@ -88,6 +86,18 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 			case MyDslPackage.EXPR_TERM:
 				if(context == grammarAccess.getExprTermRule()) {
 					sequence_ExprTerm(context, (ExprTerm) semanticObject); 
+					return; 
+				}
+				else break;
+			case MyDslPackage.EXPRS:
+				if(context == grammarAccess.getExprsRule()) {
+					sequence_Exprs(context, (Exprs) semanticObject); 
+					return; 
+				}
+				else break;
+			case MyDslPackage.FUNCTION:
+				if(context == grammarAccess.getFunctionRule()) {
+					sequence_Function(context, (Function) semanticObject); 
 					return; 
 				}
 				else break;
@@ -127,9 +137,9 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 					return; 
 				}
 				else break;
-			case MyDslPackage.FUNCTION:
-				if(context == grammarAccess.getFunctionRule()) {
-					sequence_function(context, (function) semanticObject); 
+			case MyDslPackage.VARS:
+				if(context == grammarAccess.getVarsRule()) {
+					sequence_Vars(context, (Vars) semanticObject); 
 					return; 
 				}
 				else break;
@@ -224,10 +234,29 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     ((exprSimple=ExprSimple | expEt=And | expTerminale=ExprTerm) exp=Exprs?)
+	 *     (exp=Expr expL=Exprs?)
 	 */
-	protected void sequence_Expr_Exprs(EObject context, Expr semanticObject) {
+	protected void sequence_Exprs(EObject context, Exprs semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (funName=SYMBOLES def=Definiton)
+	 */
+	protected void sequence_Function(EObject context, Function semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.FUNCTION__FUN_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.FUNCTION__FUN_NAME));
+			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.FUNCTION__DEF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.FUNCTION__DEF));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFunctionAccess().getFunNameSYMBOLESTerminalRuleCall_2_0(), semanticObject.getFunName());
+		feeder.accept(grammarAccess.getFunctionAccess().getDefDefinitonParserRuleCall_5_0(), semanticObject.getDef());
+		feeder.finish();
 	}
 	
 	
@@ -251,7 +280,7 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     model+=function*
+	 *     model+=Function*
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -287,19 +316,9 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (funName=SYMBOLES def=Definiton)
+	 *     (v1=VARIABLE v2+=Vars?)
 	 */
-	protected void sequence_function(EObject context, function semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.FUNCTION__FUN_NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.FUNCTION__FUN_NAME));
-			if(transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.FUNCTION__DEF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.FUNCTION__DEF));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunctionAccess().getFunNameSYMBOLESTerminalRuleCall_2_0(), semanticObject.getFunName());
-		feeder.accept(grammarAccess.getFunctionAccess().getDefDefinitonParserRuleCall_5_0(), semanticObject.getDef());
-		feeder.finish();
+	protected void sequence_Vars(EObject context, Vars semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -3,9 +3,9 @@ grammar org.xtext.tl.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
 generate myDsl "http://www.xtext.org/tl/mydsl/MyDsl"
 
 Model:
-	(model += function LC?)*;
+	(model += Function LC?)*;
 
-function:
+Function:
 	'function' LC funName=SYMBOLES ':' LC def=Definiton
 ;
 
@@ -18,8 +18,8 @@ Definiton:
 Input: v=VARIABLE (',' LC? v2+=VARIABLE)*;
 Output: v=VARIABLE (',' LC? v2+=VARIABLE)*;
 Commands: c+=Command (';' LC? c+=Command)* ;
-Vars: VARIABLE (',' Vars)? ;
-Exprs: Expr (',' exp=Exprs)? ;
+Vars: v1=VARIABLE (',' v2+=Vars)? ;
+Exprs: exp=Expr (',' expL=Exprs)? ;
 
 Command: {Command}
 	'nop' |

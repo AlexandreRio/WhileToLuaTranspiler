@@ -65,11 +65,12 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
     switch (eClass.getClassifierID())
     {
       case MyDslPackage.MODEL: return createModel();
-      case MyDslPackage.FUNCTION: return createfunction();
+      case MyDslPackage.FUNCTION: return createFunction();
       case MyDslPackage.DEFINITON: return createDefiniton();
       case MyDslPackage.INPUT: return createInput();
       case MyDslPackage.OUTPUT: return createOutput();
       case MyDslPackage.COMMANDS: return createCommands();
+      case MyDslPackage.VARS: return createVars();
       case MyDslPackage.EXPRS: return createExprs();
       case MyDslPackage.COMMAND: return createCommand();
       case MyDslPackage.EXPR: return createExpr();
@@ -101,9 +102,9 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public function createfunction()
+  public Function createFunction()
   {
-    functionImpl function = new functionImpl();
+    FunctionImpl function = new FunctionImpl();
     return function;
   }
 
@@ -149,6 +150,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
   {
     CommandsImpl commands = new CommandsImpl();
     return commands;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Vars createVars()
+  {
+    VarsImpl vars = new VarsImpl();
+    return vars;
   }
 
   /**

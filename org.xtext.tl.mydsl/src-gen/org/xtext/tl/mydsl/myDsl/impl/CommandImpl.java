@@ -16,6 +16,7 @@ import org.xtext.tl.mydsl.myDsl.Commands;
 import org.xtext.tl.mydsl.myDsl.Expr;
 import org.xtext.tl.mydsl.myDsl.Exprs;
 import org.xtext.tl.mydsl.myDsl.MyDslPackage;
+import org.xtext.tl.mydsl.myDsl.Vars;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,24 +41,14 @@ import org.xtext.tl.mydsl.myDsl.MyDslPackage;
 public class CommandImpl extends MinimalEObjectImpl.Container implements Command
 {
   /**
-   * The default value of the '{@link #getVarL() <em>Var L</em>}' attribute.
+   * The cached value of the '{@link #getVarL() <em>Var L</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVarL()
    * @generated
    * @ordered
    */
-  protected static final String VAR_L_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVarL() <em>Var L</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVarL()
-   * @generated
-   * @ordered
-   */
-  protected String varL = VAR_L_EDEFAULT;
+  protected Vars varL;
 
   /**
    * The cached value of the '{@link #getExpL() <em>Exp L</em>}' containment reference.
@@ -165,7 +156,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getVarL()
+  public Vars getVarL()
   {
     return varL;
   }
@@ -175,12 +166,37 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVarL(String newVarL)
+  public NotificationChain basicSetVarL(Vars newVarL, NotificationChain msgs)
   {
-    String oldVarL = varL;
+    Vars oldVarL = varL;
     varL = newVarL;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__VAR_L, oldVarL, varL));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__VAR_L, oldVarL, newVarL);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setVarL(Vars newVarL)
+  {
+    if (newVarL != varL)
+    {
+      NotificationChain msgs = null;
+      if (varL != null)
+        msgs = ((InternalEObject)varL).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__VAR_L, null, msgs);
+      if (newVarL != null)
+        msgs = ((InternalEObject)newVarL).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MyDslPackage.COMMAND__VAR_L, null, msgs);
+      msgs = basicSetVarL(newVarL, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.COMMAND__VAR_L, newVarL, newVarL));
   }
 
   /**
@@ -504,6 +520,8 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
+      case MyDslPackage.COMMAND__VAR_L:
+        return basicSetVarL(null, msgs);
       case MyDslPackage.COMMAND__EXP_L:
         return basicSetExpL(null, msgs);
       case MyDslPackage.COMMAND__EXP:
@@ -561,7 +579,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     switch (featureID)
     {
       case MyDslPackage.COMMAND__VAR_L:
-        setVarL((String)newValue);
+        setVarL((Vars)newValue);
         return;
       case MyDslPackage.COMMAND__EXP_L:
         setExpL((Exprs)newValue);
@@ -599,7 +617,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     switch (featureID)
     {
       case MyDslPackage.COMMAND__VAR_L:
-        setVarL(VAR_L_EDEFAULT);
+        setVarL((Vars)null);
         return;
       case MyDslPackage.COMMAND__EXP_L:
         setExpL((Exprs)null);
@@ -637,7 +655,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     switch (featureID)
     {
       case MyDslPackage.COMMAND__VAR_L:
-        return VAR_L_EDEFAULT == null ? varL != null : !VAR_L_EDEFAULT.equals(varL);
+        return varL != null;
       case MyDslPackage.COMMAND__EXP_L:
         return expL != null;
       case MyDslPackage.COMMAND__NOM:
@@ -667,9 +685,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (varL: ");
-    result.append(varL);
-    result.append(", nom: ");
+    result.append(" (nom: ");
     result.append(nom);
     result.append(')');
     return result.toString();

@@ -24,11 +24,19 @@ public class FunctionDescriptor {
     return this.tableSymboles.keySet();
   }
 
+  public void setNbIn(int nb) {
+    this.nbIn = nb;
+  }
+
   /**
    * @return the nbIn
    */
   public int getNbIn() {
     return nbIn;
+  }
+
+  public void setNbOut(int nb) {
+    this.nbOut = nb;
   }
 
   /**

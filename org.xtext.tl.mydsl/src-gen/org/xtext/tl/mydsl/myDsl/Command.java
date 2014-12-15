@@ -30,30 +30,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface Command extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Var L</b></em>' attribute.
+   * Returns the value of the '<em><b>Var L</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Var L</em>' attribute isn't clear,
+   * If the meaning of the '<em>Var L</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var L</em>' attribute.
-   * @see #setVarL(String)
+   * @return the value of the '<em>Var L</em>' containment reference.
+   * @see #setVarL(Vars)
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getCommand_VarL()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getVarL();
+  Vars getVarL();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getVarL <em>Var L</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Command#getVarL <em>Var L</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var L</em>' attribute.
+   * @param value the new value of the '<em>Var L</em>' containment reference.
    * @see #getVarL()
    * @generated
    */
-  void setVarL(String value);
+  void setVarL(Vars value);
 
   /**
    * Returns the value of the '<em><b>Exp L</b></em>' containment reference.

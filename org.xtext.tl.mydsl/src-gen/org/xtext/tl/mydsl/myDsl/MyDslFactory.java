@@ -32,13 +32,13 @@ public interface MyDslFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>function</em>'.
+   * Returns a new object of class '<em>Function</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>function</em>'.
+   * @return a new object of class '<em>Function</em>'.
    * @generated
    */
-  function createfunction();
+  Function createFunction();
 
   /**
    * Returns a new object of class '<em>Definiton</em>'.
@@ -75,6 +75,15 @@ public interface MyDslFactory extends EFactory
    * @generated
    */
   Commands createCommands();
+
+  /**
+   * Returns a new object of class '<em>Vars</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Vars</em>'.
+   * @generated
+   */
+  Vars createVars();
 
   /**
    * Returns a new object of class '<em>Exprs</em>'.

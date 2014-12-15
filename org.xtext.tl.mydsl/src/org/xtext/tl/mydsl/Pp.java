@@ -18,7 +18,7 @@ import org.xtext.tl.mydsl.myDsl.impl.LexprImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ModelImpl;
 import org.xtext.tl.mydsl.myDsl.impl.NotImpl;
 import org.xtext.tl.mydsl.myDsl.impl.OrImpl;
-import org.xtext.tl.mydsl.myDsl.impl.functionImpl;
+import org.xtext.tl.mydsl.myDsl.impl.FunctionImpl;
 
 
 public class Pp {
@@ -91,9 +91,9 @@ public class Pp {
 
 			return ret;
 		}
-		else if (obj instanceof functionImpl) {
-			return "function " + ((functionImpl)obj).getFunName() + " :\n" +
-					prettyPrint(((functionImpl)obj).getDef());
+		else if (obj instanceof FunctionImpl) {
+			return "function " + ((FunctionImpl)obj).getFunName() + " :\n" +
+					prettyPrint(((FunctionImpl)obj).getDef());
 		}
 		else if (obj instanceof ExprImpl) {
 			if (((ExprImpl)obj).getExpEt()!=null)
