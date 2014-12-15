@@ -12,6 +12,14 @@ import org.xtext.tl.mydsl.myDsl.impl.CommandsImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ModelImpl;
 import org.xtext.tl.mydsl.myDsl.impl.DefinitonImpl;
 import org.xtext.tl.mydsl.myDsl.impl.FunctionImpl;
+import org.xtext.tl.mydsl.myDsl.impl.VarsImpl;
+import org.xtext.tl.mydsl.myDsl.impl.ExprImpl;
+import org.xtext.tl.mydsl.myDsl.impl.NotImpl;
+import org.xtext.tl.mydsl.myDsl.impl.OrImpl;
+import org.xtext.tl.mydsl.myDsl.impl.EqImpl;
+import org.xtext.tl.mydsl.myDsl.impl.AndImpl;
+import org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl;
+import org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl;
 
 /**
  * Main class of the front end part of the compiler
@@ -103,14 +111,45 @@ public class FrontEnd {
       for (EObject f : ((CommandsImpl)obj).getC())
         parcours(f, funName);
     } else if (obj instanceof CommandImpl) {
+      //add is not null
       parcours(((CommandImpl)obj).getVarL(), funName);
-    }
-    //VariableDescriptor localfunDescMap = new VariableDescriptor();
-    //for (EObject com : ((DefinitonImpl)obj).getCommandList().getC()) {
-    //  if (((CommandImpl)com).getVarL() != null)
-    //    localfunDescMap.addVariable(((CommandImpl)com).getVarL());
-    //}
+      parcours(((CommandImpl)obj).getExpL(), funName);
+      parcours(((CommandImpl)obj).getExp(),funName);
+      parcours(((CommandImpl)obj).getExp1(),funName);
+      parcours(((CommandImpl)obj).getExp2(),funName);
+      parcours(((CommandImpl)obj).getC1(),funName);
+      parcours(((CommandImpl)obj).getC2(),funName);
+    } else if (obj instanceof VarsImpl) {
+      funDescMap.get(funName).addVar(((VarsImpl)obj).getV1());
 
+      for (EObject v : ((VarsImpl)obj).getV2())
+        parcours(v, funName);
+    } else if (obj instanceof ExprImpl) {
+      parcours(((ExprImpl)obj).getExpEt(), funName);
+      parcours(((ExprImpl)obj).getExprSimple(), funName);
+      parcours(((ExprImpl)obj).getExpTerminale(), funName);
+    } else if (obj instanceof AndImpl) {
+      parcours(((AndImpl)obj).getExpOu(), funName);
+
+      for (EObject ou : ((AndImpl)obj).getExpOu2())
+        parcours(ou, funName);
+    } else if (obj instanceof OrImpl) {
+      parcours(((OrImpl)obj).getExpNon(), funName);
+
+      for (EObject no : ((OrImpl)obj).getExpNon2())
+        parcours(no, funName);
+    } else if (obj instanceof NotImpl) {
+      parcours(((NotImpl)obj).getExpEq(), funName);
+    } else if (obj instanceof EqImpl) {
+      parcours(((EqImpl)obj).getExprEq1(), funName);
+      parcours(((EqImpl)obj).getExprEq2(), funName);
+      parcours(((EqImpl)obj).getExp(), funName);
+    } else if (obj instanceof ExprSimpleImpl) {
+      parcours(((ExprSimpleImpl)obj).getExpr(), funName);
+
+      parcours(((ExprSimpleImpl)obj).getLexpr(), funName);
+    } else if (obj instanceof ExprTermImpl) {
+      funDescMap.get(funName).addVar(((ExprTermImpl)obj).getExprTerm());
+    }
   }
 }
-

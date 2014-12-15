@@ -20,6 +20,10 @@ public class FunctionDescriptor {
     this.tableSymboles = localVars;
   }
 
+  public void addVar(String var) {
+    this.tableSymboles.addVariable(var);
+  }
+
   public Set<String> keySet() {
     return this.tableSymboles.keySet();
   }
