@@ -17,3 +17,26 @@ les types des fonctions est juste le nombre d'entrées et sorties
 code 3 adresses,
 <op, destination, origine1, origine2>
 concaténé en liste, possiblement vide.
+
+nil => code op
+les variables du code 3@ doivent être homogènes, être dans le même tableau
+
+(cons a b c)
+
+ /\
+a /\
+ b  c
+(équivalent à (cons a(cons b c)
+
+(list a b c)
+ /\
+a /\
+ b /\
+  c  nil
+(équivalent à (cons a(cons b(cons c nil))))
+
+=> on doit juste garder cons en interne et reécrire le list
+
+on initialise les variables à nil par défaut
+
+tl, retourne la partie droite d'un cons

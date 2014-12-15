@@ -46,9 +46,9 @@ public class FrontEnd {
 
     // print the content
     for (String key : funDescMap.keySet()) {
-      System.out.println(key + " paramètres: " + funDescMap.get(key).getNbIn() +
-          " sorties: " + funDescMap.get(key).getNbOut());
-      System.out.print("\tVariables locales :");
+      System.out.println(key + "\n\tparamètres: " + funDescMap.get(key).getNbIn() +
+          "\n\tsorties: " + funDescMap.get(key).getNbOut());
+      System.out.print("\tsymboles :");
       for (String v : funDescMap.get(key).keySet())
         System.out.print(v + " ");
       System.out.println("");
@@ -69,6 +69,7 @@ public class FrontEnd {
     else if (obj instanceof FunctionImpl) {
       String funInSourceName = ((FunctionImpl)obj).getFunName();
       String funInTargetName = "f" + funNameTranslation.size();
+
       funNameTranslation.put(funInSourceName, funInTargetName);
 
       parcours(obj, funInTargetName);
@@ -80,13 +81,14 @@ public class FrontEnd {
   /**
    *
    *
-   * @param obj: instance of function object
-   * @see functionImpl
+   * @param obj: 
+   * @see FunctionImpl
    * @param funName:
    */
   private static void parcours(EObject obj, String funName) {
     if (obj instanceof FunctionImpl) {
       funDescMap.put(funName, new FunctionDescriptor(0, 0));
+
       parcours(((FunctionImpl)obj).getDef(), funName);
     } else if (obj instanceof DefinitonImpl) {
       int in = 0;
@@ -114,11 +116,11 @@ public class FrontEnd {
       //add is not null
       parcours(((CommandImpl)obj).getVarL(), funName);
       parcours(((CommandImpl)obj).getExpL(), funName);
-      parcours(((CommandImpl)obj).getExp(),funName);
-      parcours(((CommandImpl)obj).getExp1(),funName);
-      parcours(((CommandImpl)obj).getExp2(),funName);
-      parcours(((CommandImpl)obj).getC1(),funName);
-      parcours(((CommandImpl)obj).getC2(),funName);
+      parcours(((CommandImpl)obj).getExp() , funName);
+      parcours(((CommandImpl)obj).getExp1(), funName);
+      parcours(((CommandImpl)obj).getExp2(), funName);
+      parcours(((CommandImpl)obj).getC1()  , funName);
+      parcours(((CommandImpl)obj).getC2()  , funName);
     } else if (obj instanceof VarsImpl) {
       funDescMap.get(funName).addVar(((VarsImpl)obj).getV1());
 
@@ -143,7 +145,7 @@ public class FrontEnd {
     } else if (obj instanceof EqImpl) {
       parcours(((EqImpl)obj).getExprEq1(), funName);
       parcours(((EqImpl)obj).getExprEq2(), funName);
-      parcours(((EqImpl)obj).getExp(), funName);
+      parcours(((EqImpl)obj).getExp()    , funName);
     } else if (obj instanceof ExprSimpleImpl) {
       parcours(((ExprSimpleImpl)obj).getExpr(), funName);
 
