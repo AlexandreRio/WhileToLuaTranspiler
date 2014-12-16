@@ -86,6 +86,9 @@ public class FrontEnd {
    * @param funName:
    */
   private static void parcours(EObject obj, String funName) {
+    if (obj == null || funName == null)
+      return;
+
     if (obj instanceof FunctionImpl) {
       funDescMap.put(funName, new FunctionDescriptor(0, 0));
 
@@ -113,7 +116,6 @@ public class FrontEnd {
       for (EObject f : ((CommandsImpl)obj).getC())
         parcours(f, funName);
     } else if (obj instanceof CommandImpl) {
-      //add is not null
       parcours(((CommandImpl)obj).getVarL(), funName);
       parcours(((CommandImpl)obj).getExpL(), funName);
       parcours(((CommandImpl)obj).getExp() , funName);
