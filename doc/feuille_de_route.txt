@@ -40,3 +40,33 @@ a /\
 on initialise les variables à nil par défaut
 
 tl, retourne la partie droite d'un cons
+
+Front-end
+Table des symboles,
+nom, type (symbole ou fonction), impl
+
+Exécutable
+Table de symbole
+new paramètres effectifs
+
+Label
+type Commands dans la grammaire, pointe sur une liste de code 3@
+On a autant de label que de Commands dans l'AST
+
+<ifcons i j, C, _, _>
+<bloc i, _, _, _>
+i, j => indice dans la table des labels
+les derniers paramètres ( C, _, _) correspondent à des éléments des tables de symboles et variables
+
+<call i nb,_, _, _>
+mettre nil dans les mémoires locales de la fonction
+
+dans le code généré, une série de fonction F0…Fn qui correspondent aux labels
+
+pour les retours multiples, une table Retour unique dans un coin qui fait le lien entre les contextes de l'applant et de l'appelé
+
+Exécutable
+RefbinTree
+Cons (hd, tl)
+Symbol (a)
+Nil()
