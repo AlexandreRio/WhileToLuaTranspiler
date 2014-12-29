@@ -57,9 +57,11 @@ public class FrontEnd {
   }
 
   /**
-   * Navigate through the AST from the root element.
+   * Navigate through all the functions of the AST.
+   * First call should be made from the root element.
    *
-   * @param obj: Root element
+   * @see #parcours(EObject, String)
+   * @param obj: Node of the AST 
    */
   private static void parcours(EObject obj) {
     if (obj instanceof ModelImpl) {
@@ -79,7 +81,7 @@ public class FrontEnd {
   }
 
   /**
-   *
+   * Navigate through a function node of the AST.
    *
    * @param obj: 
    * @see FunctionImpl
