@@ -13,5 +13,12 @@ public class TAC {
   private Address a2;
   /** Place to look for the second parameter */
   private Address a3;
+
+  public TAC(CodeOp operator, Address a1, Address a2, Address a3) {
+    this.op = operator;
+    this.a1 = a1;
+    this.a2 = a2;
+    this.a3 = a3;
+  }
 }
 

@@ -3,6 +3,8 @@ package org.xtext.tl.mydsl;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.xtext.tl.mydsl.myDsl.Input;
@@ -31,6 +33,8 @@ public class FrontEnd {
    * @see org.xtext.tl.mydsl.FunctionDescriptor
    */
   private static HashMap<String, FunctionDescriptor> funDescMap = new HashMap<String, FunctionDescriptor>();
+
+  private static List<Label> labelTable = new ArrayList<Label>();
 
   /**
    * Map the name of a function in the source code (key) the its name in the target code (value).
@@ -115,16 +119,29 @@ public class FrontEnd {
 
       parcours(((DefinitonImpl)obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {
-      for (EObject f : ((CommandsImpl)obj).getC())
+      for (EObject f : ((CommandsImpl)obj).getC()) {
+        // generate new label name
+        String labelName = "l" + labelTable.size();
         parcours(f, funName);
+      }
     } else if (obj instanceof CommandImpl) {
-      parcours(((CommandImpl)obj).getVarL(), funName);
-      parcours(((CommandImpl)obj).getExpL(), funName);
-      parcours(((CommandImpl)obj).getExp() , funName);
-      parcours(((CommandImpl)obj).getExp1(), funName);
-      parcours(((CommandImpl)obj).getExp2(), funName);
-      parcours(((CommandImpl)obj).getC1()  , funName);
-      parcours(((CommandImpl)obj).getC2()  , funName);
+      CommandImpl ob = (CommandImpl) obj;
+      String name = ob.getNom();
+
+      // vars := exps
+      if (ob.getVarL() != null && ob.getExpL() != null) {
+        parcours(ob.getVarL(), funName);
+        parcours(ob.getExpL(), funName);
+      } // nop
+      else if (ob.getNom() == null) {
+        TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null, null, null);
+      }
+
+      parcours(ob.getExp() , funName);
+      parcours(ob.getExp1(), funName);
+      parcours(ob.getExp2(), funName);
+      parcours(ob.getC1()  , funName);
+      parcours(ob.getC2()  , funName);
     } else if (obj instanceof VarsImpl) {
       funDescMap.get(funName).addVar(((VarsImpl)obj).getV1());
 
@@ -157,5 +174,8 @@ public class FrontEnd {
     } else if (obj instanceof ExprTermImpl) {
       funDescMap.get(funName).addVar(((ExprTermImpl)obj).getExprTerm());
     }
+  }
+
+  private static void parcours(EObject obj, String funName, String labelName) {
   }
 }
