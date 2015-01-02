@@ -86,10 +86,12 @@ public class FrontEnd {
 
   /**
    * Navigate through a function node of the AST.
+   * Read and Write command are treated here,
+   * for the rest see {@link #parcours(EObject, String, String}
    *
-   * @param obj: 
+   * @param obj Function node of the AST
+   * @param funName Name of the function in the target language
    * @see FunctionImpl
-   * @param funName:
    */
   private static void parcours(EObject obj, String funName) {
     if (obj == null || funName == null)
@@ -119,17 +121,22 @@ public class FrontEnd {
 
       parcours(((DefinitonImpl)obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {
+      String label = labelTable.generateLabel();
       for (EObject f : ((CommandsImpl)obj).getC())
-        parcours(f, funName, labelTable.generateLabel());
+        parcours(f, funName, label);
     }
   }
 
   /**
+   * Navigate through the AST when a label can be deducted.
    *
+   * @param obj First call should be a Command node, after that
+   * everything below in the AST
+   * @param funName Name of the current function the target language
+   * @param labelName Name of the current label
+   * @see Label
    */
   private static void parcours(EObject obj, String funName, String labelName) {
-    System.out.println("Current label " + labelName);
-    System.out.println("current obj: " + obj);
 
     // for nested commands
     if (obj instanceof CommandsImpl) {
@@ -152,10 +159,13 @@ public class FrontEnd {
         labelTable.add(labelName, nopTAC);
       }
       else if (name.equals("while")) {
-        //TODO: TAC
+        String whileLabel = labelTable.generateLabel();
 
-        parcours(ob.getExp() , funName);
-        parcours(ob.getC1()  , funName);
+        TAC whileTAC = new TAC(new CodeOp(CodeOp.OP_WHILE, whileLabel), null, new Address(), null);
+        labelTable.add(labelName, whileTAC);
+
+        parcours(ob.getExp(), funName, whileLabel);
+        parcours(ob.getC1() , funName, whileLabel);
       }
       else if (name.equals("for")) {
         //TODO: TAC
@@ -184,9 +194,12 @@ public class FrontEnd {
           parcours(ob.getC2(), funName, elseLabel);
         } // if with no else statement
         else {
+          String ifLabel = labelTable.generateLabel();
 
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, new Address(), null);
+          labelTable.add(labelName, ifTAC);
 
-          parcours(ob.getC1()  , funName);
+          parcours(ob.getC1()  , funName, ifLabel);
         }
       }
 

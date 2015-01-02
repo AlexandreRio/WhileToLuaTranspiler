@@ -5,9 +5,10 @@ package org.xtext.tl.mydsl;
  */
 public class CodeOp {
 
-  public static int OP_NOP    = 0x0;
-  public static int OP_IFNNIL = 0x1;
-  public static int OP_GOTO   = 0x2;
+  public static int OP_NOP    = 0x000;
+  public static int OP_IFNNIL = 0x001;
+  public static int OP_GOTO   = 0x002;
+  public static int OP_WHILE  = 0x003;
 
 
   /** Code Op identifier, see the constant above */
