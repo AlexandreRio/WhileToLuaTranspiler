@@ -17,4 +17,16 @@ public class Label {
     this.name = name;
     this.code = new ArrayList<TAC>();
   }
+
+  public void add(TAC instruction) {
+    this.code.add(instruction);
+  }
+
+  public int size() {
+    return this.code.size();
+  }
+
+  public List<TAC> getCode() {
+    return this.code;
+  }
 }

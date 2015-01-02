@@ -3,8 +3,6 @@ package org.xtext.tl.mydsl;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.xtext.tl.mydsl.myDsl.Input;
@@ -34,7 +32,7 @@ public class FrontEnd {
    */
   private static HashMap<String, FunctionDescriptor> funDescMap = new HashMap<String, FunctionDescriptor>();
 
-  private static List<Label> labelTable = new ArrayList<Label>();
+  private static LabelTable labelTable = new LabelTable();
 
   /**
    * Map the name of a function in the source code (key) the its name in the target code (value).
@@ -58,6 +56,8 @@ public class FrontEnd {
       System.out.println("");
     }
     System.out.println("Nombre de fonction: " + funDescMap.size());
+    System.out.println("Contenu de la table des labels:");
+    System.out.println(labelTable);
   }
 
   /**
@@ -119,29 +119,77 @@ public class FrontEnd {
 
       parcours(((DefinitonImpl)obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {
-      for (EObject f : ((CommandsImpl)obj).getC()) {
-        // generate new label name
-        String labelName = "l" + labelTable.size();
-        parcours(f, funName);
-      }
-    } else if (obj instanceof CommandImpl) {
+      for (EObject f : ((CommandsImpl)obj).getC())
+        parcours(f, funName, labelTable.generateLabel());
+    }
+  }
+
+  /**
+   *
+   */
+  private static void parcours(EObject obj, String funName, String labelName) {
+    System.out.println("Current label " + labelName);
+    System.out.println("current obj: " + obj);
+
+    // for nested commands
+    if (obj instanceof CommandsImpl) {
+      for (EObject f : ((CommandsImpl)obj).getC())
+        parcours(f, funName, labelName);
+    }
+    else if (obj instanceof CommandImpl) {
       CommandImpl ob = (CommandImpl) obj;
       String name = ob.getNom();
 
       // vars := exps
       if (ob.getVarL() != null && ob.getExpL() != null) {
+        //TODO: TAC for affectation
+
         parcours(ob.getVarL(), funName);
         parcours(ob.getExpL(), funName);
       } // nop
-      else if (ob.getNom() == null) {
+      else if (name == null) {
         TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null, null, null);
+        labelTable.add(labelName, nopTAC);
+      }
+      else if (name.equals("while")) {
+        //TODO: TAC
+
+        parcours(ob.getExp() , funName);
+        parcours(ob.getC1()  , funName);
+      }
+      else if (name.equals("for")) {
+        //TODO: TAC
+
+        parcours(ob.getExp() , funName);
+        parcours(ob.getC1()  , funName);
+      }
+      else if (name.equals("foreach")) {
+        //TODO: TAC
+
+        parcours(ob.getExp1(), funName);
+        parcours(ob.getExp2(), funName);
+        parcours(ob.getC1()  , funName);
+      }
+      else if (name.equals("if")) {
+        if (ob.getC2() != null) {
+          String ifLabel   = labelTable.generateLabel();
+          String elseLabel = labelTable.generateLabel();
+
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, new Address(), null);
+          TAC gotoTAC = new TAC(new CodeOp(CodeOp.OP_GOTO, elseLabel), null, null, null);
+          labelTable.add(labelName, ifTAC);
+          labelTable.add(labelName, gotoTAC);
+
+          parcours(ob.getC1(), funName, ifLabel);
+          parcours(ob.getC2(), funName, elseLabel);
+        } // if with no else statement
+        else {
+
+
+          parcours(ob.getC1()  , funName);
+        }
       }
 
-      parcours(ob.getExp() , funName);
-      parcours(ob.getExp1(), funName);
-      parcours(ob.getExp2(), funName);
-      parcours(ob.getC1()  , funName);
-      parcours(ob.getC2()  , funName);
     } else if (obj instanceof VarsImpl) {
       funDescMap.get(funName).addVar(((VarsImpl)obj).getV1());
 
@@ -174,8 +222,6 @@ public class FrontEnd {
     } else if (obj instanceof ExprTermImpl) {
       funDescMap.get(funName).addVar(((ExprTermImpl)obj).getExprTerm());
     }
-  }
 
-  private static void parcours(EObject obj, String funName, String labelName) {
   }
 }

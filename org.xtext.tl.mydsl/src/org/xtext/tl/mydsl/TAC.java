@@ -20,5 +20,9 @@ public class TAC {
     this.a2 = a2;
     this.a3 = a3;
   }
+
+  public String toString() {
+    return this.op + " : " + a1 + ", " + a2 + ", " + a3;
+  }
 }
 

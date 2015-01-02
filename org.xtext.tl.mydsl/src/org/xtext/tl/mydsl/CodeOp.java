@@ -10,12 +10,17 @@ public class CodeOp {
   public static int OP_GOTO   = 0x2;
 
 
+  /** Code Op identifier, see the constant above */
   private int op;
-  private Label lb;
+  /** Optional label parameter in the label table */
+  private String lb;
 
-  public CodeOp(int operator, Label label) {
+  public CodeOp(int operator, String label) {
     this.op  = operator;
     this.lb = label;
   }
 
+  public String toString() {
+    return this.op + " : " + this.lb;
+  }
 }
