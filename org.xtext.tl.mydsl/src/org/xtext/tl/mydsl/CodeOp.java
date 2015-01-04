@@ -9,6 +9,7 @@ public class CodeOp {
   public static int OP_IFNNIL = 0x001;
   public static int OP_GOTO   = 0x002;
   public static int OP_WHILE  = 0x003;
+  public static int OP_MOV    = 0x004;
 
 
   /** Code Op identifier, see the constant above */
@@ -22,6 +23,9 @@ public class CodeOp {
   }
 
   public String toString() {
-    return this.op + " : " + this.lb;
+    if (this.lb == null)
+      return this.op + "";
+    else
+      return this.op + " : " + this.lb;
   }
 }

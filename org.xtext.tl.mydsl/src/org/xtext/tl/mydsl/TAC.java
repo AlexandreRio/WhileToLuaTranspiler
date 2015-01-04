@@ -8,13 +8,13 @@ public class TAC {
   /** Code of the operator */
   private CodeOp op;
   /** Place where the code will write the result */
-  private Address a1;
+  private String a1;
   /** Place to look for the first parameter */
-  private Address a2;
+  private String a2;
   /** Place to look for the second parameter */
-  private Address a3;
+  private String a3;
 
-  public TAC(CodeOp operator, Address a1, Address a2, Address a3) {
+  public TAC(CodeOp operator, String a1, String a2, String a3) {
     this.op = operator;
     this.a1 = a1;
     this.a2 = a2;
@@ -22,7 +22,10 @@ public class TAC {
   }
 
   public String toString() {
-    return this.op + " : " + a1 + ", " + a2 + ", " + a3;
+    return "<" + this.op + ", " +
+      (a1 == null ? "_" : a1) + ", " +
+      (a2 == null ? "_" : a2) + ", " +
+      (a3 == null ? "_" : a3) + ">";
   }
 }
 

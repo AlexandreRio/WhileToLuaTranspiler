@@ -3,6 +3,8 @@ package org.xtext.tl.mydsl;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.xtext.tl.mydsl.myDsl.Input;
@@ -40,6 +42,11 @@ public class FrontEnd {
    * */
   private static HashMap<String, String> funNameTranslation = new HashMap<String, String>();
 
+  /**
+   * Same thing for variables
+   */
+  private static HashMap<String, String> varNameTranslation = new HashMap<String, String>();
+
   public static void main (String[] args) throws Exception {
     PTree p = new PTree();
     FileReader reader = new FileReader(new File(args[0]));
@@ -65,7 +72,7 @@ public class FrontEnd {
    * First call should be made from the root element.
    *
    * @see #parcours(EObject, String)
-   * @param obj: Node of the AST 
+   * @param obj: Node of the AST
    */
   private static void parcours(EObject obj) throws Exception {
     if (obj instanceof ModelImpl) {
@@ -153,8 +160,14 @@ public class FrontEnd {
       if (ob.getVarL() != null && ob.getExpL() != null) {
         //TODO: TAC for affectation
 
-        parcours(ob.getVarL(), funName);
-        parcours(ob.getExpL(), funName);
+        //create a list of value, right part
+
+        //create a list of variable, left part
+        List<String> vars = getVars(ob.getVarL(), new ArrayList<String>(), funName);
+        for (String var : vars) {
+          TAC movTAC = new TAC(new CodeOp(CodeOp.OP_MOV, null), var, "place", null);
+        }
+        traiterExpr(ob.getExpL(), funName);
       } // nop
       else if (name == null) {
         TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null, null, null);
@@ -163,7 +176,7 @@ public class FrontEnd {
       else if (name.equals("while")) {
         String whileLabel = labelTable.generateLabel();
 
-        TAC whileTAC = new TAC(new CodeOp(CodeOp.OP_WHILE, whileLabel), null, new Address(), null);
+        TAC whileTAC = new TAC(new CodeOp(CodeOp.OP_WHILE, whileLabel), null, "place", null);
         labelTable.add(labelName, whileTAC);
 
         parcours(ob.getExp(), funName, whileLabel);
@@ -187,7 +200,7 @@ public class FrontEnd {
           String ifLabel   = labelTable.generateLabel();
           String elseLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, new Address(), null);
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, "place", null);
           TAC gotoTAC = new TAC(new CodeOp(CodeOp.OP_GOTO, elseLabel), null, null, null);
           labelTable.add(labelName, ifTAC);
           labelTable.add(labelName, gotoTAC);
@@ -198,19 +211,40 @@ public class FrontEnd {
         else {
           String ifLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, new Address(), null);
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, "place", null);
           labelTable.add(labelName, ifTAC);
 
           parcours(ob.getC1()  , funName, ifLabel);
         }
       }
 
-    } else if (obj instanceof VarsImpl) {
-      funDescMap.get(funName).addVar(((VarsImpl)obj).getV1());
-
-      for (EObject v : ((VarsImpl)obj).getV2())
-        parcours(v, funName);
     }
+  }
+
+  /**
+   * Create a list of variables from a VarsImpl node of the AST and add
+   * them to the symbol tables of the function
+   *
+   * @param obj VarsImpl instance node of the AST
+   * @param list list of the current variables visited, for first call should be empty
+   * @param funName name of the current function we are in
+   * @return List of the variables referenced by this VarsImpl node
+   */
+  public static List<String> getVars(EObject obj, List<String> list, String funName) {
+    if (list == null)
+      return null;
+
+    if (obj instanceof VarsImpl) {
+      String varInSourceName = ((VarsImpl)obj).getV1();
+      String varInTargetName = "v" + varNameTranslation.size();
+
+      varNameTranslation.put(varInSourceName, varInTargetName);
+
+      funDescMap.get(funName).addVar(varInTargetName);
+      list.add(((VarsImpl)obj).getV1());
+      return getVars(((VarsImpl)obj).getV2(), list, funName);
+    } else
+      return list;
   }
 
   public static void traiterExpr(EObject obj, String funName) throws Exception {
