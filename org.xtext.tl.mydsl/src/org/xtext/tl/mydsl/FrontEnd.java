@@ -67,7 +67,7 @@ public class FrontEnd {
    * @see #parcours(EObject, String)
    * @param obj: Node of the AST 
    */
-  private static void parcours(EObject obj) {
+  private static void parcours(EObject obj) throws Exception {
     if (obj instanceof ModelImpl) {
       for(EObject func : ((ModelImpl)obj).getModel())
         parcours(func);
@@ -93,7 +93,7 @@ public class FrontEnd {
    * @param funName Name of the function in the target language
    * @see FunctionImpl
    */
-  private static void parcours(EObject obj, String funName) {
+  private static void parcours(EObject obj, String funName) throws Exception {
     if (obj == null || funName == null)
       return;
 
@@ -124,6 +124,8 @@ public class FrontEnd {
       String label = labelTable.generateLabel();
       for (EObject f : ((CommandsImpl)obj).getC())
         parcours(f, funName, label);
+    } else {
+      throw new Exception("Unrecognised EObject node: " + obj);
     }
   }
 
@@ -136,7 +138,7 @@ public class FrontEnd {
    * @param labelName Name of the current label
    * @see Label
    */
-  private static void parcours(EObject obj, String funName, String labelName) {
+  private static void parcours(EObject obj, String funName, String labelName) throws Exception {
 
     // for nested commands
     if (obj instanceof CommandsImpl) {
@@ -208,7 +210,11 @@ public class FrontEnd {
 
       for (EObject v : ((VarsImpl)obj).getV2())
         parcours(v, funName);
-    } else if (obj instanceof ExprImpl) {
+    }
+  }
+
+  public static void traiterExpr(EObject obj, String funName) throws Exception {
+    if (obj instanceof ExprImpl) {
       parcours(((ExprImpl)obj).getExpEt(), funName);
       parcours(((ExprImpl)obj).getExprSimple(), funName);
       parcours(((ExprImpl)obj).getExpTerminale(), funName);
@@ -244,6 +250,5 @@ public class FrontEnd {
       else {
       }
     }
-
   }
 }
