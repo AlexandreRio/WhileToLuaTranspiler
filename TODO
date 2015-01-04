@@ -1,4 +1,3 @@
 Here are some things that should be done:
-+ refactor the front-end main loop to propagate the label name
-+ add attributes on the grammar to differentiate 'nil' from SYMBOLES and VARIABLE in the main symbols table
++ come with a representation for logical expression
 + prettify the pretty printer for the final release…
