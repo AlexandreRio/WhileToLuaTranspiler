@@ -5,17 +5,17 @@ import java.util.Set;
 
 public class VariableDescriptor {
 
-  private HashMap<String, Integer> variables;
+  private HashMap<String, BinTree> variables;
 
   public VariableDescriptor() {
-    this.variables = new HashMap<String, Integer>();
+    this.variables = new HashMap<String, BinTree>();
   }
 
   public void addVariable(String name) {
     this.variables.put(name, null);
   }
 
-  public void addVariable(String name, int value) {
+  public void addVariable(String name, BinTree value) {
     this.variables.put(name, value);
   }
 

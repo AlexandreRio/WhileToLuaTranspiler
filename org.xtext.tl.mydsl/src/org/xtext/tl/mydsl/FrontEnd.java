@@ -233,7 +233,16 @@ public class FrontEnd {
 
       parcours(((ExprSimpleImpl)obj).getLexpr(), funName);
     } else if (obj instanceof ExprTermImpl) {
-      funDescMap.get(funName).addVar(((ExprTermImpl)obj).getExprTerm());
+      ExprTermImpl ob = (ExprTermImpl)obj;
+      // Symboles
+      if (ob.getTermSym() != null) {
+        String symboles = ob.getTermSym();
+      } // Variables
+      else if (ob.getTermVar() != null) {
+        funDescMap.get(funName).addVar(ob.getTermVar());
+      } // nil
+      else {
+      }
     }
 
   }
