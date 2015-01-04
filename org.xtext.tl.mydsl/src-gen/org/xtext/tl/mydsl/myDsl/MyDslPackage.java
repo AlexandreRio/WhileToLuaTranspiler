@@ -289,7 +289,7 @@ public interface MyDslPackage extends EPackage
   int VARS__V1 = 0;
 
   /**
-   * The feature id for the '<em><b>V2</b></em>' containment reference list.
+   * The feature id for the '<em><b>V2</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -952,10 +952,10 @@ public interface MyDslPackage extends EPackage
   EAttribute getVars_V1();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.tl.mydsl.myDsl.Vars#getV2 <em>V2</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.tl.mydsl.myDsl.Vars#getV2 <em>V2</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>V2</em>'.
+   * @return the meta object for the containment reference '<em>V2</em>'.
    * @see org.xtext.tl.mydsl.myDsl.Vars#getV2()
    * @see #getVars()
    * @generated
@@ -1560,7 +1560,7 @@ public interface MyDslPackage extends EPackage
     EAttribute VARS__V1 = eINSTANCE.getVars_V1();
 
     /**
-     * The meta object literal for the '<em><b>V2</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>V2</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

@@ -285,10 +285,10 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cV2VarsParserRuleCall_1_1_0 = (RuleCall)cV2Assignment_1_1.eContents().get(0);
 		
 		//Vars:
-		//	v1=VARIABLE ("," v2+=Vars)?;
+		//	v1=VARIABLE ("," v2=Vars)?;
 		public ParserRule getRule() { return rule; }
 
-		//v1=VARIABLE ("," v2+=Vars)?
+		//v1=VARIABLE ("," v2=Vars)?
 		public Group getGroup() { return cGroup; }
 
 		//v1=VARIABLE
@@ -297,13 +297,13 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//VARIABLE
 		public RuleCall getV1VARIABLETerminalRuleCall_0_0() { return cV1VARIABLETerminalRuleCall_0_0; }
 
-		//("," v2+=Vars)?
+		//("," v2=Vars)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//","
 		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 
-		//v2+=Vars
+		//v2=Vars
 		public Assignment getV2Assignment_1_1() { return cV2Assignment_1_1; }
 
 		//Vars
@@ -1176,7 +1176,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Vars:
-	//	v1=VARIABLE ("," v2+=Vars)?;
+	//	v1=VARIABLE ("," v2=Vars)?;
 	public VarsElements getVarsAccess() {
 		return (pVars != null) ? pVars : (pVars = new VarsElements());
 	}

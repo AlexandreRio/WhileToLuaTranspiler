@@ -534,7 +534,7 @@ ruleVars returns [EObject current=null]
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getVarsRule());
 	        }
-       		add(
+       		set(
        			$current, 
        			"v2",
         		lv_v2_2_0, 

@@ -316,7 +316,7 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (v1=VARIABLE v2+=Vars?)
+	 *     (v1=VARIABLE v2=Vars?)
 	 */
 	protected void sequence_Vars(EObject context, Vars semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
