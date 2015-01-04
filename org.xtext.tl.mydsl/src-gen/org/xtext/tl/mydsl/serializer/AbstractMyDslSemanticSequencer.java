@@ -216,7 +216,7 @@ public abstract class AbstractMyDslSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Constraint:
-	 *     (ExprTerm='nil' | ExprTerm=VARIABLE | ExprTerm=SYMBOLES)
+	 *     {ExprTerm}
 	 */
 	protected void sequence_ExprTerm(EObject context, ExprTerm semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

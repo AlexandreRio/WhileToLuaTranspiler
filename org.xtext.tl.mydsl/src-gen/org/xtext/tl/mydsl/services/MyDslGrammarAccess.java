@@ -909,30 +909,42 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class ExprTermElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExprTerm");
-		private final Assignment cExprTermAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cExprTermAlternatives_0 = (Alternatives)cExprTermAssignment.eContents().get(0);
-		private final Keyword cExprTermNilKeyword_0_0 = (Keyword)cExprTermAlternatives_0.eContents().get(0);
-		private final RuleCall cExprTermVARIABLETerminalRuleCall_0_1 = (RuleCall)cExprTermAlternatives_0.eContents().get(1);
-		private final RuleCall cExprTermSYMBOLESTerminalRuleCall_0_2 = (RuleCall)cExprTermAlternatives_0.eContents().get(2);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cExprTermAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cNilKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cTermVarAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cTermVarVARIABLETerminalRuleCall_1_0 = (RuleCall)cTermVarAssignment_1.eContents().get(0);
+		private final Assignment cTermSymAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cTermSymSYMBOLESTerminalRuleCall_2_0 = (RuleCall)cTermSymAssignment_2.eContents().get(0);
 		
 		//ExprTerm:
-		//	ExprTerm=("nil" | VARIABLE | SYMBOLES);
+		//	{ExprTerm} "nil" | termVar=VARIABLE | termSym=SYMBOLES;
 		public ParserRule getRule() { return rule; }
 
-		//ExprTerm=("nil" | VARIABLE | SYMBOLES)
-		public Assignment getExprTermAssignment() { return cExprTermAssignment; }
+		//{ExprTerm} "nil" | termVar=VARIABLE | termSym=SYMBOLES
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"nil" | VARIABLE | SYMBOLES
-		public Alternatives getExprTermAlternatives_0() { return cExprTermAlternatives_0; }
+		//{ExprTerm} "nil"
+		public Group getGroup_0() { return cGroup_0; }
+
+		//{ExprTerm}
+		public Action getExprTermAction_0_0() { return cExprTermAction_0_0; }
 
 		//"nil"
-		public Keyword getExprTermNilKeyword_0_0() { return cExprTermNilKeyword_0_0; }
+		public Keyword getNilKeyword_0_1() { return cNilKeyword_0_1; }
+
+		//termVar=VARIABLE
+		public Assignment getTermVarAssignment_1() { return cTermVarAssignment_1; }
 
 		//VARIABLE
-		public RuleCall getExprTermVARIABLETerminalRuleCall_0_1() { return cExprTermVARIABLETerminalRuleCall_0_1; }
+		public RuleCall getTermVarVARIABLETerminalRuleCall_1_0() { return cTermVarVARIABLETerminalRuleCall_1_0; }
+
+		//termSym=SYMBOLES
+		public Assignment getTermSymAssignment_2() { return cTermSymAssignment_2; }
 
 		//SYMBOLES
-		public RuleCall getExprTermSYMBOLESTerminalRuleCall_0_2() { return cExprTermSYMBOLESTerminalRuleCall_0_2; }
+		public RuleCall getTermSymSYMBOLESTerminalRuleCall_2_0() { return cTermSymSYMBOLESTerminalRuleCall_2_0; }
 	}
 
 	public class ExprSimpleElements extends AbstractParserRuleElementFinder {
@@ -1247,7 +1259,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ExprTerm:
-	//	ExprTerm=("nil" | VARIABLE | SYMBOLES);
+	//	{ExprTerm} "nil" | termVar=VARIABLE | termSym=SYMBOLES;
 	public ExprTermElements getExprTermAccess() {
 		return (pExprTerm != null) ? pExprTerm : (pExprTerm = new ExprTermElements());
 	}

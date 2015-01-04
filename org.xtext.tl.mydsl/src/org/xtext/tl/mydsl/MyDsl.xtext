@@ -54,8 +54,10 @@ Eq:
 	'('(exp= (ExprTerm|ExprSimple))')'
 ;
 
-ExprTerm:
-	ExprTerm=('nil' | VARIABLE | SYMBOLES)
+ExprTerm: {ExprTerm}
+	'nil' |
+	termVar=VARIABLE |
+	termSym=SYMBOLES
 ;
 
 ExprSimple:

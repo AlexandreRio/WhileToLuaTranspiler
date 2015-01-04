@@ -648,13 +648,22 @@ public interface MyDslPackage extends EPackage
   int EXPR_TERM = 14;
 
   /**
-   * The feature id for the '<em><b>Expr Term</b></em>' attribute.
+   * The feature id for the '<em><b>Term Var</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPR_TERM__EXPR_TERM = 0;
+  int EXPR_TERM__TERM_VAR = 0;
+
+  /**
+   * The feature id for the '<em><b>Term Sym</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPR_TERM__TERM_SYM = 1;
 
   /**
    * The number of structural features of the '<em>Expr Term</em>' class.
@@ -663,7 +672,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPR_TERM_FEATURE_COUNT = 1;
+  int EXPR_TERM_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.
@@ -1276,15 +1285,26 @@ public interface MyDslPackage extends EPackage
   EClass getExprTerm();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getExprTerm <em>Expr Term</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getTermVar <em>Term Var</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Expr Term</em>'.
-   * @see org.xtext.tl.mydsl.myDsl.ExprTerm#getExprTerm()
+   * @return the meta object for the attribute '<em>Term Var</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprTerm#getTermVar()
    * @see #getExprTerm()
    * @generated
    */
-  EAttribute getExprTerm_ExprTerm();
+  EAttribute getExprTerm_TermVar();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getTermSym <em>Term Sym</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Term Sym</em>'.
+   * @see org.xtext.tl.mydsl.myDsl.ExprTerm#getTermSym()
+   * @see #getExprTerm()
+   * @generated
+   */
+  EAttribute getExprTerm_TermSym();
 
   /**
    * Returns the meta object for class '{@link org.xtext.tl.mydsl.myDsl.ExprSimple <em>Expr Simple</em>}'.
@@ -1804,12 +1824,20 @@ public interface MyDslPackage extends EPackage
     EClass EXPR_TERM = eINSTANCE.getExprTerm();
 
     /**
-     * The meta object literal for the '<em><b>Expr Term</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Term Var</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EXPR_TERM__EXPR_TERM = eINSTANCE.getExprTerm_ExprTerm();
+    EAttribute EXPR_TERM__TERM_VAR = eINSTANCE.getExprTerm_TermVar();
+
+    /**
+     * The meta object literal for the '<em><b>Term Sym</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXPR_TERM__TERM_SYM = eINSTANCE.getExprTerm_TermSym();
 
     /**
      * The meta object literal for the '{@link org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl <em>Expr Simple</em>}' class.

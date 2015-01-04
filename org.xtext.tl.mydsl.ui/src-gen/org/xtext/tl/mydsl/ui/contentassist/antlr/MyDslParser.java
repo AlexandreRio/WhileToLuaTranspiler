@@ -43,7 +43,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEqAccess().getExprEq1Alternatives_0_0_0(), "rule__Eq__ExprEq1Alternatives_0_0_0");
 					put(grammarAccess.getEqAccess().getExprEq2Alternatives_0_4_0(), "rule__Eq__ExprEq2Alternatives_0_4_0");
 					put(grammarAccess.getEqAccess().getExpAlternatives_1_1_0(), "rule__Eq__ExpAlternatives_1_1_0");
-					put(grammarAccess.getExprTermAccess().getExprTermAlternatives_0(), "rule__ExprTerm__ExprTermAlternatives_0");
+					put(grammarAccess.getExprTermAccess().getAlternatives(), "rule__ExprTerm__Alternatives");
 					put(grammarAccess.getExprSimpleAccess().getAlternatives_1(), "rule__ExprSimple__Alternatives_1");
 					put(grammarAccess.getExprSimpleAccess().getMotAlternatives_1_0_0_0(), "rule__ExprSimple__MotAlternatives_1_0_0_0");
 					put(grammarAccess.getExprSimpleAccess().getMotAlternatives_1_1_0_0(), "rule__ExprSimple__MotAlternatives_1_1_0_0");
@@ -75,6 +75,7 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNotAccess().getGroup_0(), "rule__Not__Group_0__0");
 					put(grammarAccess.getEqAccess().getGroup_0(), "rule__Eq__Group_0__0");
 					put(grammarAccess.getEqAccess().getGroup_1(), "rule__Eq__Group_1__0");
+					put(grammarAccess.getExprTermAccess().getGroup_0(), "rule__ExprTerm__Group_0__0");
 					put(grammarAccess.getExprSimpleAccess().getGroup(), "rule__ExprSimple__Group__0");
 					put(grammarAccess.getExprSimpleAccess().getGroup_1_0(), "rule__ExprSimple__Group_1_0__0");
 					put(grammarAccess.getExprSimpleAccess().getGroup_1_1(), "rule__ExprSimple__Group_1_1__0");
@@ -123,7 +124,8 @@ public class MyDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEqAccess().getExprEq1Assignment_0_0(), "rule__Eq__ExprEq1Assignment_0_0");
 					put(grammarAccess.getEqAccess().getExprEq2Assignment_0_4(), "rule__Eq__ExprEq2Assignment_0_4");
 					put(grammarAccess.getEqAccess().getExpAssignment_1_1(), "rule__Eq__ExpAssignment_1_1");
-					put(grammarAccess.getExprTermAccess().getExprTermAssignment(), "rule__ExprTerm__ExprTermAssignment");
+					put(grammarAccess.getExprTermAccess().getTermVarAssignment_1(), "rule__ExprTerm__TermVarAssignment_1");
+					put(grammarAccess.getExprTermAccess().getTermSymAssignment_2(), "rule__ExprTerm__TermSymAssignment_2");
 					put(grammarAccess.getExprSimpleAccess().getMotAssignment_1_0_0(), "rule__ExprSimple__MotAssignment_1_0_0");
 					put(grammarAccess.getExprSimpleAccess().getLexprAssignment_1_0_1(), "rule__ExprSimple__LexprAssignment_1_0_1");
 					put(grammarAccess.getExprSimpleAccess().getMotAssignment_1_1_0(), "rule__ExprSimple__MotAssignment_1_1_0");

@@ -724,9 +724,19 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getExprTerm_ExprTerm()
+  public EAttribute getExprTerm_TermVar()
   {
     return (EAttribute)exprTermEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getExprTerm_TermSym()
+  {
+    return (EAttribute)exprTermEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -883,7 +893,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     createEReference(eqEClass, EQ__EXP);
 
     exprTermEClass = createEClass(EXPR_TERM);
-    createEAttribute(exprTermEClass, EXPR_TERM__EXPR_TERM);
+    createEAttribute(exprTermEClass, EXPR_TERM__TERM_VAR);
+    createEAttribute(exprTermEClass, EXPR_TERM__TERM_SYM);
 
     exprSimpleEClass = createEClass(EXPR_SIMPLE);
     createEAttribute(exprSimpleEClass, EXPR_SIMPLE__MOT);
@@ -989,7 +1000,8 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     initEReference(getEq_Exp(), ecorePackage.getEObject(), null, "exp", null, 0, 1, Eq.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprTermEClass, ExprTerm.class, "ExprTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getExprTerm_ExprTerm(), ecorePackage.getEString(), "ExprTerm", null, 0, 1, ExprTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprTerm_TermVar(), ecorePackage.getEString(), "termVar", null, 0, 1, ExprTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExprTerm_TermSym(), ecorePackage.getEString(), "termSym", null, 0, 1, ExprTerm.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprSimpleEClass, ExprSimple.class, "ExprSimple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getExprSimple_Mot(), ecorePackage.getEString(), "mot", null, 0, 1, ExprSimple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -12,7 +12,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getExprTerm <em>Expr Term</em>}</li>
+ *   <li>{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getTermVar <em>Term Var</em>}</li>
+ *   <li>{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getTermSym <em>Term Sym</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,29 +24,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface ExprTerm extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Expr Term</b></em>' attribute.
+   * Returns the value of the '<em><b>Term Var</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Expr Term</em>' attribute isn't clear,
+   * If the meaning of the '<em>Term Var</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Expr Term</em>' attribute.
-   * @see #setExprTerm(String)
-   * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getExprTerm_ExprTerm()
+   * @return the value of the '<em>Term Var</em>' attribute.
+   * @see #setTermVar(String)
+   * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getExprTerm_TermVar()
    * @model
    * @generated
    */
-  String getExprTerm();
+  String getTermVar();
 
   /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getExprTerm <em>Expr Term</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getTermVar <em>Term Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Expr Term</em>' attribute.
-   * @see #getExprTerm()
+   * @param value the new value of the '<em>Term Var</em>' attribute.
+   * @see #getTermVar()
    * @generated
    */
-  void setExprTerm(String value);
+  void setTermVar(String value);
+
+  /**
+   * Returns the value of the '<em><b>Term Sym</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Term Sym</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Term Sym</em>' attribute.
+   * @see #setTermSym(String)
+   * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getExprTerm_TermSym()
+   * @model
+   * @generated
+   */
+  String getTermSym();
+
+  /**
+   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.ExprTerm#getTermSym <em>Term Sym</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Term Sym</em>' attribute.
+   * @see #getTermSym()
+   * @generated
+   */
+  void setTermSym(String value);
 
 } // ExprTerm

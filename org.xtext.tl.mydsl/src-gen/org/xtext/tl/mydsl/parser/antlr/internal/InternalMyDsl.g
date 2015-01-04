@@ -1495,24 +1495,25 @@ ruleExprTerm returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
-(
-(
-		lv_ExprTerm_0_1=	'nil' 
+(((
+	{ 
+	  /* */ 
+	}
     {
-        newLeafNode(lv_ExprTerm_0_1, grammarAccess.getExprTermAccess().getExprTermNilKeyword_0_0());
+        $current = forceCreateModelElement(
+            grammarAccess.getExprTermAccess().getExprTermAction_0_0(),
+            $current);
     }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getExprTermRule());
-	        }
-       		setWithLastConsumed($current, "ExprTerm", lv_ExprTerm_0_1, null);
-	    }
-
-    |		lv_ExprTerm_0_2=RULE_VARIABLE
+)	otherlv_1='nil' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getExprTermAccess().getNilKeyword_0_1());
+    }
+)
+    |(
+(
+		lv_termVar_2_0=RULE_VARIABLE
 		{
-			newLeafNode(lv_ExprTerm_0_2, grammarAccess.getExprTermAccess().getExprTermVARIABLETerminalRuleCall_0_1()); 
+			newLeafNode(lv_termVar_2_0, grammarAccess.getExprTermAccess().getTermVarVARIABLETerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1520,14 +1521,18 @@ ruleExprTerm returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"ExprTerm",
-        		lv_ExprTerm_0_2, 
+       			"termVar",
+        		lv_termVar_2_0, 
         		"VARIABLE");
 	    }
 
-    |		lv_ExprTerm_0_3=RULE_SYMBOLES
+)
+)
+    |(
+(
+		lv_termSym_3_0=RULE_SYMBOLES
 		{
-			newLeafNode(lv_ExprTerm_0_3, grammarAccess.getExprTermAccess().getExprTermSYMBOLESTerminalRuleCall_0_2()); 
+			newLeafNode(lv_termSym_3_0, grammarAccess.getExprTermAccess().getTermSymSYMBOLESTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1535,15 +1540,13 @@ ruleExprTerm returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"ExprTerm",
-        		lv_ExprTerm_0_3, 
+       			"termSym",
+        		lv_termSym_3_0, 
         		"SYMBOLES");
 	    }
 
 )
-
-)
-)
+))
 ;
 
 

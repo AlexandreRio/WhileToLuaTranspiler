@@ -71,7 +71,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Eq/exp"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ExprTerm">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ExprTerm/ExprTerm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ExprTerm/termVar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ExprTerm/termSym"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//ExprSimple">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//ExprSimple/mot"/>
