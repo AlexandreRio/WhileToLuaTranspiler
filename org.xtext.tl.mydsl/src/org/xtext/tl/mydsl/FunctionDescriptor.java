@@ -20,6 +20,15 @@ public class FunctionDescriptor {
     this.tableSymboles = localVars;
   }
 
+  /**
+   * TODO better, unique name
+   */
+  public String generateTempVar() {
+    String tempVarName = "tmp" + this.tableSymboles.size();
+    this.addVar(tempVarName);
+    return tempVarName;
+  }
+
   public void addVar(String var) {
     this.tableSymboles.addVariable(var);
   }

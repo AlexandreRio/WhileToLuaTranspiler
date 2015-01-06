@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.xtext.tl.mydsl.myDsl.Input;
+import org.xtext.tl.mydsl.myDsl.Lexpr;
+import org.xtext.tl.mydsl.myDsl.Expr;
 import org.xtext.tl.mydsl.myDsl.Output;
 import org.xtext.tl.mydsl.myDsl.impl.CommandImpl;
 import org.xtext.tl.mydsl.myDsl.impl.CommandsImpl;
@@ -16,6 +18,7 @@ import org.xtext.tl.mydsl.myDsl.impl.DefinitonImpl;
 import org.xtext.tl.mydsl.myDsl.impl.FunctionImpl;
 import org.xtext.tl.mydsl.myDsl.impl.VarsImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprImpl;
+import org.xtext.tl.mydsl.myDsl.impl.LexprImpl;
 import org.xtext.tl.mydsl.myDsl.impl.NotImpl;
 import org.xtext.tl.mydsl.myDsl.impl.OrImpl;
 import org.xtext.tl.mydsl.myDsl.impl.EqImpl;
@@ -47,7 +50,7 @@ public class FrontEnd {
    */
   private static HashMap<String, String> varNameTranslation = new HashMap<String, String>();
 
-  public static void main (String[] args) throws Exception {
+  public static void main(String[] args) throws Exception {
     PTree p = new PTree();
     FileReader reader = new FileReader(new File(args[0]));
     EObject root = p.parse(reader);
@@ -55,8 +58,9 @@ public class FrontEnd {
 
     // print the content
     for (String key : funDescMap.keySet()) {
-      System.out.println(key + "\n\tparamètres: " + funDescMap.get(key).getNbIn() +
-          "\n\tsorties: " + funDescMap.get(key).getNbOut());
+      System.out.println(key + "\n\tparamètres: "
+          + funDescMap.get(key).getNbIn() + "\n\tsorties: "
+          + funDescMap.get(key).getNbOut());
       System.out.print("\tsymboles :");
       for (String v : funDescMap.get(key).keySet())
         System.out.print(v + " ");
@@ -76,11 +80,10 @@ public class FrontEnd {
    */
   private static void parcours(EObject obj) throws Exception {
     if (obj instanceof ModelImpl) {
-      for(EObject func : ((ModelImpl)obj).getModel())
+      for (EObject func : ((ModelImpl) obj).getModel())
         parcours(func);
-    }
-    else if (obj instanceof FunctionImpl) {
-      String funInSourceName = ((FunctionImpl)obj).getFunName();
+    } else if (obj instanceof FunctionImpl) {
+      String funInSourceName = ((FunctionImpl) obj).getFunName();
       String funInTargetName = "f" + funNameTranslation.size();
 
       funNameTranslation.put(funInSourceName, funInTargetName);
@@ -107,17 +110,17 @@ public class FrontEnd {
     if (obj instanceof FunctionImpl) {
       funDescMap.put(funName, new FunctionDescriptor(0, 0));
 
-      parcours(((FunctionImpl)obj).getDef(), funName);
+      parcours(((FunctionImpl) obj).getDef(), funName);
     } else if (obj instanceof DefinitonImpl) {
       int in = 0;
-      Input inImp = ((DefinitonImpl)obj).getInputVars();
+      Input inImp = ((DefinitonImpl) obj).getInputVars();
       if (inImp.getV() != null)
         in++;
       if (inImp.getV2() != null)
         in += inImp.getV2().size();
 
       int out = 0;
-      Output outImpl = ((DefinitonImpl)obj).getOutputVars();
+      Output outImpl = ((DefinitonImpl) obj).getOutputVars();
       if (outImpl.getV() != null)
         out++;
       if (outImpl.getV2() != null)
@@ -126,10 +129,10 @@ public class FrontEnd {
       funDescMap.get(funName).setNbIn(in);
       funDescMap.get(funName).setNbOut(out);
 
-      parcours(((DefinitonImpl)obj).getCommandList(), funName);
+      parcours(((DefinitonImpl) obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {
       String label = labelTable.generateLabel();
-      for (EObject f : ((CommandsImpl)obj).getC())
+      for (EObject f : ((CommandsImpl) obj).getC())
         parcours(f, funName, label);
     } else {
       throw new Exception("Unrecognised EObject node: " + obj);
@@ -145,14 +148,14 @@ public class FrontEnd {
    * @param labelName Name of the current label
    * @see Label
    */
-  private static void parcours(EObject obj, String funName, String labelName) throws Exception {
+  private static void parcours(EObject obj, String funName, String labelName)
+    throws Exception {
 
     // for nested commands
     if (obj instanceof CommandsImpl) {
-      for (EObject f : ((CommandsImpl)obj).getC())
+      for (EObject f : ((CommandsImpl) obj).getC())
         parcours(f, funName, labelName);
-    }
-    else if (obj instanceof CommandImpl) {
+    } else if (obj instanceof CommandImpl) {
       CommandImpl ob = (CommandImpl) obj;
       String name = ob.getNom();
 
@@ -163,46 +166,50 @@ public class FrontEnd {
         //create a list of value, right part
         //traiterExpr(ob.getExpL())
         //create a list of variable, left part
-        List<String> vars = getVars(ob.getVarL(), new ArrayList<String>(), funName);
+        List<String> vars = getVars(ob.getVarL(),
+            new ArrayList<String>(), funName);
         for (String var : vars) {
-          TAC movTAC = new TAC(new CodeOp(CodeOp.OP_MOV, null), var, "place", null);
+          TAC movTAC = new TAC(new CodeOp(CodeOp.OP_MOV, null), var,
+              "place", null);
         }
         traiterExpr(ob.getExpL(), funName, new ExprRes());
       } // nop
       else if (name == null) {
-        TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null, null, null);
+        TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null,
+            null, null);
         labelTable.add(labelName, nopTAC);
-      }
-      else if (name.equals("while")) {
+      } else if (name.equals("while")) {
         String whileLabel = labelTable.generateLabel();
 
-        TAC whileTAC = new TAC(new CodeOp(CodeOp.OP_WHILE, whileLabel), null, "place", null);
+        TAC whileTAC = new TAC(new CodeOp(CodeOp.OP_WHILE, whileLabel),
+            null, "place", null);
         labelTable.add(labelName, whileTAC);
 
         parcours(ob.getExp(), funName, whileLabel);
-        parcours(ob.getC1() , funName, whileLabel);
-      }
-      else if (name.equals("for")) {
+        parcours(ob.getC1(), funName, whileLabel);
+      } else if (name.equals("for")) {
         //TODO: TAC
 
-        parcours(ob.getExp() , funName);
-        parcours(ob.getC1()  , funName);
-      }
-      else if (name.equals("foreach")) {
+        parcours(ob.getExp(), funName);
+        parcours(ob.getC1(), funName);
+      } else if (name.equals("foreach")) {
         //TODO: TAC
 
         parcours(ob.getExp1(), funName);
         parcours(ob.getExp2(), funName);
-        parcours(ob.getC1()  , funName);
-      }
-      else if (name.equals("if")) {
+        parcours(ob.getC1(), funName);
+      } else if (name.equals("if")) {
         if (ob.getC2() != null) {
-          ExprRes res = traiterExpr(ob.getExp(), funName, new ExprRes());
-          String ifLabel   = labelTable.generateLabel();
+          ExprRes res = traiterExpr(ob.getExp(), funName,
+              new ExprRes());
+          String ifLabel = labelTable.generateLabel();
           String elseLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, res.getRes(), null);
-          TAC gotoTAC = new TAC(new CodeOp(CodeOp.OP_GOTO, elseLabel), null, null, null);
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel),
+              null, res.getRes(), null);
+          TAC gotoTAC = new TAC(
+              new CodeOp(CodeOp.OP_GOTO, elseLabel), null, null,
+              null);
           labelTable.add(labelName, res.getTAC());
           labelTable.add(labelName, ifTAC);
           labelTable.add(labelName, gotoTAC);
@@ -211,12 +218,18 @@ public class FrontEnd {
           parcours(ob.getC2(), funName, elseLabel);
         } // if with no else statement
         else {
+          ExprRes ifExprRes = new ExprRes();
+          ifExprRes.setRes(funDescMap.get(funName).generateTempVar());
+
+          ExprRes res = traiterExpr(ob.getExp(), funName, ifExprRes);
           String ifLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, "place", null);
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel),
+              null, res.getRes(), null);
+          labelTable.add(labelName, res.getTAC());
           labelTable.add(labelName, ifTAC);
 
-          parcours(ob.getC1()  , funName, ifLabel);
+          parcours(ob.getC1(), funName, ifLabel);
         }
       }
 
@@ -232,24 +245,26 @@ public class FrontEnd {
    * @param funName name of the current function we are in
    * @return List of the variables referenced by this VarsImpl node
    */
-  public static List<String> getVars(EObject obj, List<String> list, String funName) {
+  public static List<String> getVars(EObject obj, List<String> list,
+      String funName) {
     if (list == null)
       return null;
 
     if (obj instanceof VarsImpl) {
-      String varInSourceName = ((VarsImpl)obj).getV1();
+      String varInSourceName = ((VarsImpl) obj).getV1();
       String varInTargetName = "v" + varNameTranslation.size();
 
       varNameTranslation.put(varInSourceName, varInTargetName);
 
       funDescMap.get(funName).addVar(varInTargetName);
-      list.add(((VarsImpl)obj).getV1());
-      return getVars(((VarsImpl)obj).getV2(), list, funName);
+      list.add(((VarsImpl) obj).getV1());
+      return getVars(((VarsImpl) obj).getV2(), list, funName);
     } else
       return list;
   }
 
-  public static ExprRes traiterExpr(EObject obj, String funName, ExprRes curRes) throws Exception {
+  public static ExprRes traiterExpr(EObject obj, String funName,
+      ExprRes curRes) throws Exception {
     if (obj instanceof ExprImpl) {
       ExprImpl ob = (ExprImpl) obj;
 
@@ -264,9 +279,9 @@ public class FrontEnd {
       }
 
     } else if (obj instanceof AndImpl) {
-      parcours(((AndImpl)obj).getExpOu(), funName);
+      parcours(((AndImpl) obj).getExpOu(), funName);
 
-      for (EObject ou : ((AndImpl)obj).getExpOu2())
+      for (EObject ou : ((AndImpl) obj).getExpOu2())
         parcours(ou, funName);
       return null;
     } else if (obj instanceof OrImpl) {
@@ -284,10 +299,36 @@ public class FrontEnd {
       //parcours(((EqImpl)obj).getExprEq2(), funName);
       //parcours(((EqImpl)obj).getExp()    , funName);
     } else if (obj instanceof ExprSimpleImpl) {
-      parcours(((ExprSimpleImpl)obj).getExpr(), funName);
+      ExprSimpleImpl ob = (ExprSimpleImpl) obj;
 
-      parcours(((ExprSimpleImpl)obj).getLexpr(), funName);
-      return null;
+      // head or tail
+      if (ob.getExpr() != null) {
+        if (ob.getMot().equals("hd")) {
+
+        } else if (ob.getMot().equals("tl")) {
+
+        }
+      } // cons or list
+      else if (ob.getLexpr() != null) {
+        if (ob.getMot().equals("cons")) {
+          List<ExprRes> listExprRes = new ArrayList<ExprRes>();
+          Lexpr le = ob.getLexpr();
+          for (Expr exp : ob.getLexpr().getExp())
+            listExprRes.add(traiterExpr(exp, funName, new ExprRes()));
+
+          // maybe go backward…
+          //TODO: evaluate by group of 2 if possible
+          for (ExprRes expRes : listExprRes) {
+            curRes.addTAC(expRes.getTAC());
+            curRes.addTAC(new TAC(new CodeOp(CodeOp.OP_CONS, null), curRes.getRes(), expRes.getRes(), null));
+          }
+
+        } else if (ob.getMot().equals("list")) {
+
+        }
+
+        return curRes;
+      }
     } else if (obj instanceof ExprTermImpl) {
       ExprTermImpl ob = (ExprTermImpl)obj;
       // Symboles

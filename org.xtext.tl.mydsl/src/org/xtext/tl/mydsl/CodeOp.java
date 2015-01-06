@@ -10,6 +10,10 @@ public class CodeOp {
   public static int OP_GOTO   = 0x002;
   public static int OP_WHILE  = 0x003;
   public static int OP_MOV    = 0x004;
+  public static int OP_CONS   = 0x005;
+  public static int OP_LIST   = 0x006;
+  public static int OP_HD     = 0x007;
+  public static int OP_TL     = 0x008;
 
 
   /** Code Op identifier, see the constant above */

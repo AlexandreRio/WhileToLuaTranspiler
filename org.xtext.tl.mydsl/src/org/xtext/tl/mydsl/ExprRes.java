@@ -12,6 +12,11 @@ public class ExprRes {
     this.code = new ArrayList<TAC>();
   }
 
+  public void addTAC(List<TAC> tacList) {
+    for (TAC tac : tacList)
+      this.code.add(tac);
+  }
+
   public void addTAC(TAC tac) {
     this.code.add(tac);
   }
