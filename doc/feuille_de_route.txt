@@ -70,3 +70,5 @@ RefbinTree
 Cons (hd, tl)
 Symbol (a)
 Nil()
+
+Pas de boucle infinie, modifier X (incrémenter) dans un for sur X terminera
