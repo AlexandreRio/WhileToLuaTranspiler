@@ -161,13 +161,13 @@ public class FrontEnd {
         //TODO: TAC for affectation
 
         //create a list of value, right part
-
+        //traiterExpr(ob.getExpL())
         //create a list of variable, left part
         List<String> vars = getVars(ob.getVarL(), new ArrayList<String>(), funName);
         for (String var : vars) {
           TAC movTAC = new TAC(new CodeOp(CodeOp.OP_MOV, null), var, "place", null);
         }
-        traiterExpr(ob.getExpL(), funName);
+        traiterExpr(ob.getExpL(), funName, new ExprRes());
       } // nop
       else if (name == null) {
         TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null, null, null);
@@ -197,11 +197,13 @@ public class FrontEnd {
       }
       else if (name.equals("if")) {
         if (ob.getC2() != null) {
+          ExprRes res = traiterExpr(ob.getExp(), funName, new ExprRes());
           String ifLabel   = labelTable.generateLabel();
           String elseLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, "place", null);
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel), null, res.getRes(), null);
           TAC gotoTAC = new TAC(new CodeOp(CodeOp.OP_GOTO, elseLabel), null, null, null);
+          labelTable.add(labelName, res.getTAC());
           labelTable.add(labelName, ifTAC);
           labelTable.add(labelName, gotoTAC);
 
@@ -247,31 +249,45 @@ public class FrontEnd {
       return list;
   }
 
-  public static void traiterExpr(EObject obj, String funName) throws Exception {
+  public static ExprRes traiterExpr(EObject obj, String funName, ExprRes curRes) throws Exception {
     if (obj instanceof ExprImpl) {
-      parcours(((ExprImpl)obj).getExpEt(), funName);
-      parcours(((ExprImpl)obj).getExprSimple(), funName);
-      parcours(((ExprImpl)obj).getExpTerminale(), funName);
+      ExprImpl ob = (ExprImpl) obj;
+
+      if (ob.getExpEt() != null) {
+        return traiterExpr(ob.getExpEt(), funName, curRes);
+      } else if (ob.getExprSimple() != null) {
+        return traiterExpr(ob.getExprSimple(), funName, curRes);
+      } else if (ob.getExpTerminale() != null) {
+        return traiterExpr(ob.getExpTerminale(), funName, curRes);
+      } else {
+        throw new Exception("Unrecognised node " + obj);
+      }
+
     } else if (obj instanceof AndImpl) {
       parcours(((AndImpl)obj).getExpOu(), funName);
 
       for (EObject ou : ((AndImpl)obj).getExpOu2())
         parcours(ou, funName);
+      return null;
     } else if (obj instanceof OrImpl) {
-      parcours(((OrImpl)obj).getExpNon(), funName);
+      return null;
+      //parcours(((OrImpl)obj).getExpNon(), funName);
 
-      for (EObject no : ((OrImpl)obj).getExpNon2())
-        parcours(no, funName);
+      //for (EObject no : ((OrImpl)obj).getExpNon2())
+      //  parcours(no, funName);
     } else if (obj instanceof NotImpl) {
-      parcours(((NotImpl)obj).getExpEq(), funName);
+      return null;
+      //parcours(((NotImpl)obj).getExpEq(), funName);
     } else if (obj instanceof EqImpl) {
-      parcours(((EqImpl)obj).getExprEq1(), funName);
-      parcours(((EqImpl)obj).getExprEq2(), funName);
-      parcours(((EqImpl)obj).getExp()    , funName);
+      return null;
+      //parcours(((EqImpl)obj).getExprEq1(), funName);
+      //parcours(((EqImpl)obj).getExprEq2(), funName);
+      //parcours(((EqImpl)obj).getExp()    , funName);
     } else if (obj instanceof ExprSimpleImpl) {
       parcours(((ExprSimpleImpl)obj).getExpr(), funName);
 
       parcours(((ExprSimpleImpl)obj).getLexpr(), funName);
+      return null;
     } else if (obj instanceof ExprTermImpl) {
       ExprTermImpl ob = (ExprTermImpl)obj;
       // Symboles
@@ -280,9 +296,14 @@ public class FrontEnd {
       } // Variables
       else if (ob.getTermVar() != null) {
         funDescMap.get(funName).addVar(ob.getTermVar());
+        curRes.setRes(ob.getTermVar());
       } // nil
       else {
+        funDescMap.get(funName).addVar(ob.getTermVar());
+        curRes.setRes(ob.getTermVar());
       }
+      return curRes;
     }
+    return null;
   }
 }

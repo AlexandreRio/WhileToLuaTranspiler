@@ -1,5 +1,6 @@
 package org.xtext.tl.mydsl;
 
+import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -13,6 +14,11 @@ public class LabelTable {
 
   public void add(String labelName, TAC code) {
     this.table.get(labelName).add(code);
+  }
+
+  public void add(String labelName, List<TAC> code) {
+    for (TAC tac : code)
+      this.table.get(labelName).add(tac);
   }
 
   /**
