@@ -19,6 +19,7 @@ import org.xtext.tl.mydsl.myDsl.impl.FunctionImpl;
 import org.xtext.tl.mydsl.myDsl.impl.VarsImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprImpl;
 import org.xtext.tl.mydsl.myDsl.impl.OrImpl;
+import org.xtext.tl.mydsl.myDsl.impl.NotImpl;
 import org.xtext.tl.mydsl.myDsl.impl.EqImpl;
 import org.xtext.tl.mydsl.myDsl.impl.AndImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl;
