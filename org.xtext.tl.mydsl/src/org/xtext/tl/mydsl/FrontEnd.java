@@ -34,40 +34,32 @@ public class FrontEnd {
    * Link a function name to its descriptor
    * @see org.xtext.tl.mydsl.FunctionDescriptor
    */
-  private static HashMap<String, FunctionDescriptor> funDescMap = new HashMap<String, FunctionDescriptor>();
+  private HashMap<String, FunctionDescriptor> funDescMap;
 
-  private static LabelTable labelTable = new LabelTable();
+  private LabelTable labelTable;
 
   /**
    * Map the name of a function in the source code (key) the its name in the target code (value).
    * It avoid illegal character usage.
    * */
-  private static HashMap<String, String> funNameTranslation = new HashMap<String, String>();
+  private HashMap<String, String> funNameTranslation;
 
   /**
    * Same thing for variables
    */
-  private static HashMap<String, String> varNameTranslation = new HashMap<String, String>();
+  private HashMap<String, String> varNameTranslation;
 
-  public static void main(String[] args) throws Exception {
+  public FrontEnd(String filename) throws Exception {
+    this.funDescMap = new HashMap<String, FunctionDescriptor>();
+    this.labelTable = new LabelTable();
+
+    this.funNameTranslation = new HashMap<String, String>();
+    this.varNameTranslation = new HashMap<String, String>();
+
     PTree p = new PTree();
-    FileReader reader = new FileReader(new File(args[0]));
+    FileReader reader = new FileReader(new File(filename));
     EObject root = p.parse(reader);
-    parcours(root);
-
-    // print the content
-    for (String key : funDescMap.keySet()) {
-      System.out.println(key + "\n\tparamètres: "
-          + funDescMap.get(key).getNbIn() + "\n\tsorties: "
-          + funDescMap.get(key).getNbOut());
-      System.out.print("\tsymboles :");
-      for (String v : funDescMap.get(key).keySet())
-        System.out.print(v + " ");
-      System.out.println("");
-    }
-    System.out.println("Nombre de fonction: " + funDescMap.size());
-    System.out.println("Contenu de la table des labels:");
-    System.out.println(labelTable);
+    this.parcours(root);
   }
 
   /**
@@ -77,7 +69,7 @@ public class FrontEnd {
    * @see #parcours(EObject, String)
    * @param obj: Node of the AST
    */
-  private static void parcours(EObject obj) throws Exception {
+  private void parcours(EObject obj) throws Exception {
     if (obj instanceof ModelImpl) {
       for (EObject func : ((ModelImpl) obj).getModel())
         parcours(func);
@@ -85,7 +77,7 @@ public class FrontEnd {
       String funInSourceName = ((FunctionImpl) obj).getFunName();
       String funInTargetName = "f" + funNameTranslation.size();
 
-      funNameTranslation.put(funInSourceName, funInTargetName);
+      this.funNameTranslation.put(funInSourceName, funInTargetName);
 
       parcours(obj, funInTargetName);
     }
@@ -102,14 +94,14 @@ public class FrontEnd {
    * @param funName Name of the function in the target language
    * @see FunctionImpl
    */
-  private static void parcours(EObject obj, String funName) throws Exception {
+  private void parcours(EObject obj, String funName) throws Exception {
     if (obj == null || funName == null)
       return;
 
     if (obj instanceof FunctionImpl) {
-      funDescMap.put(funName, new FunctionDescriptor(0, 0));
+      this.funDescMap.put(funName, new FunctionDescriptor(0, 0));
 
-      parcours(((FunctionImpl) obj).getDef(), funName);
+      this.parcours(((FunctionImpl) obj).getDef(), funName);
     } else if (obj instanceof DefinitonImpl) {
       int in = 0;
       Input inImp = ((DefinitonImpl) obj).getInputVars();
@@ -125,14 +117,14 @@ public class FrontEnd {
       if (outImpl.getV2() != null)
         out += outImpl.getV2().size();
 
-      funDescMap.get(funName).setNbIn(in);
-      funDescMap.get(funName).setNbOut(out);
+      this.funDescMap.get(funName).setNbIn(in);
+      this.funDescMap.get(funName).setNbOut(out);
 
-      parcours(((DefinitonImpl) obj).getCommandList(), funName);
+      this.parcours(((DefinitonImpl) obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {
       String label = labelTable.generateLabel();
       for (EObject f : ((CommandsImpl) obj).getC())
-        parcours(f, funName, label);
+        this.parcours(f, funName, label);
     } else {
       throw new Exception("Unrecognised EObject node: " + obj);
     }
@@ -147,7 +139,7 @@ public class FrontEnd {
    * @param labelName Name of the current label
    * @see Label
    */
-  private static void parcours(EObject obj, String funName, String labelName)
+  private void parcours(EObject obj, String funName, String labelName)
     throws Exception {
 
     // for nested commands
@@ -244,7 +236,7 @@ public class FrontEnd {
    * @param funName name of the current function we are in
    * @return List of the variables referenced by this VarsImpl node
    */
-  public static List<String> getVars(EObject obj, List<String> list,
+  public List<String> getVars(EObject obj, List<String> list,
       String funName) {
     if (list == null)
       return null;
@@ -262,7 +254,7 @@ public class FrontEnd {
       return list;
   }
 
-  public static ExprRes traiterExpr(EObject obj, String funName,
+  public ExprRes traiterExpr(EObject obj, String funName,
       ExprRes curRes) throws Exception {
     if (obj instanceof ExprImpl) {
       ExprImpl ob = (ExprImpl) obj;
@@ -345,5 +337,23 @@ public class FrontEnd {
       return curRes;
     }
     return null;
+  }
+
+  public String toString() {
+    String ret = "";
+    for (String key : funDescMap.keySet()) {
+      ret += key + "\n\tparamètres: "
+          + funDescMap.get(key).getNbIn() + "\n\tsorties: "
+          + funDescMap.get(key).getNbOut() + "\n";
+      ret += "\tsymboles :";
+      for (String v : funDescMap.get(key).keySet())
+        ret += v + " ";
+      ret += "\n";
+    }
+    ret += "Nombre de fonction: " + funDescMap.size() + "\n";
+    ret += "Contenu de la table des labels:\n";
+    ret += labelTable;
+
+    return ret; 
   }
 }
