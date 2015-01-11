@@ -1,4 +1,3 @@
 Here are some things that should be done:
-+ 2 CodeOp for if and ifelse, with 2 label in CodeOp
 + come with a representation for logical expression
 + prettify the pretty printer for the final release…

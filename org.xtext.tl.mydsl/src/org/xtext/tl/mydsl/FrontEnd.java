@@ -194,19 +194,17 @@ public class FrontEnd {
         parcours(ob.getC1(), funName);
       } else if (name.equals("if")) {
         if (ob.getC2() != null) {
-          ExprRes res = traiterExpr(ob.getExp(), funName,
-              new ExprRes());
+          ExprRes ifExpRes = new ExprRes();
+          ifExpRes.setRes(funDescMap.get(funName).generateTempVar());
+
+          ExprRes res = traiterExpr(ob.getExp(), funName, ifExpRes);
           String ifLabel = labelTable.generateLabel();
           String elseLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel),
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFELSE, ifLabel, elseLabel),
               null, res.getRes(), null);
-          TAC gotoTAC = new TAC(
-              new CodeOp(CodeOp.OP_GOTO, elseLabel), null, null,
-              null);
           labelTable.add(labelName, res.getTAC());
           labelTable.add(labelName, ifTAC);
-          labelTable.add(labelName, gotoTAC);
 
           parcours(ob.getC1(), funName, ifLabel);
           parcours(ob.getC2(), funName, elseLabel);
@@ -218,7 +216,7 @@ public class FrontEnd {
           ExprRes res = traiterExpr(ob.getExp(), funName, ifExprRes);
           String ifLabel = labelTable.generateLabel();
 
-          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IFNNIL, ifLabel),
+          TAC ifTAC = new TAC(new CodeOp(CodeOp.OP_IF, ifLabel),
               null, res.getRes(), null);
           labelTable.add(labelName, res.getTAC());
           labelTable.add(labelName, ifTAC);

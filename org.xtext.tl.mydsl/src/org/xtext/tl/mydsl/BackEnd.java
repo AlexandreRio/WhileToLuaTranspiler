@@ -5,6 +5,7 @@ public class BackEnd {
   private FrontEnd fe;
 
   public BackEnd(FrontEnd front) {
+    System.out.println(front);
     this.fe = front;
   }
 
@@ -46,7 +47,7 @@ public class BackEnd {
         case CodeOp.OP_NOP:
           ret += "wh.nop()\n";
           break;
-        case CodeOp.OP_IFNNIL:
+        case CodeOp.OP_IF:
           break;
       }
     }
