@@ -6,6 +6,7 @@ public class FunctionDescriptor {
 
   private int nbIn;
   private int nbOut;
+  private String labelName;
 
   private VariableDescriptor tableSymboles;
 
@@ -50,6 +51,20 @@ public class FunctionDescriptor {
 
   public void setNbOut(int nb) {
     this.nbOut = nb;
+  }
+
+  /**
+   * @return the labelName
+   */
+  public String getLabelName() {
+    return labelName;
+  }
+
+  /**
+   * @param labelName the labelName to set
+   */
+  public void setLabelName(String labelName) {
+    this.labelName = labelName;
   }
 
   /**

@@ -3,6 +3,7 @@ package org.xtext.tl.mydsl;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class FrontEnd {
    * Link a function name to its descriptor
    * @see org.xtext.tl.mydsl.FunctionDescriptor
    */
-  private HashMap<String, FunctionDescriptor> funDescMap;
+  private LinkedHashMap<String, FunctionDescriptor> funDescMap;
 
   private LabelTable labelTable;
 
@@ -50,7 +51,7 @@ public class FrontEnd {
   private HashMap<String, String> varNameTranslation;
 
   public FrontEnd(String filename) throws Exception {
-    this.funDescMap = new HashMap<String, FunctionDescriptor>();
+    this.funDescMap = new LinkedHashMap<String, FunctionDescriptor>();
     this.labelTable = new LabelTable();
 
     this.funNameTranslation = new HashMap<String, String>();
@@ -123,6 +124,8 @@ public class FrontEnd {
       this.parcours(((DefinitonImpl) obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {
       String label = labelTable.generateLabel();
+      if (funDescMap.get(funName).getLabelName() == null)
+        funDescMap.get(funName).setLabelName(label);
       for (EObject f : ((CommandsImpl) obj).getC())
         this.parcours(f, funName, label);
     } else {
@@ -304,7 +307,7 @@ public class FrontEnd {
         if (ob.getMot().equals("cons")) {
           List<ExprRes> listExprRes = new ArrayList<ExprRes>();
           Lexpr le = ob.getLexpr();
-          for (Expr exp : ob.getLexpr().getExp())
+          for (Expr exp : le.getExp())
             listExprRes.add(traiterExpr(exp, funName, new ExprRes()));
 
           // maybe go backward…
@@ -344,7 +347,8 @@ public class FrontEnd {
     for (String key : funDescMap.keySet()) {
       ret += key + "\n\tparamètres: "
           + funDescMap.get(key).getNbIn() + "\n\tsorties: "
-          + funDescMap.get(key).getNbOut() + "\n";
+          + funDescMap.get(key).getNbOut() + "\n\tlabel de début:"
+          + funDescMap.get(key).getLabelName() + "\n";
       ret += "\tsymboles :";
       for (String v : funDescMap.get(key).keySet())
         ret += v + " ";
@@ -355,5 +359,33 @@ public class FrontEnd {
     ret += labelTable;
 
     return ret; 
+  }
+
+  /**
+   * @return the funDescMap
+   */
+  public HashMap<String, FunctionDescriptor> getFunDescMap() {
+    return funDescMap;
+  }
+
+  /**
+   * @return the labelTable
+   */
+  public LabelTable getLabelTable() {
+    return labelTable;
+  }
+
+  /**
+   * @return the funNameTranslation
+   */
+  public HashMap<String, String> getFunNameTranslation() {
+    return funNameTranslation;
+  }
+
+  /**
+   * @return the varNameTranslation
+   */
+  public HashMap<String, String> getVarNameTranslation() {
+    return varNameTranslation;
   }
 }
