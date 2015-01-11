@@ -27,5 +27,33 @@ public class TAC {
       (a2 == null ? "_" : a2) + ", " +
       (a3 == null ? "_" : a3) + ">";
   }
+
+  /**
+   * @return the op
+   */
+  public CodeOp getOp() {
+    return op;
+  }
+
+  /**
+   * @return the a1
+   */
+  public String getA1() {
+    return a1;
+  }
+
+  /**
+   * @return the a2
+   */
+  public String getA2() {
+    return a2;
+  }
+
+  /**
+   * @return the a3
+   */
+  public String getA3() {
+    return a3;
+  }
 }
 

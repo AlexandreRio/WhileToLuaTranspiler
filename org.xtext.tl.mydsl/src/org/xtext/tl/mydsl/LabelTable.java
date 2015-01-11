@@ -21,6 +21,10 @@ public class LabelTable {
       this.table.get(labelName).add(tac);
   }
 
+  public Label get(String key) {
+    return this.table.get(key);
+  }
+
   /**
    * Create a new label name based on the size of the table, be careful
    * to not remove any element to keep the unicity of the name.
