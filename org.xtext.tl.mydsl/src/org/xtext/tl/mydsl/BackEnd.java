@@ -4,9 +4,12 @@ public class BackEnd {
 
   private FrontEnd fe;
 
+  private LabelTable lt;
+
   public BackEnd(FrontEnd front) {
     System.out.println(front);
     this.fe = front;
+    this.lt = this.fe.getLabelTable();
   }
 
   /**
@@ -24,7 +27,6 @@ public class BackEnd {
 
     String whMain = getMainWHFunction();
 
-    LabelTable lt = this.fe.getLabelTable();
 
     for (String fun : this.fe.getFunDescMap().keySet()) {
       FunctionDescriptor fd = this.fe.getFunDescMap().get(fun);
@@ -48,6 +50,19 @@ public class BackEnd {
           ret += "wh.nop()\n";
           break;
         case CodeOp.OP_IF:
+          ret += "if (wh.isNil(" + tac.getA2() + ")) then\n";
+          Label l = this.lt.get(tac.getOp().getLb1());
+          ret += "\t" + generate(l);
+          ret += "end\n";
+          break;
+        case CodeOp.OP_IFELSE:
+          ret += "if (wh.isNil(" + tac.getA2() + ")) then\n";
+          l = this.lt.get(tac.getOp().getLb1());
+          ret += "\t" + generate(l);
+          ret += "else\n";
+          l = this.lt.get(tac.getOp().getLb2());
+          ret += "\t" + generate(l);
+          ret += "end\n";
           break;
       }
     }
