@@ -7,7 +7,7 @@ public class BackEnd {
   private LabelTable lt;
 
   public BackEnd(FrontEnd front) {
-    System.out.println(front);
+    //System.out.println(front);
     this.fe = front;
     this.lt = this.fe.getLabelTable();
   }
@@ -23,21 +23,45 @@ public class BackEnd {
   }
 
   public void run() {
+    // Include the library
     String prog = "local wh = require \"libWH\"\n\n";
 
     String whMain = getMainWHFunction();
 
-
+    // Write all the functions
     for (String fun : this.fe.getFunDescMap().keySet()) {
       FunctionDescriptor fd = this.fe.getFunDescMap().get(fun);
 
+      //TODO write the parameters name from the table
       prog += "function " + fun + "()\n";
       Label lb = this.fe.getLabelTable().get(fd.getLabelName());
       prog += generate(lb);
       prog += "end\n\n";
     }
 
-    prog += whMain + "()";
+    // Write the main
+    int nbParam = this.fe.getFunDescMap().get(whMain).getNbIn();
+    prog += "local nbParam = " + nbParam + "\n";
+    prog += "local nbRead = #arg\n";
+    prog += "if nbRead > nbParam then\n";
+    prog += "local list = {}\n";
+    prog += "for i=nbParam, nbRead do\n";
+    prog += "  table.insert(list, arg[i])\n";
+    prog += "end\n";
+    prog += whMain + "(";
+    for (int i=1; i<nbParam; i++) {
+      prog += "arg[" + i + "], ";
+    }
+    prog += " list)\n";
+    prog += "else\n";
+    prog += "\t" + whMain + "(";
+    for (int i=1; i<=nbParam; i++) {
+      if (i == nbParam)
+        prog += "arg[" + i + "]";
+      else
+        prog += "arg[" + i + "], ";
+    }
+    prog += ")\nend\n";
 
     System.out.println(prog);
   }
