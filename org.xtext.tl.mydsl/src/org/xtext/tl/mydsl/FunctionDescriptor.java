@@ -1,11 +1,15 @@
 package org.xtext.tl.mydsl;
 
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 public class FunctionDescriptor {
 
   private int nbIn;
   private int nbOut;
+  private List<String> in;
+  private List<String> out;
   private String labelName;
 
   private VariableDescriptor tableSymboles;
@@ -13,6 +17,8 @@ public class FunctionDescriptor {
   public FunctionDescriptor(int nbParam, int nbReturn) {
     this.nbIn  = nbParam;
     this.nbOut = nbReturn;
+    this.in    = new ArrayList<String>();
+    this.out   = new ArrayList<String>();
     this.tableSymboles = new VariableDescriptor();
   }
 
@@ -38,6 +44,14 @@ public class FunctionDescriptor {
     return this.tableSymboles.keySet();
   }
 
+  public void addInput(String name) {
+    this.in.add(name);
+  }
+
+  public void addInput(List<String> nameList) {
+    this.in.addAll(nameList);
+  }
+
   public void setNbIn(int nb) {
     this.nbIn = nb;
   }
@@ -51,6 +65,13 @@ public class FunctionDescriptor {
 
   public void setNbOut(int nb) {
     this.nbOut = nb;
+  }
+
+  /**
+   * @return the in
+   */
+  public List<String> getIn() {
+    return in;
   }
 
   /**

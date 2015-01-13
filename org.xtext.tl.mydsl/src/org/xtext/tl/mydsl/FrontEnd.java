@@ -105,21 +105,27 @@ public class FrontEnd {
       this.parcours(((FunctionImpl) obj).getDef(), funName);
     } else if (obj instanceof DefinitonImpl) {
       int in = 0;
-      Input inImp = ((DefinitonImpl) obj).getInputVars();
-      if (inImp.getV() != null)
-        in++;
-      if (inImp.getV2() != null)
-        in += inImp.getV2().size();
-
       int out = 0;
+      Input inImp = ((DefinitonImpl) obj).getInputVars();
       Output outImpl = ((DefinitonImpl) obj).getOutputVars();
+      FunctionDescriptor desc = this.funDescMap.get(funName);
+
+      if (inImp.getV() != null) {
+       desc.addInput(inImp.getV());
+       in++;
+      }
+      if (inImp.getV2() != null) {
+        desc.addInput(inImp.getV2());
+        in += inImp.getV2().size();
+      }
+
       if (outImpl.getV() != null)
         out++;
       if (outImpl.getV2() != null)
         out += outImpl.getV2().size();
 
-      this.funDescMap.get(funName).setNbIn(in);
-      this.funDescMap.get(funName).setNbOut(out);
+      desc.setNbIn(in);
+      desc.setNbOut(out);
 
       this.parcours(((DefinitonImpl) obj).getCommandList(), funName);
     } else if (obj instanceof CommandsImpl) {

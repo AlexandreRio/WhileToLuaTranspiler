@@ -31,10 +31,15 @@ public class BackEnd {
     // Write all the functions
     for (String fun : this.fe.getFunDescMap().keySet()) {
       FunctionDescriptor fd = this.fe.getFunDescMap().get(fun);
-
-      //TODO write the parameters name from the table
-      prog += "function " + fun + "()\n";
       Label lb = this.fe.getLabelTable().get(fd.getLabelName());
+
+      prog += "function " + fun + "(";
+      String delim = "";
+      for (String param : fd.getIn()) {
+        prog += delim + param;
+        delim = ", ";
+      }
+      prog += ")\n";
       prog += generate(lb);
       prog += "end\n\n";
     }
