@@ -64,6 +64,9 @@ public class BackEnd {
           ret += "\t" + generate(l);
           ret += "end\n";
           break;
+        case CodeOp.OP_CONS:
+          ret += "local " + tac.getA1() + " = " + tac.getA2() + "\n";
+          break;
       }
     }
     return ret;

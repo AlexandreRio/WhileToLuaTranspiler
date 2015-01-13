@@ -356,7 +356,7 @@ public class FrontEnd {
     ret += "Contenu de la table des labels:\n";
     ret += labelTable;
 
-    return ret; 
+    return ret;
   }
 
   /**
