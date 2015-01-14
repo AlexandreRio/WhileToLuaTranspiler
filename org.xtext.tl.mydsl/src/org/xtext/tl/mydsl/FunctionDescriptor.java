@@ -52,6 +52,14 @@ public class FunctionDescriptor {
     this.in.addAll(nameList);
   }
 
+  public void addOuput(String name) {
+    this.out.add(name);
+  }
+
+  public void addOuput(List<String> nameList) {
+    this.out.addAll(nameList);
+  }
+
   public void setNbIn(int nb) {
     this.nbIn = nb;
   }
@@ -72,6 +80,13 @@ public class FunctionDescriptor {
    */
   public List<String> getIn() {
     return in;
+  }
+
+  /**
+   * @return the out
+   */
+  public List<String> getOut() {
+    return out;
   }
 
   /**

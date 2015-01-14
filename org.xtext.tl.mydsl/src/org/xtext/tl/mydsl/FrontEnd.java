@@ -119,10 +119,14 @@ public class FrontEnd {
         in += inImp.getV2().size();
       }
 
-      if (outImpl.getV() != null)
+      if (outImpl.getV() != null) {
+        desc.addOuput(outImpl.getV());
         out++;
-      if (outImpl.getV2() != null)
+      }
+      if (outImpl.getV2() != null) {
+        desc.addOuput(outImpl.getV2());
         out += outImpl.getV2().size();
+      }
 
       desc.setNbIn(in);
       desc.setNbOut(out);

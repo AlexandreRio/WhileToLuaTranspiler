@@ -40,8 +40,14 @@ public class BackEnd {
         delim = ", ";
       }
       prog += ")\n";
-      prog += generate(lb);
-      prog += "end\n\n";
+      prog += generate(lb); //function body
+      prog += "return ";
+      delim = "";
+      for (String ret : fd.getOut()) {
+        prog += delim + ret;
+        delim = ", ";
+      }
+      prog += "\nend\n\n";
     }
 
     // Write the main
