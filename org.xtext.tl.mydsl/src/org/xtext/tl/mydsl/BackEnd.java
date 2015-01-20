@@ -100,7 +100,9 @@ public class BackEnd {
           ret += "end\n";
           break;
         case CodeOp.OP_CONS:
-          ret += "local " + tac.getA1() + " = " + tac.getA2() + "\n";
+          //TODO mettre le contenu de la table et non pas le nom de la variable
+          ret += tac.getA1() + ".left = " + tac.getA2() + "\n";
+          ret += tac.getA1() + ".right = " + tac.getA3() + "\n";
           break;
       }
     }

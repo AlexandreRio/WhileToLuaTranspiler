@@ -326,7 +326,8 @@ public class FrontEnd {
           }
 
         } else if (ob.getMot().equals("list")) {
-
+        //TODO utiliser une linked list, parcourir à l'envers et produire du TAC de cons avec plein de variables
+        //temporaires
         }
 
         return curRes;
