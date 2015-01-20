@@ -2,6 +2,8 @@
  */
 package org.xtext.tl.mydsl.myDsl;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -50,29 +52,19 @@ public interface Exprs extends EObject
   void setExp(Expr value);
 
   /**
-   * Returns the value of the '<em><b>Exp L</b></em>' containment reference.
+   * Returns the value of the '<em><b>Exp L</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.tl.mydsl.myDsl.Expr}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Exp L</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Exp L</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Exp L</em>' containment reference.
-   * @see #setExpL(Exprs)
+   * @return the value of the '<em>Exp L</em>' containment reference list.
    * @see org.xtext.tl.mydsl.myDsl.MyDslPackage#getExprs_ExpL()
    * @model containment="true"
    * @generated
    */
-  Exprs getExpL();
-
-  /**
-   * Sets the value of the '{@link org.xtext.tl.mydsl.myDsl.Exprs#getExpL <em>Exp L</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Exp L</em>' containment reference.
-   * @see #getExpL()
-   * @generated
-   */
-  void setExpL(Exprs value);
+  EList<Expr> getExpL();
 
 } // Exprs

@@ -414,9 +414,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getVars_V2()
+  public EAttribute getVars_V2()
   {
-    return (EReference)varsEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)varsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -854,7 +854,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     varsEClass = createEClass(VARS);
     createEAttribute(varsEClass, VARS__V1);
-    createEReference(varsEClass, VARS__V2);
+    createEAttribute(varsEClass, VARS__V2);
 
     exprsEClass = createEClass(EXPRS);
     createEReference(exprsEClass, EXPRS__EXP);
@@ -961,11 +961,11 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     initEClass(varsEClass, Vars.class, "Vars", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVars_V1(), ecorePackage.getEString(), "v1", null, 0, 1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVars_V2(), this.getVars(), null, "v2", null, 0, 1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVars_V2(), ecorePackage.getEString(), "v2", null, 0, -1, Vars.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(exprsEClass, Exprs.class, "Exprs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExprs_Exp(), this.getExpr(), null, "exp", null, 0, 1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExprs_ExpL(), this.getExprs(), null, "expL", null, 0, 1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExprs_ExpL(), this.getExpr(), null, "expL", null, 0, -1, Exprs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCommand_VarL(), this.getVars(), null, "varL", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

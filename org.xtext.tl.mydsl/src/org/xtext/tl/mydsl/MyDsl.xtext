@@ -18,8 +18,8 @@ Definiton:
 Input: v=VARIABLE (',' LC? v2+=VARIABLE)*;
 Output: v=VARIABLE (',' LC? v2+=VARIABLE)*;
 Commands: c+=Command (';' LC? c+=Command)* ;
-Vars: v1=VARIABLE (',' v2=Vars)? ;
-Exprs: exp=Expr (',' expL=Exprs)? ;
+Vars: v1=VARIABLE (',' LC? v2+=VARIABLE)* ;
+Exprs: exp=Expr (',' LC? expL+=Expr)* ;
 
 Command: {Command}
 	'nop' |

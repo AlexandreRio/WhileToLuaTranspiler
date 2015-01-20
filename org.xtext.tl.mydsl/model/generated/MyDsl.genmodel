@@ -32,7 +32,7 @@
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Vars">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Vars/v1"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Vars/v2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MyDsl.ecore#//Vars/v2"/>
     </genClasses>
     <genClasses ecoreClass="MyDsl.ecore#//Exprs">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MyDsl.ecore#//Exprs/exp"/>
