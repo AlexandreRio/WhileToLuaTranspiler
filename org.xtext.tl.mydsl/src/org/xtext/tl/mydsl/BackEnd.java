@@ -33,6 +33,7 @@ public class BackEnd {
       FunctionDescriptor fd = this.fe.getFunDescMap().get(fun);
       Label lb = this.fe.getLabelTable().get(fd.getLabelName());
 
+      // function signature
       prog += "function " + fun + "(";
       String delim = "";
       for (String param : fd.getIn()) {
@@ -40,6 +41,11 @@ public class BackEnd {
         delim = ", ";
       }
       prog += ")\n";
+
+      //local variable declaration and initialization
+      for (String k : fd.keySet())
+        prog += "local " + k + " = wh.newLeaf()\n";
+
       prog += generate(lb); //function body
       prog += "return ";
       delim = "";
@@ -100,9 +106,13 @@ public class BackEnd {
           ret += "end\n";
           break;
         case CodeOp.OP_CONS:
+          if (tac.getA3() == null)
+            ret += "wh.setLeaf(" + tac.getA1() + ", " + tac.getA2() + ")\n";
+          else
+            ret += "wh.setLeaf(" + tac.getA1() + ", " + tac.getA2() + ", " + tac.getA3() + ")\n";
           //TODO mettre le contenu de la table et non pas le nom de la variable
-          ret += tac.getA1() + ".left = " + tac.getA2() + "\n";
-          ret += tac.getA1() + ".right = " + tac.getA3() + "\n";
+          //ret += tac.getA1() + ".left = " + tac.getA2() + "\n";
+          //ret += tac.getA1() + ".right = " + tac.getA3() + "\n";
           break;
       }
     }

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.xtext.tl.mydsl.myDsl.Exprs;
 import org.xtext.tl.mydsl.myDsl.Input;
 import org.xtext.tl.mydsl.myDsl.Lexpr;
 import org.xtext.tl.mydsl.myDsl.Expr;
@@ -165,18 +166,45 @@ public class FrontEnd {
 
       // vars := exps
       if (ob.getVarL() != null && ob.getExpL() != null) {
-        //TODO: TAC for affectation
 
         //create a list of value, right part
-        //traiterExpr(ob.getExpL())
-        //create a list of variable, left part
-        List<String> vars = getVars(ob.getVarL(),
-            new ArrayList<String>(), funName);
-        for (String var : vars) {
-          TAC movTAC = new TAC(new CodeOp(CodeOp.OP_MOV, null), var,
-              "place", null);
+        List<ExprRes> resList = new ArrayList<ExprRes>();
+
+        // individual element
+        ExprRes individualRes = new ExprRes();
+        individualRes.setRes(funDescMap.get(funName).generateTempVar());
+        ExprRes res = traiterExpr(ob.getExpL().getExp(), funName, individualRes);
+        resList.add(res);
+
+        // list elements
+        ExprRes tmpRes;
+        for (Expr exp : ob.getExpL().getExpL()) {
+          tmpRes = new ExprRes();
+          tmpRes.setRes(funDescMap.get(funName).generateTempVar());
+          resList.add(traiterExpr(exp, funName, tmpRes));
         }
-        traiterExpr(ob.getExpL(), funName, new ExprRes());
+
+        //create a list of variable, left part
+        List<String> vars = getVars(ob.getVarL(), funName);
+
+        if (vars.size() != resList.size())
+          System.err.println("Not enough variable, or too many!");
+
+        //append three address code
+        //theoritically this loop can be merged with the following one,
+        //just to separate the jobs
+        for (ExprRes result : resList)
+          labelTable.add(labelName, result.getTAC());
+
+        TAC movTAC;
+        String varName;
+        for (int i=0; i<vars.size(); i++) {
+          varName = vars.get(i);
+          tmpRes  = resList.get(i);
+
+          movTAC = new TAC(new CodeOp(CodeOp.OP_MOV, null), varName, tmpRes.getRes(), null);
+          labelTable.add(labelName, movTAC);
+        }
       } // nop
       else if (name == null) {
         TAC nopTAC = new TAC(new CodeOp(CodeOp.OP_NOP, null), null,
@@ -243,30 +271,34 @@ public class FrontEnd {
    * them to the symbol tables of the function
    *
    * @param obj VarsImpl instance node of the AST
-   * @param list list of the current variables visited, for first call should be empty
    * @param funName name of the current function we are in
    * @return List of the variables referenced by this VarsImpl node
    */
-  public List<String> getVars(EObject obj, List<String> list,
-      String funName) {
-    if (list == null)
-      return null;
-
+  public List<String> getVars(EObject obj, String funName) {
+    List<String> ret = new ArrayList<String>();
     if (obj instanceof VarsImpl) {
+      //individual variable
       String varInSourceName = ((VarsImpl) obj).getV1();
       String varInTargetName = "v" + varNameTranslation.size();
 
       varNameTranslation.put(varInSourceName, varInTargetName);
 
       funDescMap.get(funName).addVar(varInTargetName);
-      list.add(((VarsImpl) obj).getV1());
-      return getVars(((VarsImpl) obj).getV2(), list, funName);
-    } else
-      return list;
+      ret.add(varInTargetName);
+
+      for (String var : ((VarsImpl)obj).getV2()) {
+        varInTargetName = "v" + varNameTranslation.size();
+
+        varNameTranslation.put(var, varInTargetName);
+
+        funDescMap.get(funName).addVar(varInTargetName);
+        ret.add(varInTargetName);
+      }
+    }
+    return ret;
   }
 
-  public ExprRes traiterExpr(EObject obj, String funName,
-      ExprRes curRes) throws Exception {
+  public ExprRes traiterExpr(EObject obj, String funName, ExprRes curRes) throws Exception {
     if (obj instanceof ExprImpl) {
       ExprImpl ob = (ExprImpl) obj;
 
@@ -318,6 +350,7 @@ public class FrontEnd {
           for (Expr exp : le.getExp())
             listExprRes.add(traiterExpr(exp, funName, new ExprRes()));
 
+          System.out.println("size: " + le.getExp().size());
           // maybe go backward…
           //TODO: evaluate by group of 2 if possible
           for (ExprRes expRes : listExprRes) {
