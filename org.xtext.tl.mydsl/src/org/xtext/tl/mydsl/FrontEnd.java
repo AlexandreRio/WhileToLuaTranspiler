@@ -363,13 +363,21 @@ public class FrontEnd {
             curRes.addTAC(listExprRes.get(0).getTAC());
             curRes.addTAC(new TAC(new CodeOp(OP_CONS), curRes.getRes(), listExprRes.get(0).getRes(), null));
           } else if (listExprRes.size() == 2) {
-
+            for (ExprRes twoOperandRes : listExprRes)
+              curRes.addTAC(twoOperandRes.getTAC());
+            curRes.addTAC(new TAC(new CodeOp(OP_CONS), curRes.getRes(), listExprRes.get(0).getRes(), listExprRes.get(1).getRes()));
           } else { // size > 2
-
-          }
-          for (ExprRes expRes : listExprRes) {
-            curRes.addTAC(expRes.getTAC());
-            //curRes.addTAC(new TAC(new CodeOp(CodeOp.OP_CONS, null), curRes.getRes(), expRes.getRes(), null));
+            //this will transpose (cons A B C) into (cons (cons B C))
+            int size = listExprRes.size();
+            for (ExprRes twoOperandRes : listExprRes)
+              curRes.addTAC(twoOperandRes.getTAC());
+            String lastTwoTmp = funDescMap.get(funName).generateTempVar();
+            TAC lastTwo = new TAC(new CodeOp(OP_CONS),lastTwoTmp,listExprRes.get(size-2).getRes(),listExprRes.get(size-1).getRes());
+            TAC tmpTAC;
+            for (int i=size-3; i>=0; i--) {
+              //TODO new ExpRes
+              //tmpTAC = new TAC(new CodeOp(OP_CONS), );
+            }
           }
 
         } else if (ob.getMot().equals("list")) {
