@@ -15,6 +15,7 @@ public class CodeOp {
   public final static int OP_LIST   = 0x007;
   public final static int OP_HD     = 0x008;
   public final static int OP_TL     = 0x009;
+  public final static int OP_NIL    = 0x00a;
 
   /** Code Op identifier, see the constant above */
   private int op;

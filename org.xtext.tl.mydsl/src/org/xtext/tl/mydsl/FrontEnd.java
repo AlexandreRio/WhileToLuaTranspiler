@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.xtext.tl.mydsl.myDsl.Exprs;
 import org.xtext.tl.mydsl.myDsl.Input;
 import org.xtext.tl.mydsl.myDsl.Lexpr;
 import org.xtext.tl.mydsl.myDsl.Expr;
@@ -26,6 +25,8 @@ import org.xtext.tl.mydsl.myDsl.impl.EqImpl;
 import org.xtext.tl.mydsl.myDsl.impl.AndImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl;
+
+import static org.xtext.tl.mydsl.CodeOp.*;
 
 /**
  * Main class of the front end part of the compiler
@@ -298,6 +299,16 @@ public class FrontEnd {
     return ret;
   }
 
+  /**
+   * Go through an expression, create TAC to store temporary result 
+   *
+   * @param obj Node of an expression
+   * @param funName Name of the current function we are in
+   * @param curRes Object to where the current result is and where the current TAC is
+   * @return Object with the final result of the expression and a TAC list to produce this result
+   *
+   * @throws Exception if a node implementation instance is not recognised
+   */
   public ExprRes traiterExpr(EObject obj, String funName, ExprRes curRes) throws Exception {
     if (obj instanceof ExprImpl) {
       ExprImpl ob = (ExprImpl) obj;
@@ -320,18 +331,10 @@ public class FrontEnd {
       return null;
     } else if (obj instanceof OrImpl) {
       return null;
-      //parcours(((OrImpl)obj).getExpNon(), funName);
-
-      //for (EObject no : ((OrImpl)obj).getExpNon2())
-      //  parcours(no, funName);
     } else if (obj instanceof NotImpl) {
       return null;
-      //parcours(((NotImpl)obj).getExpEq(), funName);
     } else if (obj instanceof EqImpl) {
       return null;
-      //parcours(((EqImpl)obj).getExprEq1(), funName);
-      //parcours(((EqImpl)obj).getExprEq2(), funName);
-      //parcours(((EqImpl)obj).getExp()    , funName);
     } else if (obj instanceof ExprSimpleImpl) {
       ExprSimpleImpl ob = (ExprSimpleImpl) obj;
 
@@ -347,15 +350,26 @@ public class FrontEnd {
         if (ob.getMot().equals("cons")) {
           List<ExprRes> listExprRes = new ArrayList<ExprRes>();
           Lexpr le = ob.getLexpr();
-          for (Expr exp : le.getExp())
-            listExprRes.add(traiterExpr(exp, funName, new ExprRes()));
+          for (Expr exp : le.getExp()) {
+            ExprRes tmpRes = new ExprRes();
+            String tmp = funDescMap.get(funName).generateTempVar();
+            System.out.println("cons tmp var: " + tmp);
+            tmpRes.setRes(tmp);
+            listExprRes.add(traiterExpr(exp, funName, tmpRes));
+          }
 
-          System.out.println("size: " + le.getExp().size());
-          // maybe go backward…
-          //TODO: evaluate by group of 2 if possible
+
+          if (listExprRes.size() == 1) {
+            curRes.addTAC(listExprRes.get(0).getTAC());
+            curRes.addTAC(new TAC(new CodeOp(OP_CONS), curRes.getRes(), listExprRes.get(0).getRes(), null));
+          } else if (listExprRes.size() == 2) {
+
+          } else { // size > 2
+
+          }
           for (ExprRes expRes : listExprRes) {
             curRes.addTAC(expRes.getTAC());
-            curRes.addTAC(new TAC(new CodeOp(CodeOp.OP_CONS, null), curRes.getRes(), expRes.getRes(), null));
+            //curRes.addTAC(new TAC(new CodeOp(CodeOp.OP_CONS, null), curRes.getRes(), expRes.getRes(), null));
           }
 
         } else if (ob.getMot().equals("list")) {
@@ -376,8 +390,8 @@ public class FrontEnd {
         curRes.setRes(ob.getTermVar());
       } // nil
       else {
-        funDescMap.get(funName).addVar(ob.getTermVar());
-        curRes.setRes(ob.getTermVar());
+        TAC nilTAC = new TAC(new CodeOp(OP_NIL), curRes.getRes(), null, null);
+        curRes.addTAC(nilTAC);
       }
       return curRes;
     }
