@@ -65,20 +65,20 @@ public class BackEnd {
     prog += "for i=nbParam, nbRead do\n";
     prog += "  table.insert(list, arg[i])\n";
     prog += "end\n";
-    prog += whMain + "(";
+    prog += "wh.printTree(" + whMain + "(";
     for (int i=1; i<nbParam; i++) {
       prog += "arg[" + i + "], ";
     }
-    prog += " list)\n";
+    prog += " list))\n";
     prog += "else\n";
-    prog += "\t" + whMain + "(";
+    prog += "\twh.printTree(" + whMain + "(";
     for (int i=1; i<=nbParam; i++) {
       if (i == nbParam)
         prog += "arg[" + i + "]";
       else
         prog += "arg[" + i + "], ";
     }
-    prog += ")\nend\n";
+    prog += "))\nend\n";
 
     System.out.println(prog);
   }
@@ -115,6 +115,9 @@ public class BackEnd {
             ret += "wh.setLeaf(" + tac.getA1() + ", " + tac.getA2() + ")\n";
           else
             ret += "wh.setLeaf(" + tac.getA1() + ", " + tac.getA2() + ", " + tac.getA3() + ")\n";
+          break;
+        case CodeOp.OP_MOV:
+          ret += tac.getA1() + " = "+ tac.getA2() + "\n";
           break;
       }
     }

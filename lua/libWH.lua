@@ -14,14 +14,14 @@ function libWH.newLeaf()
   return leaf
 end
 
-function libWH.setLeaf(node, left, right)
-  node.name = nil
-  node.left = left
-  node.right = right
-end
-
 function libWH.setLeaf(node, left)
   libWH.setLeaf(node, left, libWH.newLeaf())
+end
+
+function libWH.setLeaf(node, left, right)
+  node.name = "cons"
+  node.left = left
+  node.right = right
 end
 
 function libWH.tree(treeName)
@@ -33,7 +33,7 @@ function libWH.tree(treeName)
 end
 
 function libWH.printTree(node)
-  print (node.name)
+  print ("name " .. node.name)
   if node.left ~= nil then
     libWH.printTree(node.left)
   end
