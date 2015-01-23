@@ -371,12 +371,18 @@ public class FrontEnd {
             int size = listExprRes.size();
             for (ExprRes twoOperandRes : listExprRes)
               curRes.addTAC(twoOperandRes.getTAC());
+
+            ExprRes lastRes = new ExprRes();
             String lastTwoTmp = funDescMap.get(funName).generateTempVar();
             TAC lastTwo = new TAC(new CodeOp(OP_CONS),lastTwoTmp,listExprRes.get(size-2).getRes(),listExprRes.get(size-1).getRes());
-            TAC tmpTAC;
+            lastRes.setRes(lastTwoTmp);
+            lastRes.addTAC(lastTwo);
             for (int i=size-3; i>=0; i--) {
-              //TODO new ExpRes
-              //tmpTAC = new TAC(new CodeOp(OP_CONS), );
+              curRes.addTAC(lastRes.getTAC());
+              curRes.setRes(funDescMap.get(funName).generateTempVar());
+              curRes.addTAC(new TAC(new CodeOp(OP_CONS), curRes.getRes(), listExprRes.get(i).getRes(), lastRes.getRes()));
+              lastRes.setRes(curRes.getRes());
+              lastRes.clearTAC();
             }
           }
 

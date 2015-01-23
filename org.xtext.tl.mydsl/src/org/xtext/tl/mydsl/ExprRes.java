@@ -21,6 +21,10 @@ public class ExprRes {
     this.code.add(tac);
   }
 
+  public void clearTAC() {
+    this.code = new ArrayList<TAC>();
+  }
+
   /**
    * @return the res
    */
