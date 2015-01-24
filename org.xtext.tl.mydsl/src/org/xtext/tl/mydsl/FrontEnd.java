@@ -48,16 +48,17 @@ public class FrontEnd {
   private HashMap<String, String> funNameTranslation;
 
   /**
-   * Same thing for variables
+   * Map the name of a function to a map for variable name in sourche and in target code.
+   * @see #funNameTranslation
    */
-  private HashMap<String, String> varNameTranslation;
+  private HashMap<String, HashMap<String, String>> varNameTranslation;
 
   public FrontEnd(String filename) throws Exception {
     this.funDescMap = new LinkedHashMap<String, FunctionDescriptor>();
     this.labelTable = new LabelTable();
 
     this.funNameTranslation = new HashMap<String, String>();
-    this.varNameTranslation = new HashMap<String, String>();
+    this.varNameTranslation = new HashMap<String, HashMap<String, String>>();
 
     PTree p = new PTree();
     FileReader reader = new FileReader(new File(filename));
@@ -82,6 +83,7 @@ public class FrontEnd {
 
       this.funNameTranslation.put(funInSourceName, funInTargetName);
 
+      this.varNameTranslation.put(funInTargetName, new HashMap<String, String>());
       parcours(obj, funInTargetName);
     }
 
@@ -108,26 +110,52 @@ public class FrontEnd {
     } else if (obj instanceof DefinitonImpl) {
       int in = 0;
       int out = 0;
-      Input inImp = ((DefinitonImpl) obj).getInputVars();
+      Input inImp    = ((DefinitonImpl) obj).getInputVars();
       Output outImpl = ((DefinitonImpl) obj).getOutputVars();
       FunctionDescriptor desc = this.funDescMap.get(funName);
 
+      String inSource;
+      String inTarget;
+      // read
       if (inImp.getV() != null) {
-       desc.addInput(inImp.getV());
-       in++;
+        inSource = inImp.getV();
+        inTarget = "v" + this.varNameTranslation.size();
+
+        this.varNameTranslation.get(funName).put(inSource, inTarget);
+        desc.addInput(inTarget);
+        in++;
       }
       if (inImp.getV2() != null) {
-        desc.addInput(inImp.getV2());
-        in += inImp.getV2().size();
+        for (String v : inImp.getV2()) {
+          inTarget = "v" + this.varNameTranslation.get(funName).size();
+          this.varNameTranslation.get(funName).put(v, inTarget);
+          desc.addInput(inTarget);
+          in++;
+        }
       }
 
+      // write
       if (outImpl.getV() != null) {
-        desc.addOuput(outImpl.getV());
+        if (this.varNameTranslation.get(funName).containsKey(outImpl.getV())) {
+          inTarget = this.varNameTranslation.get(funName).get(outImpl.getV());
+        } else {
+          inTarget = "v" + this.varNameTranslation.get(funName).size();
+          this.varNameTranslation.get(funName).put(outImpl.getV(), inTarget);
+        }
+        desc.addOuput(inTarget);
         out++;
       }
       if (outImpl.getV2() != null) {
-        desc.addOuput(outImpl.getV2());
-        out += outImpl.getV2().size();
+        for (String v : outImpl.getV2()) {
+          if (this.varNameTranslation.get(funName).containsKey(v)) {
+            inTarget = this.varNameTranslation.get(funName).get(v);
+          } else {
+            inTarget = "v" + this.varNameTranslation.get(funName).size();
+            this.varNameTranslation.get(funName).put(v, inTarget);
+          }
+          out++;
+          desc.addOuput(inTarget);
+        }
       }
 
       desc.setNbIn(in);
@@ -280,9 +308,9 @@ public class FrontEnd {
     if (obj instanceof VarsImpl) {
       //individual variable
       String varInSourceName = ((VarsImpl) obj).getV1();
-      String varInTargetName = "v" + varNameTranslation.size();
+      String varInTargetName = "v" + this.varNameTranslation.size();
 
-      varNameTranslation.put(varInSourceName, varInTargetName);
+      varNameTranslation.get(funName).put(varInSourceName, varInTargetName);
 
       funDescMap.get(funName).addVar(varInTargetName);
       ret.add(varInTargetName);
@@ -290,7 +318,7 @@ public class FrontEnd {
       for (String var : ((VarsImpl)obj).getV2()) {
         varInTargetName = "v" + varNameTranslation.size();
 
-        varNameTranslation.put(var, varInTargetName);
+        varNameTranslation.get(funName).put(var, varInTargetName);
 
         funDescMap.get(funName).addVar(varInTargetName);
         ret.add(varInTargetName);
@@ -300,7 +328,7 @@ public class FrontEnd {
   }
 
   /**
-   * Go through an expression, create TAC to store temporary result 
+   * Go through an expression, create TAC to store temporary result
    *
    * @param obj Node of an expression
    * @param funName Name of the current function we are in
@@ -353,7 +381,6 @@ public class FrontEnd {
           for (Expr exp : le.getExp()) {
             ExprRes tmpRes = new ExprRes();
             String tmp = funDescMap.get(funName).generateTempVar();
-            System.out.println("cons tmp var: " + tmp);
             tmpRes.setRes(tmp);
             listExprRes.add(traiterExpr(exp, funName, tmpRes));
           }
@@ -387,8 +414,8 @@ public class FrontEnd {
           }
 
         } else if (ob.getMot().equals("list")) {
-        //TODO utiliser une linked list, parcourir à l'envers et produire du TAC de cons avec plein de variables
-        //temporaires
+          //TODO utiliser une linked list, parcourir à l'envers et produire du TAC de cons avec plein de variables
+          //temporaires
         }
 
         return curRes;
@@ -415,10 +442,15 @@ public class FrontEnd {
   public String toString() {
     String ret = "";
     for (String key : funDescMap.keySet()) {
-      ret += key + "\n\tparamètres: "
-          + funDescMap.get(key).getNbIn() + "\n\tsorties: "
-          + funDescMap.get(key).getNbOut() + "\n\tlabel de début:"
-          + funDescMap.get(key).getLabelName() + "\n";
+      ret += key +
+        "\n\tparamètres: " + funDescMap.get(key).getNbIn();
+      for (String param : funDescMap.get(key).getIn())
+        ret += " " + param;
+      ret += "\n\tsorties: " + funDescMap.get(key).getNbOut();
+      for (String sortie : funDescMap.get(key).getOut())
+        ret += " " + sortie;
+      ret += "\n\tlabel de début:"
+        + funDescMap.get(key).getLabelName() + "\n";
       ret += "\tsymboles :";
       for (String v : funDescMap.get(key).keySet())
         ret += v + " ";
@@ -455,7 +487,7 @@ public class FrontEnd {
   /**
    * @return the varNameTranslation
    */
-  public HashMap<String, String> getVarNameTranslation() {
+  public HashMap<String, HashMap<String, String>> getVarNameTranslation() {
     return varNameTranslation;
   }
 }
