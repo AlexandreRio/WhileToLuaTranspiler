@@ -101,7 +101,7 @@ public class BackEnd {
           ret += "end\n";
           break;
         case CodeOp.OP_IFELSE:
-          ret += "if (wh.isNil(" + tac.getA2() + ")) then\n";
+          ret += "if (wh.isNotNil(" + tac.getA2() + ")) then\n";
           l = this.lt.get(tac.getOp().getLb1());
           ret += "\t" + generate(l);
           ret += "else\n";

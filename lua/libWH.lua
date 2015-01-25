@@ -3,8 +3,8 @@ libWH = {}
 function libWH.nop()
 end
 
-function libWH.isNil(expr)
-  return expr.name == nil
+function libWH.isNotNil(expr)
+  return expr.name ~= "leaf"
 end
 
 function libWH.newLeaf()
