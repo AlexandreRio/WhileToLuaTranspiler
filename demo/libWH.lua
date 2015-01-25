@@ -32,14 +32,32 @@ function libWH.tree(treeName)
   return tree
 end
 
+function libWH.pTree(str, prof, node)
+  if (node == nil) then
+    str = str .. "nil"
+  end
+  if (node ~= nil and node.name == "leaf") then
+    str = str .. "nil"
+  end
+
+  if (node ~= nil and node.name ~= "leaf") then
+    str = str ..  "     ."
+    if node.left ~= nil then
+      indent = ""
+      for i=0, prof, 1 do
+        indent = indent .. "     "
+      end
+      str = str .. libWH.pTree("\n" .. indent, prof+1, node.left)
+    end
+    if node.right ~= nil then
+      str = str .. libWH.pTree("   ", prof+1, node.right)
+    end
+  end
+  return str
+end
+
 function libWH.printTree(node)
-  print ("name " .. node.name)
-  if node.left ~= nil then
-    libWH.printTree(node.left)
-  end
-  if node.right ~= nil then
-    libWH.printTree(node.right)
-  end
+  print (libWH.pTree("", 0, node))
 end
 
 return libWH
