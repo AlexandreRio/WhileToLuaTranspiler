@@ -7,7 +7,6 @@ public class BackEnd {
   private LabelTable lt;
 
   public BackEnd(FrontEnd front) {
-    //System.out.println(front);
     this.fe = front;
     this.lt = this.fe.getLabelTable();
   }

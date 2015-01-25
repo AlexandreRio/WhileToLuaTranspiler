@@ -249,12 +249,10 @@ public class FrontEnd {
         parcours(ob.getExp(), funName, whileLabel);
         parcours(ob.getC1(), funName, whileLabel);
       } else if (name.equals("for")) {
-        //TODO: TAC
 
         parcours(ob.getExp(), funName);
         parcours(ob.getC1(), funName);
       } else if (name.equals("foreach")) {
-        //TODO: TAC
 
         parcours(ob.getExp1(), funName);
         parcours(ob.getExp2(), funName);
@@ -264,6 +262,7 @@ public class FrontEnd {
           ExprRes ifExpRes = new ExprRes();
           ifExpRes.setRes(funDescMap.get(funName).generateTempVar());
 
+          //FIXME
           ExprRes res = traiterExpr(ob.getExp(), funName, ifExpRes);
           String ifLabel = labelTable.generateLabel();
           String elseLabel = labelTable.generateLabel();
@@ -352,17 +351,24 @@ public class FrontEnd {
       }
 
     } else if (obj instanceof AndImpl) {
-      parcours(((AndImpl) obj).getExpOu(), funName);
+      traiterExpr(((AndImpl) obj).getExpOu(), funName, curRes);
 
-      for (EObject ou : ((AndImpl) obj).getExpOu2())
-        parcours(ou, funName);
-      return null;
+      //for (EObject ou : ((AndImpl) obj).getExpOu2())
+      //  traiterExpr(ou, funName, curRes);
     } else if (obj instanceof OrImpl) {
-      return null;
+      traiterExpr(((OrImpl)obj).getExpNon(), funName, curRes);
+
+      //for (EObject non : ((OrImpl)obj).getExpNon2())
+      //  traiterExpr(non, funName, curRes);
     } else if (obj instanceof NotImpl) {
-      return null;
+      //not bla bla
+      traiterExpr(((NotImpl)obj).getExpEq(), funName, curRes);
     } else if (obj instanceof EqImpl) {
-      return null;
+      if (((EqImpl)obj).getExp() != null) {
+        traiterExpr(((EqImpl)obj).getExp(), funName, curRes);
+      } else {
+
+      }
     } else if (obj instanceof ExprSimpleImpl) {
       ExprSimpleImpl ob = (ExprSimpleImpl) obj;
 
@@ -427,8 +433,15 @@ public class FrontEnd {
         String symboles = ob.getTermSym();
       } // Variables
       else if (ob.getTermVar() != null) {
-        funDescMap.get(funName).addVar(ob.getTermVar());
-        curRes.setRes(ob.getTermVar());
+        String var = ob.getTermVar();
+        //code à l'arrache, avant démo
+        if (varNameTranslation.get(funName).containsKey(var)) {
+          curRes.setRes(varNameTranslation.get(funName).get(var));
+        } else {
+          funDescMap.get(funName).addVar(var);
+          curRes.setRes(varNameTranslation.get(funName).get(var));
+        }
+        return curRes;
       } // nil
       else {
         TAC nilTAC = new TAC(new CodeOp(OP_NIL), curRes.getRes(), null, null);
@@ -436,7 +449,7 @@ public class FrontEnd {
       }
       return curRes;
     }
-    return null;
+    return curRes;
   }
 
   public String toString() {
