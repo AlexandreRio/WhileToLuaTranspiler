@@ -1,0 +1,9 @@
+function demo5:
+read X
+%X := (cons nil nil);
+if (X) then
+  nop
+else 
+  X := nil
+fi
+%write X

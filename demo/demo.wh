@@ -1,0 +1,4 @@
+function jeSuisUneDémo:
+read X
+%nop
+%write X

@@ -1,0 +1,4 @@
+function demo3:
+read X
+%X := (cons nil (cons X nil))
+%write X
