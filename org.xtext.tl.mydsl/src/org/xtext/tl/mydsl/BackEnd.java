@@ -21,7 +21,16 @@ public class BackEnd {
     return ret;
   }
 
-  public void run() {
+  public String getOutputFileName() {
+    String mainFunction = this.getMainWHFunction();
+    for (String funInWh : this.fe.getFunNameTranslation().keySet()) {
+      if (this.fe.getFunNameTranslation().get(funInWh).equals(mainFunction))
+        return funInWh;
+    }
+    return null;
+  }
+
+  public String run() {
     // Include the library
     String prog = "local wh = require \"libWH\"\n\n";
 
@@ -79,7 +88,7 @@ public class BackEnd {
     }
     prog += "))\nend\n";
 
-    System.out.println(prog);
+    return prog;
   }
 
   /**
