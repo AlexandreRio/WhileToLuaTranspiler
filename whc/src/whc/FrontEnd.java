@@ -1,4 +1,4 @@
-package org.xtext.tl.mydsl;
+package whc;
 
 import java.io.File;
 import java.io.FileReader;
@@ -26,7 +26,7 @@ import org.xtext.tl.mydsl.myDsl.impl.AndImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprSimpleImpl;
 import org.xtext.tl.mydsl.myDsl.impl.ExprTermImpl;
 
-import static org.xtext.tl.mydsl.CodeOp.*;
+import static whc.CodeOp.*;
 
 /**
  * Main class of the front end part of the compiler
@@ -35,7 +35,7 @@ public class FrontEnd {
 
   /**
    * Link a function name to its descriptor
-   * @see org.xtext.tl.mydsl.FunctionDescriptor
+   * @see whc.FunctionDescriptor
    */
   private LinkedHashMap<String, FunctionDescriptor> funDescMap;
 

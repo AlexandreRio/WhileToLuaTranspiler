@@ -1,4 +1,4 @@
-package org.xtext.tl.mydsl;
+package whc;
 
 import java.util.HashMap;
 import java.util.Set;

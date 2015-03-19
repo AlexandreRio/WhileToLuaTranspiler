@@ -1,4 +1,4 @@
-package org.xtext.tl.mydsl;
+package whc;
 
 /**
  * Operator of the 3 address code, identify an instruction

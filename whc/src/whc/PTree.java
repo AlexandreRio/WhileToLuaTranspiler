@@ -1,4 +1,4 @@
-package org.xtext.tl.mydsl;
+package whc;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -7,6 +7,7 @@ import java.text.ParseException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
+import org.xtext.tl.mydsl.MyDslStandaloneSetup;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;

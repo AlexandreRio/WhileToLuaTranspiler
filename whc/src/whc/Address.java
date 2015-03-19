@@ -1,4 +1,4 @@
-package org.xtext.tl.mydsl;
+package whc;
 
 public class Address {
 

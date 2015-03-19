@@ -1,10 +1,10 @@
-package org.xtext.tl.mydsl;
+package whc;
 
 import static org.junit.Assert.*;
 
 public class Test {
 
-	@org.junit.Test
+	@whc.junit.Test
 	public void test() {
 		assertTrue(true);
 	}
