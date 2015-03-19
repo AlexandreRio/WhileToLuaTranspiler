@@ -17,7 +17,7 @@ While
 
 Simple While program:
 
-``
+```
 function demo:
 read X
 %if (X) then
@@ -26,7 +26,7 @@ else
   X := (cons nil nil) 
 fi
 %write X
-``
+```
 
 Technical part
 --
