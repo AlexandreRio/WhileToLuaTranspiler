@@ -28,6 +28,10 @@ fi
 %write X
 ```
 
+While grammar
+---
+![while_grammar](doc/grammar.png)
+
 Technical part
 --
 
