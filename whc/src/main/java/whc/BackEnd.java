@@ -95,6 +95,7 @@ public class BackEnd {
    * Generate Lua code based on TAC
    * @param lb List of TAC
    * @return Lua code
+   * TODO refactor switch case
    */
   private String generate(Label lb) {
     String ret = "";

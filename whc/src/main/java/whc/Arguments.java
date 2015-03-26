@@ -9,7 +9,7 @@ public class Arguments {
   public Arguments() {
     Options options = new Options();
 
-    options.addOption("i" , "input"  , true  , "input file");
+    options.addOption("i" , "input"  , true  , "While input file");
     options.addOption("h" , "help"   , false , "display help");
     options.addOption("o" , "output" , true  , "output file");
 
