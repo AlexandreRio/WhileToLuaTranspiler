@@ -1,2 +1,2 @@
 #!/bin/bash
-cd target && java -jar whc-1.0-SNAPSHOT.jar $@
+java -jar target/whc-1.0-SNAPSHOT.jar $@
