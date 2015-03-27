@@ -31,64 +31,15 @@ public class BackEnd {
   }
 
   public String run() {
-    // Include the library
-    String prog = "local wh = require \"libWH\"\n\n";
+    StringBuilder prog = new StringBuilder();
 
-    String whMain = getMainWHFunction();
+    prog.append(this.writeIncludes());
 
-    // Write all the functions
-    for (String fun : this.fe.getFunDescMap().keySet()) {
-      FunctionDescriptor fd = this.fe.getFunDescMap().get(fun);
-      Label lb = this.fe.getLabelTable().get(fd.getLabelName());
+    prog.append(this.writeProgram());
 
-      // function signature
-      prog += "function " + fun + "(";
-      String delim = "";
-      for (String param : fd.getIn()) {
-        prog += delim + param;
-        delim = ", ";
-      }
-      prog += ")\n";
+    prog.append(this.writeMain());
 
-      //local variable declaration and initialization
-      for (String k : fd.keySet())
-        prog += "local " + k + " = wh.newLeaf()\n";
-
-      prog += generate(lb); //function body
-      prog += "return ";
-      delim = "";
-      for (String ret : fd.getOut()) {
-        prog += delim + ret;
-        delim = ", ";
-      }
-      prog += "\nend\n\n";
-    }
-
-    // Write the main
-    int nbParam = this.fe.getFunDescMap().get(whMain).getNbIn();
-    prog += "local nbParam = " + nbParam + "\n";
-    prog += "local nbRead = #arg\n";
-    prog += "if nbRead > nbParam then\n";
-    prog += "local list = {}\n";
-    prog += "for i=nbParam, nbRead do\n";
-    prog += "  table.insert(list, arg[i])\n";
-    prog += "end\n";
-    prog += "wh.printTree(" + whMain + "(";
-    for (int i=1; i<nbParam; i++) {
-      prog += "arg[" + i + "], ";
-    }
-    prog += " list))\n";
-    prog += "else\n";
-    prog += "\twh.printTree(" + whMain + "(";
-    for (int i=1; i<=nbParam; i++) {
-      if (i == nbParam)
-        prog += "arg[" + i + "]";
-      else
-        prog += "arg[" + i + "], ";
-    }
-    prog += "))\nend\n";
-
-    return prog;
+    return prog.toString();
   }
 
   /**
@@ -131,5 +82,70 @@ public class BackEnd {
       }
     }
     return ret;
+  }
+
+  private String writeIncludes() {
+    return "local wh = require \"libWH\"\n\n";
+  }
+
+  private String writeMain() {
+    String whMain = getMainWHFunction();
+    String prog = "";
+
+    int nbParam = this.fe.getFunDescMap().get(whMain).getNbIn();
+    prog += "local nbParam = " + nbParam + "\n";
+    prog += "local nbRead = #arg\n";
+    prog += "if nbRead > nbParam then\n";
+    prog += "local list = {}\n";
+    prog += "for i=nbParam, nbRead do\n";
+    prog += "  table.insert(list, arg[i])\n";
+    prog += "end\n";
+    prog += "wh.printTree(" + whMain + "(";
+    for (int i=1; i<nbParam; i++) {
+      prog += "arg[" + i + "], ";
+    }
+    prog += " list))\n";
+    prog += "else\n";
+    prog += "\twh.printTree(" + whMain + "(";
+    for (int i=1; i<=nbParam; i++) {
+      if (i == nbParam)
+        prog += "arg[" + i + "]";
+      else
+        prog += "arg[" + i + "], ";
+    }
+    prog += "))\nend\n";
+    return prog;
+  }
+
+  private String writeProgram() {
+    String prog = "";
+
+    for (String fun : this.fe.getFunDescMap().keySet()) {
+      FunctionDescriptor fd = this.fe.getFunDescMap().get(fun);
+      Label lb = this.fe.getLabelTable().get(fd.getLabelName());
+
+      // function signature
+      prog += "function " + fun + "(";
+      String delim = "";
+      for (String param : fd.getIn()) {
+        prog += delim + param;
+        delim = ", ";
+      }
+      prog += ")\n";
+
+      //local variable declaration and initialization
+      for (String k : fd.keySet())
+        prog += "local " + k + " = wh.newLeaf()\n";
+
+      prog += generate(lb); //function body
+      prog += "return ";
+      delim = "";
+      for (String ret : fd.getOut()) {
+        prog += delim + ret;
+        delim = ", ";
+      }
+      prog += "\nend\n\n";
+    }
+    return prog;
   }
 }
