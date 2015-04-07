@@ -56,8 +56,26 @@ function libWH.pTree(str, prof, node)
   return str
 end
 
+function libWH.jsonTree(node)
+  if (node == nil) then
+    str = "nil"
+  else
+    if (node ~= nil and node.name ~= "leaf") then
+      str = "\"" .. node.name .. "\" : " .. " {" .. libWH.jsonTree(node.left) .. "} , {" .. libWH.jsonTree(node.right) .."}"
+    else
+      if (node ~= nil and node.name == "leaf") then
+        str = node.name
+      else
+        str = node.name
+      end
+    end
+  end
+  return str
+end
+
 function libWH.printTree(node)
-  print (libWH.pTree("", 0, node))
+  --print (libWH.pTree("", 0, node))
+  print ("{" .. libWH.jsonTree(node) .. "}")
 end
 
 return libWH

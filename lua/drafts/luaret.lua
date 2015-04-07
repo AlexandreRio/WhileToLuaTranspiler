@@ -5,3 +5,4 @@ function f(X)
 end
 
 print (f(arg[1]))
+wh.printTree (f(arg[1]))
