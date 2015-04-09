@@ -14,6 +14,12 @@ function libWH.newLeaf()
   return leaf
 end
 
+function libWH.newNode(name)
+  local leaf = {}
+  leaf.name = name
+  return leaf
+end
+
 function libWH.setLeaf(node, left)
   libWH.setLeaf(node, left, libWH.newLeaf())
 end
@@ -58,16 +64,12 @@ end
 
 function libWH.jsonTree(node)
   if (node == nil) then
-    str = "nil"
+    str = "\"node\" : \"nil\""
   else
-    if (node ~= nil and node.name ~= "leaf") then
-      str = "\"" .. node.name .. "\" : " .. " {" .. libWH.jsonTree(node.left) .. "} , {" .. libWH.jsonTree(node.right) .."}"
+    if (node ~= nil and node.name == "leaf") then
+      str = "\"node\" : \"" .. node.name .. "\""
     else
-      if (node ~= nil and node.name == "leaf") then
-        str = node.name
-      else
-        str = node.name
-      end
+      str = "\"" .. node.name .. "\" : " .. " { \"left\" : {" .. libWH.jsonTree(node.left) .. "} , \"right\" : {" .. libWH.jsonTree(node.right) .."}}"
     end
   end
   return str
