@@ -3,6 +3,14 @@ libWH = {}
 function libWH.nop()
 end
 
+function libWH.max(a,b)
+  if (a > b) then
+    return a
+  else
+    return b
+  end
+end
+
 function libWH.isNotNil(expr)
   return expr.name ~= "leaf"
 end
@@ -30,12 +38,14 @@ function libWH.setLeaf(node, left, right)
   node.right = right
 end
 
-function libWH.tree(treeName)
-  local tree = {}
-  tree.name  = treeName
-  tree.left  = nil
-  tree.right = nil
-  return tree
+function libWH.depth(dep, node)
+  if (node ~= nil) then
+    dep = dep + 1
+    leftDepth,  n = libWH.depth(dep, node.left)
+    rightDepth, n = libWH.depth(dep, node.right)
+    dep = libWH.max(leftDepth, rightDepth)
+  end
+  return dep, node
 end
 
 function libWH.pTree(str, prof, node)
