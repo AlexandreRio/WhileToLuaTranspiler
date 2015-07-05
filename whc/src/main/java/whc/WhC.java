@@ -38,6 +38,8 @@ public class WhC {
           String defaultOutputName = be.getOutputFileName();
           output = new PrintStream(new File(defaultOutputName + ".lua"));
         }
+        if (line.hasOption("d"))
+          System.out.println(fe);
 
         String program = be.run();
         output.println(program);

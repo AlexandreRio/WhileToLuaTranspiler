@@ -456,21 +456,21 @@ public class FrontEnd {
     String ret = "";
     for (String key : funDescMap.keySet()) {
       ret += key +
-        "\n\tparamètres: " + funDescMap.get(key).getNbIn();
+        "\n\tparameters: " + funDescMap.get(key).getNbIn();
       for (String param : funDescMap.get(key).getIn())
         ret += " " + param;
-      ret += "\n\tsorties: " + funDescMap.get(key).getNbOut();
+      ret += "\n\toutput: " + funDescMap.get(key).getNbOut();
       for (String sortie : funDescMap.get(key).getOut())
         ret += " " + sortie;
-      ret += "\n\tlabel de début:"
+      ret += "\n\tentry label:"
         + funDescMap.get(key).getLabelName() + "\n";
-      ret += "\tsymboles :";
+      ret += "\tsymbols:";
       for (String v : funDescMap.get(key).keySet())
         ret += v + " ";
       ret += "\n";
     }
-    ret += "Nombre de fonction: " + funDescMap.size() + "\n";
-    ret += "Contenu de la table des labels:\n";
+    ret += "Number of functions: " + funDescMap.size() + "\n";
+    ret += "Content of the label table:\n";
     ret += labelTable;
 
     return ret;

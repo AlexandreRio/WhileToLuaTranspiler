@@ -12,6 +12,7 @@ public class Arguments {
     options.addOption("i" , "input"  , true  , "While input file");
     options.addOption("h" , "help"   , false , "display help");
     options.addOption("o" , "output" , true  , "output file");
+    options.addOption("d" , "dump"   , false , "dump internal structures");
 
     opt = options;
   }

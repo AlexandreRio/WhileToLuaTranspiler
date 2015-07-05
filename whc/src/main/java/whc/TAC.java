@@ -22,9 +22,9 @@ public class TAC {
   }
 
   public String toString() {
-    return "<" + this.op + ", " +
-      (a1 == null ? "_" : a1) + ", " +
-      (a2 == null ? "_" : a2) + ", " +
+    return "<" + this.op + " " +
+      (a1 == null ? "_" : a1) + " " +
+      (a2 == null ? "_" : a2) + " " +
       (a3 == null ? "_" : a3) + ">";
   }
 

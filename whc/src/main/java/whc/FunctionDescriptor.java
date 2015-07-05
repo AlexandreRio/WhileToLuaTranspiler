@@ -31,7 +31,7 @@ public class FunctionDescriptor {
    * TODO better, unique name
    */
   public String generateTempVar() {
-    String tempVarName = "tmp" + this.tableSymboles.size();
+    String tempVarName = "t" + this.tableSymboles.size();
     this.addVar(tempVarName);
     return tempVarName;
   }
