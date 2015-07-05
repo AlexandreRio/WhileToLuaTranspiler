@@ -1,6 +1,8 @@
 *.class
 utils/*.jar
 org.xtext.tl.mydsl/bin/*
+whc/.idea
+*.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
