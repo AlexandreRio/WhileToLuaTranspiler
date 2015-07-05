@@ -10,6 +10,9 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+/**
+ * Entry point of the compiler, specify options parsing
+ */
 public class WhC {
 
   public static void main (String[] args) throws Exception {
@@ -51,6 +54,7 @@ public class WhC {
   }
 
   private static void displayHelp(Options opt) {
+  	System.out.println("While to Lua compiler. Version: " + Version.getVersion() + "\n");
     HelpFormatter formatter = new HelpFormatter();
     formatter.printHelp( "whc", opt, true );
   }
